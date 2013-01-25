@@ -1,0 +1,17 @@
+.navbar.admin_search
+  .navbar-inner
+    .container
+      .nav-collapse
+        %ul.nav
+          %li{:class => "#{(params[:action] == 'index' && params[:controller] != "admin/states") ? '' : 'active'}"}
+            = link_to "State Management", admin_states_path(:edit_mode=>"active")
+          %li{:class => "#{(params[:action] == 'index' && params[:controller] != "admin/conferences") ? '' : 'active'}"}
+            = link_to "Conference Management", admin_conferences_path(:edit_mode=>"active")
+          %li{:class => "#{(params[:action] == 'index' && params[:controller] != "admin/teams") ? '' : 'active'}"}
+            = link_to "Team Management" , admin_teams_path(:edit_mode=>"active")
+          %li{:class => "#{(params[:action] == 'index' && params[:controller] != "admin/sports") ? '' : 'active'}"}
+            = link_to "Sport Management", admin_sports_path(:edit_mode=>"active")
+          %li{:class => "#{(params[:action] == 'index' && params[:controller] != "admin/users") ? '' : 'active'}"}
+            = link_to "User Management", admin_users_path(:edit_mode=>"active")
+
+

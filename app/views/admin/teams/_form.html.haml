@@ -1,0 +1,61 @@
+#admin_new_team
+  #edit_team_popup.modal.hide.fade
+    = form_for @team, :url => url, :method => method, :remote =>true do |f|
+      .modal-header
+        = link_to "X", "#", :class => "close", "data-dismiss" => "modal", :id => "close"
+        %h3
+          - if @team.new_record? 
+            Create Team
+          - else 
+            Edit Team
+      .modal-body
+        %div
+          %table
+            %tr
+              %td
+                = f.label :Logo, "Update Photo"
+              %td{:style =>"width:10px;"}
+              %td
+                = f.file_field :logo
+            = f.fields_for :school do |s|
+              = fields_for :conference do |c|
+                %tr
+                  %td{:align => "left"}
+                    = f.label :Name ,"State"
+                  %td{:style =>"width:10px;"}
+                  %td
+                    - if @tate
+                      = c.select :state_id, options_from_collection_for_select(State.active.order("name ASC"), "id", "name", @state.id ), {:include_blank => "Choose state"}   
+                    - else
+                      = c.select :state_id, @states, {:include_blank => "Select one"}
+              %tr
+                %td{:align => "left"}
+                  = f.label :Name ,"Conference"
+                %td{:style =>"width:10px;"}
+                %td
+                  = s.select :conference_id, @conferences, {:include_blank => "Select one"}
+                  #conference_error.font-error
+              %tr
+                %td{:align => "left"}
+                  = f.label :schoolName, "School Name"
+                %td{:style =>"width:10px;"}
+                %td
+                  = s.text_field :name, :class => "name_school"
+                  #School_error.font-error
+            %tr
+              %td{:align => "left"}
+                = f.label :Mascot, "Mascot"
+              %td{:style =>"width:10px;"}
+              %td
+                = f.text_field :mascot, :class =>"mascot_school"
+                #mascot_error.font-error
+            %tr
+              %td{:align => "left"}
+                = f.label :Name ,"Team name"
+              %td{:style =>"width:10px;"}
+              %td{:class => "name_team"}
+                #showteamname= f.object.name
+                = f.hidden_field :name, :class =>"name_hidden"
+
+      .modal-footer
+        = f.submit "Save Changes",:class => "New_team btn btn btn-primary"

@@ -1,0 +1,7 @@
+- if teams
+  - teams.each do |team|
+    = "Team: "
+    = team.name
+    = hidden_field_tag 'user[team_id]' , team.id
+- else
+  = hidden_field_tag 'user[team_id]'

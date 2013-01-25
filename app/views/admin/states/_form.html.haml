@@ -1,0 +1,17 @@
+.modal#popup_state.fade
+  .modal-header
+    = link_to "X", "#", :class => "close", "data-dismiss" => "modal", :id => "close"
+    .font-bold
+      - if @state.new_record?
+        Create State
+      - else
+        Edit State
+  = simple_form_for(@state, :url => url, :method => method, :remote => true, :html => {:class => "form-horizontal", :id => "edit_state"}) do |f|
+    = f.error_notification
+    .modal-body
+      %div
+        = f.input :name
+        #name_error.font-error.error-time
+    .modal-footer
+      = button_tag 'Save', :class => "btn btn-primary", :id => "save_schedule"
+

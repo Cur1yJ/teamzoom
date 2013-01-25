@@ -1,0 +1,21 @@
+.modal#conference_popup.fade
+  .modal-header
+    = link_to "X", "#", :class => "close", "data-dismiss" => "modal", :id => "close"
+    %h2
+      - if @conference.new_record?
+        Create Conference
+      - else
+        Edit Conferences
+  .modal-body
+    = simple_form_for(@conference,:url => conference_url,:method => method, :remote => decide, :html => {:class => "form-horizontal"}) do |f|
+      = f.error_notification
+      .conference_errors_at_create
+      .conference_errors_at_update
+
+      .form-inputs
+      = f.input :name
+      = f.input :active, :as => :hidden, :input_html => {:value =>true}
+      = f.input :state_id, :collection => State.active.order("name ASC").collect{|state|[state.name, state.id]}
+
+      .modal-footer
+      = button_tag 'Save', :class => "btn btn-primary", :id => "save_conf"

@@ -1,0 +1,103 @@
+.row.show-grid
+  .span12
+    .front-heading
+      Our first goal is to raise $1 million dollars for local athletics.
+    .front-subheading
+      How?  Technology that works.  Service that will surprise you.
+    .span9
+      .tabbable.tabs-left
+        %ul.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#lA"} Company History
+          %li
+            %a{"data-toggle" => "tab", :href => "#lB"} Management Team
+          %li
+            %a{"data-toggle" => "tab", :href => "#lC", :id => "contact_us"} Contact Us
+          .offset0-5
+            Follow us on:
+            %br
+            = link_to (image_tag "facebook_icon.png"), "https://facebook.com"
+            = link_to (image_tag "twitter_icon.png"), "https://twitter.com"
+        .tab-content
+          #lA.tab-pane.active
+            %h1
+              Company History
+            %br
+            TeamZoom was founded in 2012 with the mission of raising money for local athletic programs through the use of innovative video streaming technology. TeamZoom enables HD broadcasting of local athletic events to allow parents, relatives and local fans to become more engaged with their local teams. We are working hard to continuously improve our product and service and would love to hear from you about how we can do better.
+            %br
+            Email us at feedback@teamzoom.com and tell us how we are doing.
+          #lB.tab-pane
+            %h1
+              Management Team
+            %br
+            %b  Ryan Kruizenga, Co-Founder and CEO
+            %br
+            Ryan is responsible for sales and day-to-day operations at TeamZoom.  His background is in sales and finance.  He previously worked as a Senior Associate at Summit Partners in Palo Alto.  He received a BA in Entrepreneurship from the University of St. Thomas in St. Paul, MN.
+            %br
+            %br
+          #lC.tab-pane
+            %h1
+              Contact Us
+            #map_canvas{:style => "height: 300px; width: 100% "}
+            %br
+            %br
+            .span3.offset0-7
+              %b Our Address:
+              %br
+              28 Isabella Ave.
+              Atherton, CA 94027
+            .span3
+              %b Our Email Address:
+              %br
+              = mail_to "info@teamzoom.com", "info@teamzoom.com"
+    / .span2
+    /   .box
+    /     %h1
+    /       Right Panel
+:erb
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBB0PEGVTDb9oUSgEz0RuKycWOma5Bj1q8&sensor=false">
+  </script>
+  <script type="text/javascript">
+  var geocoder;
+  var map;
+  var contact_us_clicked = true;
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+    zoom: 12,
+    center: latlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  }
+
+  function codeAddress(address) {
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+
+  $(document).ready(function(){
+    $('#contact_us').click(function(){
+    if (contact_us_clicked == true)
+      initialize();
+      codeAddress("28 Isabella Ave. Atherton, CA 94027");
+      contact_us_clicked = false;
+    });
+
+  });
+
+  </script>
+
+
+
+

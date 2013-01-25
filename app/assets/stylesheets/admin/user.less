@@ -1,0 +1,52 @@
+.cross-browser-linear(@from, @to, @start-color, @end-color){
+	background-image: -moz-linear-gradient(@from, @start-color, @end-color);
+	background-image: -webkit-linear-gradient(@from, @start-color, @end-color);
+	background-image: -ms-linear-gradient(@from, @start-color, @end-color);
+	background-image: linear-gradient(to @to, @start-color 0%, @end-color 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@start-color, endColorstr=@end-color,GradientType=0 );
+}
+
+
+.admin_search{
+	.nav-link{
+		background-color: transparent;// rgba(174,225,241,0.47);
+		// .cross-browser-linear(bottom, top, #a8e9e7,#fff);
+		color: #000;
+		text-decoration: underline;
+	}
+	.navbar-inner{
+		// .cross-browser-linear(top, bottom, #a8e9e7,#fff);
+		background-color: transparent;
+		background-image: none;
+		width: 64%;
+		.nav{
+			a:hover{
+				.nav-link;
+			}
+			.active{
+				a{
+					.nav-link;
+					&:hover{
+						.nav-link;
+					}
+				}
+			}
+		}
+	}
+}
+tr.editable-by-admin{
+	position:relative;
+	.edit{
+		background-color: yellow;
+	}
+	.edit-block{
+		position:absolute;
+		// left: 82%;
+		top:10%;
+		// width:10%;
+		z-index: 1000;
+	}
+	td {
+	  vertical-align: middle;
+	}
+}

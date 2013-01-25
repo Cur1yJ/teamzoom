@@ -1,0 +1,5 @@
+$("#myModalteam").modal("hide");
+- if @team.errors.any?
+	$("#error_msg").fadeIn().html("<div class ='alert alert-error'>venues and url are already exists or duplicated. Error!</div>");
+- else
+	$("#error_msg").fadeIn().html("<div class ='alert alert-success'>venues and url are successfully updated!</div>");

@@ -1,0 +1,14 @@
+.border_users
+  %table.table.table-hover.table-bordered
+    %thead
+      %tr.bg
+        %th Name
+        %th.wid-action Actions
+    %tbody
+      - @teams.each_with_index do |team, i|
+        %tr{:class=>"bg-#{i%2}"}
+          %td
+            = link_to team.name, team ,:class =>"link_team"
+          %td
+            = link_to image_tag("edit.png", :title => "Edit"), edit_admin_team_path(team), :remote => true
+  = will_paginate @teams

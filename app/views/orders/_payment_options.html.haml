@@ -1,0 +1,52 @@
+.modal#payment_options.fade.width-popup{"data-backdrop" => "static"}
+  .modal-body
+    = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+    .pull-left#logo.width-logo
+      .team-logo.editable-by-admin
+        = dynamic_logo
+    .pull-right.form-wrapper-payment{}
+      .progress-indicator
+        .round-wrapper.progress-out
+          .round.active 1
+          .line
+          .round 2
+          .line
+          .round 3
+
+        .text-wrapper{:style => "width: 100%; overflow: auto;"}
+          .row
+            .span-step.text-center
+              <strong>Choose your plan</strong>
+            .span-step.text-center
+              Billing Details & Payment
+            .span-step.text-center
+              Confirmation
+
+  .clearfix
+  %center
+    .introduce
+      #introduce-individual.hide
+        .title-type
+          You are requesting a Single Game Pass
+        .price
+          TeamZoom will charge you $5.00/game ($2.50 goes to your school). Each single game purchase
+          provides four hours of access to TeamZoom content.
+      #introduce-monthly
+        .title-type
+          You are requesting a Monthly subscription
+        .price
+          TeamZoom will charge you $30.00 / month ($15.00 goes to your school). A monthly subscription provides unlimited access to TeamZoom content.
+      %div
+        Please choose one of these options
+      .line.align-line
+      #options
+        = form_tag(new_order_path, :method => :get, :id => "options-form", :remote => true) do
+          = hidden_field_tag "schedule_id", schedule
+          .pull-left= radio_button_tag 'individual_game',  false, :checked => true
+          .pull-left= label_tag "individual_game_false",  "Monthly Supscription (<strong>$30.00 / month</strong>)".html_safe
+          .clearfix
+          .pull-left= radio_button_tag 'individual_game', true
+          .pull-left= label_tag  "individual_game_true", "Individual games (<strong>$5.00 / four hours</strong>)".html_safe
+          .clearfix
+    .modal-footer{:style=>"margin-top: 10px;"}
+      %center= link_to "I agree", "#", :class => "btn btn-primary", :id => "agree_payment"

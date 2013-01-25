@@ -1,0 +1,24 @@
+%h1{:style => "text-align: center;margin: 1em 0;"} Create an accounty to get started with TeamZoom.
+.row
+	.span7.offset3.form-wrapper
+		.progress-indicator
+			.round-wrapper{:style => "width: 100%; overflow: auto;"}
+				.round.active 1
+				.line
+				.round 2
+				.line
+				.round 3
+			.text-wrapper{:style => "width: 100%; overflow: auto;"}
+				.row
+					.span2 Create an account
+					.span2 Billing Details
+					.span2 Terms / Confirmation
+
+		= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "sign_up_form"}) do |f|
+			= f.error_notification
+			.form-inputs
+				= render "#{resource.current}_step", :f => f
+			.form-actions
+				= f.button :submit, "Next", :class => "btn btn-primary"
+	.span6.offset3
+		= render "devise/shared/links"

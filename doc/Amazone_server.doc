@@ -1,0 +1,100 @@
+#================ KEY ====================
+# coppy project key to .ssh (TeamZoomRailsApp.pem)
+
+#--------- Add key ---------------
+# in terminal, go to .ssh folder
+
+chmod 700 TeamZoomRailsApp.pem
+ssh-add TeamZoomRailsApp.pem
+( ls -l : to see roles of your key )
+
+# go to folder project in terminal
+ssh-add $HOME/.ssh id_rsa
+
+#========= END KEY ==================
+
+#============= SSH ==================
+ssh ubuntu@ec2-54-242-202-12.compute-1.amazonaws.com
+
+#============== DATABASE ==============
+#----  CREATE DATABASE ON THE AMAZONE SERVER -----
+# ssh ubuntu@shh_ip
+ssh ubuntu@23.23.156.118
+
+#---- open psotgre sql 
+ubuntu@ip-10-34-50-239:~$ sudo -i
+root@ip-10-34-50-239:~# su postgres
+postgres@ip-10-34-50-239:/root$
+
+#---- create database
+postgres@ip-10-34-50-239:/root$ createdb -U teamzoom_pro -p 5432 -h localhost -e teamzoom_pro
+#----- restore database from backup file 
+ubuntu@ip-10-34-50-239:~$ psql -U teamzoom_pro -d teamzoom_pro -h localhost -p 5432 -f /home/ubuntu/v1.sql
+
+
+#---------- list all database on the server -----------------
+postgres@ip-10-34-50-239:/root$ psql -l
+#---------- list all  table on the database -----------------
+# go to database and type \d
+teamzoom_pro=# \d
+
+( $ psql -U teamzoom_pro -h localhost   # ACCESS TO DB ( username: teamzoom_pro / password: teamzoom_pro_member) )
+
+#======================= DATABASE CONTROLL ==========================
+#-----  ADD USER IP TO DATABASE TO ACCESS DATA ----
+#--- go to pg_hba.conf of postgresql in the amazone server
+root@ip-10-34-50-239:/var/lib/postgresql/9.1/main# cd /etc/postgresql/9.1/main/
+root@ip-10-34-50-239:/etc/postgresql/9.1/main# vi pg_hba.conf
+#--- go to line "Allow replication connections from localhost, by a user with the..."
+# --- add IP 
+#host    replication     postgres        ::1/128                 md5
+host    all             all             101.99.43.66    255.255.255.0   trust
+
+# anorther way to open config file
+ubuntu@ip-10-34-50-239:~$ sudo vim /etc/postgresql/9.1/main/pg_hba.conf
+
+#--- after that you should restart server -----
+root@ip-10-34-50-239:/etc/postgresql/9.1/main# service postgresql restart
+
+
+#============ DEPLOY TO AMAZONE SERVER =====================
+cap deploy:cold
+
+#---------- another feature of cap-----------
+cap -T
+cap bundle:install           # Install the current Bundler environment.
+cap deploy                   # Deploys your project.
+cap deploy:assets:clean      # Run the asset clean rake task.
+cap deploy:assets:precompile # Run the asset precompilation rake task.
+cap deploy:check             # Test deployment dependencies.
+cap deploy:cleanup           # Clean up old releases.
+cap deploy:cold              # Deploys and starts a `cold' application.
+cap deploy:create_symlink    # Updates the symlink to the most recently deplo...
+cap deploy:migrate           # Run the migrate rake task.
+cap deploy:migrations        # Deploy and run pending migrations.
+cap deploy:pending           # Displays the commits since your last deploy.
+cap deploy:pending:diff      # Displays the `diff' since your last deploy.
+cap deploy:rollback          # Rolls back to a previous version and restarts.
+cap deploy:rollback:code     # Rolls back to the previously deployed version.
+cap deploy:seed              # It helps to seed database with values
+cap deploy:setup             # Prepares one or more servers for deployment.
+cap deploy:symlink           # Deprecated API.
+cap deploy:symlink_config    # Symlink shared resources on each release - not...
+cap deploy:update            # Copies your project and updates the symlink.
+cap deploy:update_code       # Copies your project to the remote servers.
+cap deploy:upload            # Copy files to the currently deployed version.
+cap invoke                   # Invoke a single command on the remote servers.
+cap rvm:create_gemset        # Create gemset
+cap rvm:install_gem          # Install a gem, 'cap rvm:install_gem GEM=my_gem'.
+cap rvm:install_ruby         # Install RVM ruby to the server, create gemset ...
+cap rvm:install_rvm          # Install RVM of the given choice to the server.
+cap rvm:uninstall_gem        # Uninstall a gem, 'cap rvm:uninstall_gem GEM=my...
+cap shell                    # Begin an interactive Capistrano session.
+
+
+
+#================== KEY WITH AMAZONE =========================
+
+
+
+

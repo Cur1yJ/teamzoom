@@ -1,0 +1,7 @@
+#state_render_popup
+.border_users
+  .btn-add= link_to "New State", new_admin_state_path, :class => "btn btn-primary", :remote => true
+  .clear
+  #render_states 
+    = render "states", :states => @states
+

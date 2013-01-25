@@ -1,0 +1,8 @@
+- if @sport.errors.any?
+  - errors = "";
+  - @sport.errors.full_messages.each do |error|
+    - errors = errors+"<li>#{error}</li>"
+  $(".sport_errors_at_create").html("<div class = 'alert alert-error'><ul>#{raw(errors)}</ul></div>");
+- else
+  $("#sport_new").modal('hide');
+  location.reload();

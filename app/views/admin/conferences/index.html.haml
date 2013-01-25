@@ -1,0 +1,9 @@
+#conference_wrapper
+
+.border_users
+  .btn-add= link_to "New Conference", new_admin_conference_path, :class => "btn btn-primary clear span", :remote => true
+  .clear
+  #render_conferences
+    = render "conferences"
+   
+

@@ -1,0 +1,26 @@
+.clear
+.admin_search
+  .conferenc-wrapper{:style => "float:left ; width:68%"}
+    .box-border_admin
+      .span{:style =>"margin-top:0.5em"}
+      = hidden_field_tag :selecter , params[:conference_id_admin]
+      = form_tag admin_teams_path, :method => :get do
+        %table
+          %tr
+            %td
+              = hidden_field_tag "edit_mode", 'active'
+              =select_tag "state_id_admin", options_from_collection_for_select(@states, "id", "name", params[:state_id_admin]), :prompt => 'Choose State'
+            %td
+              #conference_admin= render "conferences/conference_admin", :conferences => @conferences || []
+            %td
+              = text_field_tag :school_admin
+            %td
+              %button#button_search_admin.btn.btn-primary.btn-team search
+      .span{:style =>"margin-left :619px;margin-top:-2em;"}
+        = link_to "Create Team", new_admin_team_path, :class => "clickonshow", :remote => true
+        #team_render_popup
+  .loading_admin.none_admin= image_tag('common/loading.gif')
+  .team_admin{:style => "float:left ; width:68%; margin-top: 10px;"}
+    #render_teams 
+      - if params[:conference_id_admin]
+        = render 'admin/teams/team_admin'

@@ -1,0 +1,269 @@
+/ -----------------------------------------------ACCOUNT SETTING----------------------------------------------------
+/ ------------------------------------------------------------------------------------------------------------------
+/ Description:  
+/                 - show list of managers, school address, program details             
+/                 - add new manager, change school address
+/ Parameters
+/ @team_managers  :      list of team manager,        action: add
+/ @school_address :      school school_address,       action: change
+/ ------------------------------------------------------------------------------------------------------------------
+- count = 0
+%ul.nav.nav-list.nav-width.left_menu
+  %li.tran.nav-header{:class => "#{(params[:action] == 'subscribers') ? 'active' : ''}"}
+    .account-text 
+      = link_to "Dashboard", admin_team_subscribers_path(@team)
+  %li{:class => "#{(params[:action] == 'subscribers') ? 'active' : ''}"}
+    = link_to "Total Subscribers", admin_team_subscribers_path(@team)
+  %li{:class => "#{(params[:action] == 'game_purchases') ? 'active' : ''}"}
+    = link_to "Single-Game Purchases", admin_team_game_purchases_path(@team)
+  %li{:class => "#{(params[:action] == 'viewers') ? 'active' : ''}"}
+    = link_to "Viewers", admin_team_viewers_path(@team)
+  %li{:class => "#{(params[:action] == 'cancellations') ? 'active' : ''}"}
+    = link_to "Cancellations", admin_team_cancellations_path(@team)
+  %li.tran.nav-header
+    .account-text 
+      = link_to "Account Settings", admin_team_path(@team)
+.accountsetting.span8.content-sub
+  .contact-info
+    %label 
+      %h3 Contact:
+    .program-administrators
+      %label 
+        %h1 Program Administrator(s):
+      %br
+        /------------------------------------------
+        /     pseudo data, instance -> hash       |
+        /   Change when database have database    |
+        /------------------------------------------
+
+        /- @team_managers = [{"email" =>"smod1@yahoo.com"},{"email" => "smod2@yahoo.com"}]
+        /- @school_address = {"address"=>"29 High Street, Terra Nova, CA"}
+
+        /------------------------------------------
+        /         End of pseudo data declase      |
+        /------------------------------------------  
+
+        / show list manager
+      - @team_managers.each do |manager|
+        - count +=1
+        .row{:id => "team_manager#{count}"}
+          .span1.offset1  
+            = "Manager #{count}"
+          - if user_signed_in?  
+            -if current_user == manager
+              = email_field_tag "manageremail#{count}",nil,:placeholder =>manager.email+" (you)", :class => "span3", :disabled => "disabled"
+            -else
+              = email_field_tag "manageremail#{count}",nil,:placeholder =>manager.email, :class => "span3"
+              - if is_manager?
+                = button_tag "", :id => "delete#{count}", :class=>"delete_button btn", :disabled=>"disabled"
+              - else
+                = button_tag "", :id => "delete#{count}", :class=>"delete_button btn"
+              = button_tag "", :id => "change#{count}", :class => "change_button btn"
+          - else
+            = email_field_tag "manageremail#{count}",nil,:placeholder =>manager.email+" (you)", :class => "span3", :disabled => "disabled"
+          = hidden_field_tag "team#{count}", "#{@team.id}"
+      - if is_admin?
+        = link_to "Add(+)", "#add_team_manager", :class => "btn btn-primary modal-gen offset4 span1", "data-toggle" => "modal" 
+          
+
+      %br  
+      .modal#add_team_manager.hide.fade.popup-dialog
+        .row   
+          .span5
+            %ul#popup-dialog.nav.nav-tabs
+              %li.active
+                = link_to "Add existing user", "#1","data-toggle" => "tab"
+              %li
+                = link_to "Add new user", "#2","data-toggle" => "tab"
+              %li.closed-tab
+                = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+            #form1Content.tab-content
+              .tab-pane.fade.in.active#1
+                .span4.expand
+                  .form1-add-new-user-to-team-manager          
+                    .modal-header
+                      %h3 
+                        Add existing user to Team Manager    
+                    .modal-body
+                      /-------------------------------------------
+                      /          form tag submit- change link    |
+                      /-------------------------------------------
+
+
+                      = form_tag update_by_email_admin_team_users_path(@team.id), :method=>:put,:class => "form-horizontal",:id => "add-exist-user-to-manager" do
+                        %fieldset
+
+                          
+                          .control-group
+                            = label_tag "Email", nil, :class => "popup-label"
+                            .popup_textfield
+                              = email_field_tag "email", nil, :class => "span3", :id => "exist-email-field"
+                            #eemail.offset2-5.error-message
+                        .modal-footer.footer-tab
+                          = submit_tag "Add", :class => "btn btn-success"
+              .tab-pane#2
+                .span4.expand  
+                  .form2-add-exist-user-to-manager
+                    .modal-header
+                      %h3 
+                        Add new user to Team Manager
+                    .modal-body
+                      /-------------------------------------------
+                      /          form tag submit- change link    |
+                      /-------------------------------------------
+
+                      = form_for :user, :url => url_for([:admin, @team, :users]),:html=>{:class =>"form-horizontal",:id =>"add-new-user-to-manager"} do |f|
+                        %fieldset
+                          .control-group
+                            = f.label :email, :class => "popup-label"
+                            .popup_textfield
+                              = f.email_field :email, :class => "span3", :id => "new-email-field"
+                            #nemail.offset2-5.error-message
+                          .control-group
+                            = f.label :password, :class => "popup-label"
+                            .popup_textfield
+                              = f.password_field :password, :class => "span3",:id =>"new-password-field"
+                            #npass.offset2-5.error-message
+                          .control-group
+                            = f.label :password_confirm, :class => "popup-label"
+                            .popup_textfield
+                            = f.password_field :password_confirm, :class => "span3", :id =>"new-password-confirm-field"
+                            #npassconfirm.offset2-5.error-message
+                        .modal-footer.footer-tab
+                          = submit_tag "Add",:class => "btn btn-success"
+
+    %br
+    .school-address
+      %label 
+        %h1 School Address: 
+      .offset1
+        - address_array = @school_address.split('@/') rescue []
+        = address_array.join(", ")
+      - if can_manage_teampage?  
+        = link_to "Change", "#change_school_address", :class => "btn btn-primary modal-gen offset4 span1", "data-toggle" => "modal"
+      .modal#change_school_address.hide.fade.popup-dialog
+        .span4.expand
+          .form3-change-school-address
+            .modal-header
+              %h3 
+                Change School Address
+                = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+            .modal-body
+              /-------------------------------------------
+              /          form for submit- change link    |
+              /-------------------------------------------
+
+              = form_tag update_address_admin_team_schools_path(@team),:method => :put, :class => "form-horizontal",:id =>"changeAddress" do
+                %fieldset
+                  .control-group
+                    = label_tag "Address *", nil, :class => "popup-label"
+                    .popup_textfield
+                      = text_field_tag "a", address_array[1], :class => "span3"
+                    #aem.offset2-5.error-message
+                  .control-group
+                    = label_tag "City *", nil, :class => "popup-label"
+                    .popup_textfield
+                      = text_field_tag "c", address_array[2], :class => "span3"
+                    #cem.offset2-5.error-message
+                  .control-group
+                    = label_tag "Zip code *", nil, :class => "popup-label"
+                    .span3
+                    = text_field_tag "z",address_array[0], :class => "span3"
+                    #zem.offset2-5.error-message
+                  .control-group
+                    = label_tag "State", nil, :class => "popup-label"
+                    .span3
+                    = state_select "s", "state", :priority => [address_array[3]]
+                .modal-footer.footer-tab
+                  = button_tag "Change",:class => "btn btn-success"
+  %br                
+  .program-details  
+    %label 
+      %h3  Program Details:
+    .details
+      %label Payment Method: Check (Trimester)
+      %label Program Start Date:
+      %label Current Contract Period: 1/1/2013 - 1/1/2014
+
+= javascript_tag do
+  :erb
+    $("#changeAddress").submit(function(){
+      if ( $("#a").val() && $("#c").val() && $("#z").val() )
+        return true;
+      else
+        if (!$("#a").val()){
+          $("#aem").html("can't be blank");
+          $("#aem").show();
+        }
+        if (!$("#c").val()){
+          $("#cem").html("can't be blank");
+          $("#cem").show();
+        }
+        if (!$("#z").val()){
+          $("#zem").html("can't be blank");
+          $("#zem").show();  
+        }
+        return false;
+    })
+    $("#a").bind("keyup",function(){
+      $("#aem").hide();
+    })
+    $("#c").bind("keyup",function(){
+      $("#cem").hide();
+    })
+    $("#z").bind("keyup",function(){
+      $("#zem").hide();
+    })
+    $("#add-exist-user-to-manager").submit(function(){
+      if ($("#exist-email-field").val())
+        return true;
+      else{
+        $("#eemail").html("can't be blank");
+        $("#eemail").show();
+        return false;
+      }
+    })
+    $("#exist-email-field").bind("keyup",function(){
+      $("#eemail").hide();
+    })
+    $("#add-new-user-to-manager").submit(function(){
+      if ( $("#new-email-field").val() && $("#new-password-field").val().length>=6 && 
+           $("#new-password-confirm-field").val()==$("#new-password-field").val())
+        return true;
+      else
+        if (!$("#new-email-field").val()){
+          $("#nemail").html("can't be blank");
+          $("#nemail").show();
+        }
+        
+        if ($("#new-password-field").val().length < 6){
+          $("#npass").html("invalid pass"); 
+          $("#npass").show();
+        }
+        if (!$("#new-password-field").val()){
+          $("#npass").html("can't be blank");
+          $("#npass").show(); 
+        }
+        if ($("#new-password-confirm-field").val()!=$("#new-password-field").val()){
+          $("#npassconfirm").html("pass doesn't match");
+          $("#npassconfirm").show();
+        }
+        return false;
+    })
+    $("#new-email-field").bind("keyup",function(){
+      $("#nemail").hide();
+    })
+    $("#new-password-field").bind("keyup",function(){
+      $("#npass").hide();
+    })
+    $("#new-password-confirm-field").bind("keyup",function(){
+      $("#npassconfirm").hide();
+    })
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+- if params[:option] == "true"
+  = render "choose_option"
+%h1{:style => "text-align: center;margin: 1em 0;"} Create an account to get started with TeamZoom.
+.row
+  .span-order.offset2.form-wrapper
+    .progress-indicator
+      .round-wrapper{:style => "width: 80%; overflow: auto; margin: auto;"}
+        .round 1
+        .line
+        .round.active 2
+        .line
+        .round 3
+        .line
+        .round 4
+      .text-wrapper{:style => "width: 100%; overflow: auto; margin: auto;"}
+        .row
+          .span-step{:style => "text-align: center;"} Create an account
+          .span-step{:style => "text-align: center;"} Billing Details
+          .span-step{:style => "text-align: center;"} Terms of Use
+          .span-step{:style => "text-align: center;"} Confirmation
+
+    #render-payment-on-registering
+      - if params[:option] || !(params[:action] == "new")
+        = render "form", :order => @order, :url => orders_path, :method => :post, :remote => true, :individual_game => false, :schedule_id => "", :reload_page => true
+        .clearfix
+    %div{:style=>"margin: 10px 0;"}
+      %center= submit_tag "Next", :class => "btn btn-primary", :id => "btn_payment"
+

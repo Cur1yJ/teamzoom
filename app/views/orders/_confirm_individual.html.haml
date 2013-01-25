@@ -1,0 +1,30 @@
+.modal#confirm_individual.fade.width-popup{"data-backdrop" => "static"}
+  .modal-body
+    = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+    .pull-left#logo.width-logo
+      .team-logo.editable-by-admin
+        = dynamic_logo
+    .pull-right.form-wrapper-payment{}
+      .progress-indicator
+        .round-wrapper.progress-out
+          .round 1
+          .line
+          .round 2
+          .line
+          .round.active 3
+
+        .text-wrapper{:style => "width: 100%; overflow: auto;"}
+          .row
+            .span-step.text-center Choose your plan
+            .span-step.text-center Billing Details & Payment
+            .span-step.text-center <strong>Confirmation</strong>
+    .clearfix
+
+    %h2 Congratulations! We registered your order on TeamZoom.
+    %div.confirm
+      %p You have purchased a Single Game Pass, and your card has been charge $5.00.
+      %p You now have unlimited access to TeamZoom content for four hours
+
+  .modal-footer
+    %center= link_to "Ok", "#", :class => "btn btn-primary btn_ok"
+

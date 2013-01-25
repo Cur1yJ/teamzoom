@@ -1,0 +1,33 @@
+/ = render 'demo/popup_demo'
+= title 'Teamzoom'
+/ = image_tag('common/front_page.png')
+.row
+	.span12
+		.front-heading Watch live broadcasts of your local teams in HD.
+		.front-subheading 50% of all revenue goes to the school.
+.row
+	.span12
+		.row.front-banner
+			.span5
+				.enter
+					%h1 Coaches and Administrators
+					%p Learn more about TeamZoom's fundraising program.
+					%p= image_tag 'common/admin.jpg', :width => 300, :height => 190
+					%ul
+						%li Completely free to install
+						%li Easy to administer
+						%li Half of all sales are donated to your school’s athletic program
+
+					%p= link_to "Learn more.", "/home_coache", :class => "btn btn-primary"
+			.span5
+				.enter
+					%h1 Parents, Fans, Scouts
+					%p Find your team and start watching games.
+					%p= image_tag 'common/member.jpg', :width => 300, :height => 190
+					%ul
+						%li Monthly subscriptions or single game purchases
+						%li Half of all sales are donated to your school’s athletic program
+						%li{:style => "visibility:hidden;"} more to add
+					%p= link_to "Learn more.", "/home_parent", :class => "btn btn-primary"
+.row
+	#jwaudio.span3

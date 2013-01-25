@@ -1,0 +1,35 @@
+.modal#edit_details.hide
+	.modal-header
+		= link_to "X", "#edit_details",:class => "close", "data-dismiss" => "modal"
+		%h3 School name: #{teamsport.team.name}
+	.modal-body
+		#error_msg
+		%ul.nav.nav-tabs#venue-tab
+			%li.active= link_to "Teams", "#input_for_subteams", "data-toggle" => "tab", :id => "input_for_subteams_link"
+			%li= link_to "Venues", "#input_for_venues", "data-toggle" => "tab", :id => "input_for_venue_link"
+		.tab-content
+			.tab-pane.active#input_for_subteams
+				= simple_nested_form_for teamsport,:url => update_venue_path(teamsport.team),:method => :put, :html=> {:class => "form-vertical form_for_teamsport"}, :validate => true, :remote => true do |f|
+					= f.hidden_field :team_id
+					= f.hidden_field :id
+					= f.input :sport_id, :label => "Sport", :collection => Sport.where(active: true).order("name ASC").collect{|sport| [sport.name, sport.id]},:prompt => "Select one",:selected => (teamsport.sport.id if teamsport.sport.present?), :wrapper_html => {:class => "sports", :style => "margin-right:1.5em;"}#, "data-url" => "/find_or_initial_teamsport", "data-remote" => true, "data-type" => :json
+					= f.simple_fields_for :subteams do |f|
+						= f.input :name, :label => "Team",:wrapper_html => {:class => "span"}
+						= f.link_to_remove "-",:class => "btn btn-danger btn-mini", :style => "margin-top:25px;margin-left:2em;"
+					= f.link_to_add "Add Team", :subteams, :class => "btn btn-primary btn-mini"
+					#test
+					/	= teamsport.sport.id unless teamsport.new_record?
+					.modal-footer
+						= f.submit "Save", :class => "btn btn-primary", :id => "parallelteams"
+			.tab-pane#input_for_venues
+				= simple_nested_form_for teamsport.team, :html => {:class => "form_for_venue"}, :validate => true, :remote => true do |f|
+					= f.simple_fields_for :venues do |f|
+						- disabled = ( f.object.new_record? || (!f.object.new_record? && !is_venue_using_in_game(f.object.schedules)) ) ? false : true
+						= f.input :venue, :wrapper_html => {:class => "span"}, :input_html => {:disabled => disabled}
+						= f.input :url,:wrapper_html => {:class => "span"}, :input_html => {:disabled => disabled}
+						- hidden = disabled ? "hidden" : ""
+						= f.link_to_remove "-", :class => "btn btn-danger btn-mini #{hidden}", :style => "margin-top:25px;margin-left:3px;", :disabled => disabled
+					= f.link_to_add "Add Venue", :venues, :class => "btn btn-mini btn-primary", :style => "margin-top:30px;"
+					.modal-footer
+						= f.submit "Save", :class => "btn btn-primary", :id => "parallelvenues"
+	.modal-footer

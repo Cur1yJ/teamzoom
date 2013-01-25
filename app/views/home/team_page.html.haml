@@ -1,0 +1,336 @@
+.tab-content
+  .tab-pane.active#shedule.page-contents
+    .row
+      .span3
+        %select
+          %option Select a Sport: ALL
+    .row
+      .span3
+        %p
+          Week of:
+          %a{:href => "#"} <- July 16 ->
+    .row
+      .content-side
+        / .span11
+        %table.list-teampage.lists
+          %thead
+            %tr
+              %th Time (ET)
+              %th Game
+              %th Premium
+              %th Basic
+              %th Condensed
+              %th Highlights
+              %th Home/Away Feeds
+          %tbody
+            %tr
+              %td
+                1:05 PM
+              %td
+                = image_tag('common/sample_game.png')
+                Angels
+                %br/
+                = image_tag('common/sample_game1.png')
+                Yankees
+              %td
+                LAA:
+                %span.bluetext FSW-HD
+                %br/
+                NYY:
+                %span.bluetext YES-HD
+              %td
+                %span.bluetext Watch
+              %td
+              %td
+                %span.bluetext Watch
+              %td
+                LAA:
+                %span.bluetext KLAA
+                alt:
+                %span.bluetext KWKW
+                %br/
+                NYY:
+                %span.bluetext WCBS
+                alt:
+                %span.bluetext WADO
+            %tr
+              %td
+                1:05 PM
+              %td
+                = image_tag('common/sample_game.png')
+                Angels
+                %br/
+                = image_tag('common/sample_game1.png')
+                Yankees
+              %td
+                LAA:
+                %span.bluetext FSW-HD
+                %br/
+                NYY:
+                %span.bluetext YES-HD
+              %td
+                %span.bluetext Watch
+              %td
+              %td
+                %span.bluetext Watch
+              %td
+                LAA:
+                %span.bluetext KLAA
+                alt:
+                %span.bluetext KWKW
+                %br/
+                NYY:
+                %span.bluetext WCBS
+                alt:
+                %span.bluetext WADO
+            %tr
+              %td
+                1:05 PM
+              %td
+                = image_tag('common/sample_game.png')
+                Angels
+                %br/
+                = image_tag('common/sample_game1.png')
+                Yankees
+              %td
+                LAA:
+                %span.bluetext FSW-HD
+                %br/
+                NYY:
+                %span.bluetext YES-HD
+              %td
+                %span.bluetext Watch
+              %td
+              %td
+                %span.bluetext Watch
+              %td
+                LAA:
+                %span.bluetext KLAA
+                alt:
+                %span.bluetext KWKW
+                %br/
+                NYY:
+                %span.bluetext WCBS
+                alt:
+                %span.bluetext WADO
+            %tr
+              %td
+                1:05 PM
+              %td
+                = image_tag('common/sample_game.png')
+                Angels
+                %br/
+                = image_tag('common/sample_game1.png')
+                Yankees
+              %td
+                LAA:
+                %span.bluetext FSW-HD
+                %br/
+                NYY:
+                %span.bluetext YES-HD
+              %td
+                %span.bluetext Watch
+              %td
+              %td
+                %span.bluetext Watch
+              %td
+                LAA:
+                %span.bluetext KLAA
+                alt:
+                %span.bluetext KWKW
+                %br/
+                NYY:
+                %span.bluetext WCBS
+                alt:
+                %span.bluetext WADO
+            %tr
+              %td
+                1:05 PM
+              %td
+                = image_tag('common/sample_game.png')
+                Angels
+                %br/
+                = image_tag('common/sample_game1.png')
+                Yankees
+              %td
+                LAA:
+                %span.bluetext FSW-HD
+                %br/
+                NYY:
+                %span.bluetext YES-HD
+              %td
+                %span.bluetext Watch
+              %td
+              %td
+                %span.bluetext Watch
+              %td
+                LAA:
+                %span.bluetext KLAA
+                alt:
+                %span.bluetext KWKW
+                %br/
+                NYY:
+                %span.bluetext WCBS
+                alt:
+                %span.bluetext WADO
+            %tr
+              %td
+                1:05 PM
+              %td
+                = image_tag('common/sample_game.png')
+                Angels
+                %br/
+                = image_tag('common/sample_game1.png')
+                Yankees
+              %td
+                LAA:
+                %span.bluetext FSW-HD
+                %br/
+                NYY:
+                %span.bluetext YES-HD
+              %td
+                %span.bluetext Watch
+              %td
+              %td
+                %span.bluetext Watch
+              %td
+                LAA:
+                %span.bluetext KLAA
+                alt:
+                %span.bluetext KWKW
+                %br/
+                NYY:
+                %span.bluetext WCBS
+                alt:
+                %span.bluetext WADO
+            %tr
+              %td
+                1:05 PM
+              %td
+                = image_tag('common/sample_game.png')
+                Angels
+                %br/
+                = image_tag('common/sample_game1.png')
+                Yankees
+              %td
+                LAA:
+                %span.bluetext FSW-HD
+                %br/
+                NYY:
+                %span.bluetext YES-HD
+              %td
+                %span.bluetext Watch
+              %td
+              %td
+                %span.bluetext Watch
+              %td
+                LAA:
+                %span.bluetext KLAA
+                alt:
+                %span.bluetext KWKW
+                %br/
+                NYY:
+                %span.bluetext WCBS
+                alt:
+                %span.bluetext WADO
+
+        .team-right-side
+          %p SAVE SPACE FOR FUTURE RSS , SOCIAL NETWORK FEEDS
+
+  #conference.tab-pane
+    this is tab pane
+  #account.tab-pane
+    / -----------------------------------------------ACCOUNT SETTING----------------------------------------------------
+    / ------------------------------------------------------------------------------------------------------------------
+    / Description:  
+    /                 - show list of managers, school address, program details             
+    /                 -add new manager, change school address
+    / Parameters
+    / @team_managers  :      list of team manager,        action: add
+    / @school_address :      school school_address,       action: change
+    / ------------------------------------------------------------------------------------------------------------------
+    .accountsetting.span8.offset2
+      .contact-info
+        %label 
+          %h3 Contact:
+        .program-administrators
+          %label 
+            Program Administrator(s):
+            /------------------------------------------
+            /     pseudo data, instance -> hash       |
+            /   Change when database have database    |
+            /------------------------------------------
+
+            - @team_managers = [{"email" =>"smod1@yahoo.com"},{"email" => "smod2@yahoo.com"}]
+            - @school_address = {"address"=>"29 High Street, Terra Nova, CA"}
+
+            /------------------------------------------
+            /         End of pseudo data declase      |
+            /------------------------------------------  
+
+            - if @team_managers  
+              - s = []  
+              - @team_managers.each do |manager|
+                -  s += [manager["email"]]
+              = s.join(",")
+            = link_to "Add(+)", "#add_team_manager", :class => "btn btn-primary modal-gen", "data-toggle" => "modal"
+          .modal#add_team_manager.hide.fade
+            .modal-header
+              %h3 
+                Add new Team Manager
+                = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+            .modal-body
+              /-------------------------------------------
+              /          form for submit- change link    |
+              /-------------------------------------------
+
+              = form_tag '#',:method => :put, :class => "form-horizontal" do
+                %fieldset
+                  .control-group
+                    = label_tag "Name", nil, :class => "control-label"
+                    .controls
+                      = text_field_tag "name", nil, :class => "span3"
+                  .control-group
+                    = label_tag "Email", nil, :class => "control-label"
+                    .controls
+                      = text_field_tag "email", nil, :class => "span3"
+            .modal-footer
+              = button_tag "request", :class => "btn btn-success", "data-dismiss" => "modal"
+
+        .school-address
+          %label 
+            School Address: 
+            - if @school_address
+              = @school_address["address"]
+            = link_to "Change", "#change_school_address", :class => "btn btn-primary modal-gen", "data-toggle" => "modal"
+          .modal#change_school_address.hide.fade
+            .modal-header
+              %h3 
+                Add new Team Manager
+                = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+            .modal-body
+              /-------------------------------------------
+              /          form for submit- change link    |
+              /-------------------------------------------
+
+              = form_tag '#',:method => :put, :class => "form-horizontal" do
+                %fieldset
+                  .control-group
+                    = label_tag "New address", nil, :class => "control-label"
+                    .controls
+                      = text_field_tag "name", nil, :class => "span3"
+            .modal-footer
+              = button_tag "Change", :class => "btn btn-success", "data-dismiss" => "modal"
+      .program-details  
+        %label 
+          %h3  Program Details:
+        .details
+          %label Payment Method: Check (Trimester)
+          %label Program Start Date:
+          %label Current Contract Period: 1/1/2013 - 1/1/2014
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+- if @state.errors.any?
+  - @state.errors.full_messages.each do |error|
+    - if error.include?("Name") 
+      $("#name_error").html("#{j ( error ) }")
+- else
+  location.reload();

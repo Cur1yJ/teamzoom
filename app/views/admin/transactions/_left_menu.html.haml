@@ -1,0 +1,15 @@
+%ul.nav.nav-list.nav-width.pull-left
+  %li.tran.nav-header
+    .account-text 
+      = link_to "Dashboard","#"
+  %li{:class => "#{(params[:action] == 'subscribers') ? 'active' : ''}"}
+    = link_to "Total Subscribers", admin_team_subscribers_path(@team)
+  %li{:class => "#{(params[:action] == 'game_purchases') ? 'active' : ''}"}
+    = link_to "Single-Game Purchases", admin_team_game_purchases_path(@team)
+  %li{:class => "#{(params[:action] == 'viewers') ? 'active' : ''}"}
+    = link_to "Viewers", admin_team_viewers_path(@team)
+  %li{:class => "#{(params[:action] == 'cancellations') ? 'active' : ''}"}
+    = link_to "Cancellations", admin_team_cancellations_path(@team)
+  %li.tran.nav-header
+    .account-text 
+      = link_to "Account Settings", admin_team_path(@team)

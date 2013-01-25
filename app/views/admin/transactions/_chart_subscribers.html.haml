@@ -1,0 +1,11 @@
+#subscribers_chart.size-chart
+= render_chart(@chart, 'subscribers_chart')
+= javascript_tag do
+	:erb
+		$("#chart").hide()
+		setTimeout(hide,2000);
+		function hide(){
+			$("#loading").hide();
+			$("#chart").show();
+		}
+

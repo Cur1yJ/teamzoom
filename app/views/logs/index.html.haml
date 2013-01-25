@@ -1,0 +1,19 @@
+.log-content
+  - if @logs
+    - n = @logs.size
+    - index = 0
+    - @logs.each do |log|
+      - index = index + 1
+      .log-info
+        %p.log_type
+          %span Log type: 
+          %span= log.log_type
+        %p.log_server
+          %span Server: 
+          %span= log.server_id
+        %p.log_time
+          %span Time: 
+          %span= log.last_modified
+        %p.log_message= log.log_message
+      - if index < n
+        .bottom_line

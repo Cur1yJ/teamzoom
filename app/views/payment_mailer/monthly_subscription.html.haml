@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+    %p
+      Dear
+      = @user.name_from_email + ","
+    %p
+      You have purchased a Monthly Subscription, and your card has been charged
+      = number_to_currency Order::PRICE_MONTH
+    %p You have unlimited access to Teamzoom content for one month.
+    %p
+      You may
+      = link_to "cancel", edit_user_registration_url, :class => "cancel-font"
+      your Monthly Subscription at anytime visiting the My Account section of our website.
+
+    %p
+      Yours sincerely,
+      %br/
+      TeamZoom.

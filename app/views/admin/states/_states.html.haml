@@ -1,0 +1,18 @@
+%table.table.table-hover.table-bordered
+  %thead
+    %tr.bg
+      %th Name
+      %th.wid-action Actions
+  %tbody
+    - @states.each_with_index do |state, i|
+      %tr{:class=>"bg-#{i%2}"}
+        %td
+          = state.name
+        %td
+          = link_to "", edit_admin_state_path(state), :remote => true, :class => "icon-pencil color-pen", :title => "Edit"
+          = " | "
+          - if state.conferences.empty?
+            - notice = "Are you sure?"
+          - else
+            - notice = "This state had these conferences, are you sure?"
+          = link_to "", change_status_admin_state_path(state), :data => { :confirm => notice }, :class => "icon-trash color-pen", :method => :put, :remote => true, :title => "Delete"

@@ -1,0 +1,306 @@
+#change_school_address, #form1Content{
+  form{
+    margin-bottom: 0px;
+  }
+  .modal-body{
+    padding-bottom: 0px;
+  }
+}
+.modal.fade{
+  top: -100%;
+  .in {
+    top: -50% !important;
+  }
+}
+.find-team{
+  margin-top:30px;
+  .none{
+    display: none;
+  }
+  .list-teams{
+    .loading{
+      text-align:center;
+    }
+  }
+}
+.widthtb{
+  width:50px;
+}
+
+a.modalCloseImg {
+  color: #000000 !important;
+  position: absolute;
+  right: -20px;
+  top: -25px;
+  text-decoration: none;
+}
+#popup_demo{
+  display: none;
+  #wrap-popup{
+    background-color:#F8F8F8;
+    width: 300px;
+    height: 200px;
+    #popup-title{
+      padding:5px;
+      border-bottom:solid 1px #E8E7E6;
+      font-weight: bold;
+    }
+    #popup-content{
+      padding:5px;
+      display:block;
+    }
+  }
+}
+#state_id,
+#school_id,
+#conference_id{
+  width:175px;
+  -moz-width:175px;
+  -webkit-width:175px;
+  padding:0px;
+  height:23px;
+}
+.box-borders{
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 -3px 3px 0 #CCCCCC;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  width: 720px;
+  border: 1px solid #E6E6FA;
+  overflow: auto;
+  margin:auto;
+  background-color:#DCDCDC  ;
+  z-index:1000px;
+  position: relative;
+}
+.manualmargin{
+  margin-left: 415px;
+  margin-left: 410px\9;
+  margin-top:7px;
+  padding:0 5px 5px 5px;
+}
+.border_team{
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #E6E6FA;
+  overflow: auto;
+  background-color:#DCDCDC  ;
+  z-index:1000px;
+  float:left;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  padding: 5px 10px;
+  overflow-y: hidden;
+}
+.border_team_page{
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  width: 865px;
+  height :30px;
+  border: 1px solid #696969;
+  overflow: auto;
+  margin-top: 30px;
+  margin-left: 10px;
+  z-index:1000px;
+  position: relative;
+  .font{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:15px;
+    margin-top:6px;
+    padding-left:5px;
+  }
+}
+.border_team_directory  {
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  width: 865px;
+  height :auto;
+  border: 1px solid #696969;
+  overflow: auto;
+  margin-top: 15px;
+  margin-left: 10px;
+  z-index:1000px;
+  position: relative;
+}
+.rss{
+  margin-top:200px;
+}
+.border_rss{
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  width: 250px;
+  height :400px;
+  border: 1px solid #696969;
+  overflow: auto;
+  margin-top: 57px;
+  margin-left: 20px;
+  z-index:1000px;
+  margin:top;
+  float:left
+}
+.team_in {
+  padding-left:5px;
+}
+.link_team{
+  color: #333333;
+  font-size: 1em;
+}
+
+#state{
+  padding:0px;
+  width:220px;
+  width:215px\9;
+  height:23px;
+}
+
+.button_request{
+  background-color: #0074CC;
+  background-image: -moz-linear-gradient(center top , #0088CC, #0055CC);
+  background-repeat: repeat-x;
+}
+.link_border:hover{
+  .border_team{
+    background-image: -moz-linear-gradient(center top , #DCDCDC, #A9A9A9);
+    z-index:1000px;
+  }
+}
+.pager{
+  margin-left:5px;
+}
+.conference_directory{
+  padding:5px 0 0 10px;
+}
+#form_fix_width{
+  width:570px;
+  float: left;
+}
+#button-fixed-width{
+  width: 70px;
+  float: left;
+}
+#myModal1{
+  width:370px;
+}
+#myModalteam{
+  width:500px;
+  .width_sub{
+    width:260px;
+  }
+  .modal-body{
+    margin-left:-90px;
+  }
+}
+.left_school{
+  left: 390px;
+  left: 385px\9;
+}
+#team{
+  width:220px;
+  width:218px;
+  height:23px;
+  height:15px\9;
+  width:205px\9;
+}
+
+.line {
+  border-top: 1px dashed grey;
+}
+.line-sub {
+  border-top: 1px dashed grey;
+  margin: 5px 0;
+}
+
+
+/*==================================*/
+.sign_up_form{
+  // padding-left: 150px;
+  padding-top: 1em;
+  margin-top: 1em;
+  clear: both;
+  .form-inputs{
+    float: left;
+    width: 400px;
+  }
+  .team-input{
+    text-align: center;
+    float:left;
+    width: 360px;
+    select{
+      margin-bottom: 10px;
+    }
+  }
+  #school_check{
+    background: none;
+    .not_school_list{
+      float:left;
+      margin-left:70px;
+      margin-top:5px;
+    }
+    label{
+      font-weight: bolder;
+      font-size: 18px;
+      display:block;
+      width: 200px;
+    }
+  }
+}
+
+.fields{
+  overflow: auto;
+  // float: left;
+  margin-right: 1em;
+}
+
+/*==================================*/
+.sign_up_form{
+  // padding-left: 150px;
+  padding-top: 1em;
+  margin-top: 1em;
+  clear: both;
+  .form-inputs{
+    float: left;
+    width: 400px;
+  }
+  .team-input{
+    text-align: center;
+    float:left;
+    width: 360px;
+    select{
+      margin-bottom: 10px;
+    }
+  }
+}
+img.medium_logo_team{
+  height:50px;
+  width:50px;
+}
+.user_edit_team_sport div{
+  margin-bottom: 1em;
+  margin-top: 1em;
+  input[type='checkbox']{
+    float:left;
+    margin-top:0.5em;
+  }
+}
+.admin_log_link{
+  text-align:right;
+  position:absolute;
+  // float: right;
+  width:100%;
+  margin-top: -40px;
+}
+
+.log-content{
+  // width:150px;
+  height:600px;
+  overflow:scroll;
+  padding:20px;
+  .bottom_line{
+    border-bottom: dashed 1px blue;
+    margin:20px 0;
+  }
+}

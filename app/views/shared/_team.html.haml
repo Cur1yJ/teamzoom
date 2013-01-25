@@ -1,0 +1,9 @@
+.tab-menu.right-it
+  %ul.nav.nav-tabs#myTeam{:style => "float:right;"}
+    %li{:class => "#{(params[:action] == 'show' && params[:controller] != "admin/teams") ? 'active' : ''}"}
+      = link_to "Schedule", team_path(@team)
+    %li{:class => "#{(params[:action] == 'conference_directory') ? 'active' : ''}"}
+      = link_to "Conference Directory", conference_directory_team_path(@team), :class =>"conference_directory"
+    - if current_user and (current_user.is_admin? or current_user.is_manager?)
+      %li{:class => "#{(['subscribers', 'game_purchases','viewers','cancellations'].include?(params[:action]) || params[:controller] == "admin/teams") ? 'active' : ''}"}
+        = link_to "Program Settings", admin_team_subscribers_path(@team), :style =>"margin-right:0;"

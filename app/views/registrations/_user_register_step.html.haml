@@ -1,0 +1,4 @@
+= f.input :email, :required => true, :autofocus => true, :label => "Email Address"
+= f.input :password, :required => true
+= f.input :password_confirmation, :required => true, :label => "Password Confirmation"
+= f.input :user_type, :collection => User::ROLES.collect{|role| [role.to_s, role.humanize]}, :prompt => "Select one", :label => "User Type"

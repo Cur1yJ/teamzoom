@@ -1,0 +1,29 @@
+.modal#payment_input.fade.width-popup{"data-backdrop" => "static"}
+  .modal-body
+    = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+    .pull-left#logo.width-logo
+      .team-logo.editable-by-admin
+        = dynamic_logo
+    .pull-right.form-wrapper-payment{}
+      .progress-indicator
+        .round-wrapper.progress-out
+          .round 1
+          .line
+          .round.active 2
+          .line
+          .round 3
+
+        .text-wrapper{:style => "width: 100%; overflow: auto;"}
+          .row
+            .span-step.text-center
+              Choose your plan
+            .span-step.text-center
+              <strong>Billing Details & Payment</strong>
+            .span-step.text-center
+              Confirmation
+
+    .clearfix
+    = render "orders/form", :order => order, :url => url, :remote => true, :method => :post, :individual_game => individual_game, :schedule_id => schedule_id, :reload_page => reload_page
+  .modal-footer
+    %center= submit_tag "Place your order", :class => "btn btn-primary", :id => "btn_payment"
+

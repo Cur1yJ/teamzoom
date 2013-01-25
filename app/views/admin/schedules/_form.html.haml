@@ -1,0 +1,66 @@
+.modal#popup_team.fade.popup-schedule
+  .modal-header
+    = link_to "X", "#", :class => "close", "data-dismiss" => "modal", :id => "close_payment"
+    .font-bold Event Details
+  = simple_form_for(@schedule, :url => url, :method => method, :remote => true, :html => {:class => "form-horizontal", :id => "edit_team"}) do |f|
+    = f.error_notification
+    .modal-body
+      %div
+        - if f.object.new_record?
+          = f.input :event_date, :as => :string, :input_html => {:class => "select-date", :value => f.object.event_date}, :label => "Date"
+          #date_error.font-error.error-time
+          .control-group
+            .control-label
+              Time zone
+            .controls
+              = f.select :us_timezone, Schedule::US_TIME_ZONES_HASH.to_a
+          = f.input :start_time, :as => :time, :ampm => true, :input_html => {:class => "time"}, :default => Time.now.in_time_zone(f.object.us_timezone)
+        - else
+          - duration = f.object.end_time - time_without_zone(Time.now, f.object.us_timezone)
+          - disabled = (duration.round <= 3600 + (f.object.end_time - f.object.start_time) && duration.round >= 0) ? true : false
+          = f.input :event_date, :as => :string, :input_html => {:class => "select-date", :value => f.object.event_date, :disabled => disabled}, :label => "Date"
+          #date_error.font-error.error-time
+          .control-group
+            .control-label
+              Time zone
+            .controls
+              = f.select :us_timezone, Schedule::US_TIME_ZONES_HASH.to_a, {}, :disabled => disabled
+          = f.input :start_time, :as => :time, :ampm => true, :input_html => {:class => "time", :disabled => disabled}, :default => Time.now.in_time_zone(f.object.us_timezone)
+        #start_time_error.font-error.error-time
+        = f.input :end_time, :as => :time, :ampm => true, :input_html => {:class => "time"}, :default => Time.now.in_time_zone(f.object.us_timezone)
+        #end_time_error.font-error.error-time
+        = f.input :sport_id, :collection => Sport.where(active: true).order("name ASC"), :as => :select, :selected => f.object.new_record? ?  [] : @schedule.sport.id, :label => "Sport", :prompt => "Select one"
+        #sport_error.font-error.error-time
+      - teams = []
+      %div.home
+        .header-info
+          %h2 Home
+          %div{:style=>"padding-top: 10px;"}
+          = f.fields_for :subteam_home do |t|
+            = t.input :team_id, :collection => Team.order("name ASC"), :as => :select, :selected => f.object.new_record? ?  [] : f.object.subteam_home.teamsport.team.id, :label => "School", :prompt => "Select one"
+            #team_error.font-error
+          = f.input :subteam_id, :collection => f.object.new_record? ? [] : get_subteam_home(@schedule), :as => :select, :label => "Team", :prompt => "Select one"
+          #subteam_error.font-error
+          = f.input :score_home, :label => 'Score'
+          - if @schedule.new_record?
+            - disabled = false
+          - elsif @schedule.event_date.to_date == Date.today_in_zone(f.object.us_timezone) && time_without_zone(Time.now, f.object.us_timezone) >= @schedule.start_time && time_without_zone(Time.now, f.object.us_timezone) <= @schedule.end_time
+            - disabled = true
+          - else
+            - disabled = false
+
+          = f.input :venue_id, :collection => Venue.order("venue ASC").map{|v| [v.venue, v.id]}, :as => :select, :label => "Location", :prompt => "Select one", :input_html => {:disabled => disabled}
+          #location_error.font-error
+      %div.away
+        .header-info
+          %h2 Away
+          %div{:style=>"padding-top: 10px;"}
+          = f.fields_for :subteam_opponent do |o|
+            = o.input :team_id, :collection => Team.order("name ASC"), :as => :select, :selected => f.object.new_record? ?  "" : f.object.subteam_opponent.teamsport.team.id, :label => "School", :prompt => "Select one"
+            #team_opponent_error.font-error
+          = f.input :opponent_id, :collection => f.object.new_record? ? [] : get_subteam_away(@schedule), :as => :select, :label => "Team", :prompt => "Select one"
+          #opponent_error.font-error
+          = f.input :score_opponent, :label => "Score"
+    .modal-footer
+      = button_tag 'Save', :class => "btn btn-primary", :id => "save_schedule"
+

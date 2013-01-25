@@ -1,0 +1,18 @@
+- data =[]
+- xlabel =[]
+- @array_data.rows.each do |row|
+  - data += [row[1].v]
+  - xlabel += [row[0].v]
+- chd = data.join(",")
+- max_data = data.max
+- xlabel = xlabel.join("|")
+- chart_url = "http://chart.apis.google.com/chart?chxl=0:|"+xlabel+"&chxr=1,0,"+max_data.to_s+"&chxt=x,y&chs=900x300&cht=lc&chco=00FF00,00FF00&chds=0,83.333&chd=t1:" +chd +"|0,0&chdl=Viewers&chdlp=l&chg=25,50&chls=4,4,6|0.75,-1,-1&chm=o,40FF00,0,-1,10"
+
+.text-header 
+  Subscribers
+%div.pull-left
+  = form_tag admin_team_send_mail_report_path(@team,{:total_raise => @total_raise, :chart_url => chart_url, :last_action => params[:action]}) ,:method => :post do
+    = email_field_tag "email", nil, :class => "span3 offset3"
+    = submit_tag "", :class => "btn send_report_email_button span1"
+
+

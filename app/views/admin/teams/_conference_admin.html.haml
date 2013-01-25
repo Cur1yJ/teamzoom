@@ -1,0 +1,1 @@
+= select_tag "team[school_attributes[conference_id]]", options_from_collection_for_select(@conferences, "id", "name", params[:conference_id_admin]), :prompt => 'Choose Conference'

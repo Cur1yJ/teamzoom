@@ -1,0 +1,2 @@
+$("#conference_wrapper").html("#{j(render('form', :decide => true,:conference => @conference, :conference_url => admin_conferences_path, :method => :post))}");
+$("#conference_popup").modal('show');

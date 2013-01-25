@@ -1,0 +1,30 @@
+.row
+	.span12
+		.front-heading
+			%p{:style => "width:80%;margin: auto;border-bottom: 2px dotted grey;"} Live and archived games in HD. Raise money for your school in the process.
+		.sticky-banner
+			%h3 Parents, Boosters, Fans, Scouts
+			%span{:style => "position:absolute;top: 10px;right: 5px;"}
+				= link_to "Sample Video", "http://www.streamingtennis.com/index.php/stanford1", :class => "btn btn-primary modal-gen", :target => :_blank
+			%p Subscriptions include all broadcast sports from all participating schools in your conference.
+
+.row
+	.span11
+		.tabbable.tabs-left
+			%ul.nav.nav-tabs
+				%li.active
+					= link_to "Pricing Plans", "#price_plan", "data-toggle" => "tab"
+			.tab-content
+				.tab-pane.active#price_plan
+					%h3 Monthly Subscription
+					%ul
+						%li $30 / month ($15 goes to your local school)
+						%li Provides unlimited access to live streams for all available sports
+						%li Access to 12 months of archived games broeadcasts
+						%li Access to any live or archived broadcasts from every paricipating school within your school's conference
+						%li Payment is charged to your credit card each month, and you may cancel at any time
+					%h3 Single Game Pass
+					%ul
+						%li $5 / game ($2.50 to your school)
+						%li Each single game purchase provides four hours of access to TeamZoom content
+					=link_to "Find your team and Subscribe", find_team_teams_url, :class => "btn btn-info"

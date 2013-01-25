@@ -1,0 +1,4 @@
+= f.input :email, :required => true, :autofocus => true
+= f.input :password, :required => true
+= f.input :password_confirmation, :required => true, :autofocus => true
+= f.input :role, :collection => User::ROLES.collect{|role| [role.to_s, role.humanize]}

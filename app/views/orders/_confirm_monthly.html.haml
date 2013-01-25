@@ -1,0 +1,34 @@
+.modal#confirm_monthly.fade.width-popup{"data-backdrop" => "static"}
+  .modal-body
+    = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+    .pull-left#logo.width-logo
+      .team-logo.editable-by-admin
+        = dynamic_logo
+    .pull-right.form-wrapper-payment{}
+      .progress-indicator
+        .round-wrapper.progress-out
+          .round 1
+          .line
+          .round 2
+          .line
+          .round.active 3
+
+        .text-wrapper{:style => "width: 100%; overflow: auto;"}
+          .row
+            .span-step.text-center Choose your plan
+            .span-step.text-center Billing Details & Payment
+            .span-step.text-center <strong>Confirmation</strong>
+
+    .clearfix
+      %h2 Congratulations! We registered your order on TeamZoom.
+
+      %div.confirm
+        %p You have purchased a Monthly Subscription, and your card has been charged $30.00
+        %p You have unlimited access to Teamzoom content for one month.
+        %p
+          You may
+          = link_to "cancel", edit_user_registration_path, :class => "cancel-font"
+          your Monthly Subscription at anytime visiting the My Account section of our website.
+
+  .modal-footer
+    %center= link_to "Ok", "#", :class => "btn btn-primary btn_ok"

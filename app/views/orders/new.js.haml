@@ -1,0 +1,6 @@
+- if @type_payment == "true"
+  - url = payment_game_orders_path
+- else
+  - url = orders_path
+$("#render_payment_input").html("#{escape_javascript render 'payment', :order => @order, :url => url, :remote => true, :method => :post, :individual_game => @type_payment, :schedule_id  => @schedule_id, :reload_page => false}");
+$("#payment_input").modal('show');

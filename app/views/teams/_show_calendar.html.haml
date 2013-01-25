@@ -1,0 +1,4 @@
+= calendar_for @sample_object, :year => dater.year, :month => dater.month, :html => {:class => "table table-bordered span5"} do |calendar|
+	= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday', 'Friday','Saturday')
+	= calendar.day(:date_method => :createddate) do |date, sample_object|
+		= link_to date.day, change_date_path(:date => date.strftime("%d"), :month => date.strftime("%m"), :year => date.strftime("%Y")), "data-dismiss" => "modal", :remote => true

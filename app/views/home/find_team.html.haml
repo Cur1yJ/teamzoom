@@ -1,0 +1,33 @@
+.page-contents.find-team
+  .row
+    = form_tag search_teams_path, :method => :get do
+      .span3.offset5
+        %p{:style => "margin-top:2em;"}
+          Don't see your school? Request TeamZoom
+          at your school
+      .span3.offset2
+        =select_tag "state_id", options_from_collection_for_select(@states, "id", "name")
+      .span5.offset1
+        %select
+          %option choose State
+          %option Alabama
+          %option Alaska
+          %option Arizona
+          %option Arkansas
+          %option California
+          %option Colorado
+      .span3.offset2
+        #conference= render "conference", :conferences => @conferences, :schools => @schools
+      .span5.offset1
+        %select
+          %option Type school Name
+          %option Type school Name1
+          %option Type school Name2
+          %option Type school Name3
+          %option Type school Name4
+      .span3.offset2           
+    .span5.offset2
+      %button#show_list.btn{:style => "padding-left:3em;padding-right: 3em;"} Go
+  .row.btn-toolbar.list-teams
+    .loading.none= image_tag('common/loading.gif')
+    .teams.none

@@ -1,0 +1,14 @@
+<%if @team.errors.any?%>  
+    <% if @team.errors.include?(:mascot) -%>      
+      $("#mascot_error").html("<%= escape_javascript ( @team.errors[:mascot].first ) %>");      
+    <%end%>    
+    <% if @team.errors.include?(:"school.name") -%>
+      $("#School_error").html("<%= escape_javascript ( @team.errors[:'school.name'].join(' <br/>').html_safe ) %>");
+    <% end %>
+    <% if @team.errors.include?(:"school.conference_id") -%>
+      $("#conference_error").html("<%= escape_javascript ( @team.errors[:'school.conference_id'].join(' <br/>').html_safe ) %>");
+    <% end %>
+<%else%>
+  $("#edit_team_popup").modal("hide");
+  location.reload();
+<%end%>

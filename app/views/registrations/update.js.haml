@@ -1,0 +1,6 @@
+$(".alert").remove();
+- if @user.errors.any?
+	- @user.errors.full_messages.each do |error|
+		$("<div class = 'alert alert-error'>#{j(error)}</div>").insertBefore("#edit_user")
+- else
+	$("<div class = 'alert alert-success offset1'>Successfully updated</div>").insertBefore("#edit_user");

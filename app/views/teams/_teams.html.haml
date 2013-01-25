@@ -1,0 +1,35 @@
+.span10.offset2.list_show{:style => "margin-top:3em"}
+  .row
+    -if @teams.blank?
+      %center 
+        %div{:style => "font-family: verdana,arial,helvetica,sans-serif;font-size: 20px;color:red"}
+          Data not Found.       
+    - else    
+      - @teams.each do |team| 
+        = link_to team_path(team),:class => "link_border" do
+          .border_team
+            %div{:style => "font-family: verdana,arial,helvetica,sans-serif;font-size: 20px;line-height: 50px;"}
+              = image_tag(get_logo_team(team) , :class => "medium_logo_team")
+              = team.name
+            %div
+              %table
+                %tr
+                  %td{:style =>"color:#00008B "}
+                    State  
+                  %td{:style => "padding-left:49px;"}
+                    = team.school.conference.state.name
+            %div
+              %table
+                %tr
+                  %td{:style =>"color:#00008B "}
+                    Conference 
+                  %td{:style => "padding-left:8px;"}
+                    = team.school.conference.name
+            %div
+              %table
+                %tr
+                  %td{:style =>"color:#00008B ;"}
+                    School
+                  %td{:style => "padding-left:40px;"}
+                    = team.school.name
+    

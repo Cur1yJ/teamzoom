@@ -1,0 +1,82 @@
+.form-around
+  = simple_form_for(order, :url => url, :method => method, :remote => remote, :html => {:class => "form-horizontal", :id => "payment_form"}) do |f|
+
+    = f.error_notification
+    #common_error.font-error
+    = hidden_field_tag "reload_page", reload_page
+    %div.info.info-main.pull-left
+      .header-title
+        %h3= t("payment.header_info")
+      = f.input :first_name, :require => true, :input_html => {:class => "input-field"}
+      #firstname_error.font-error
+      = f.input :last_name, :require => true, :input_html => {:class => "input-field"}
+      #lastname_error.font-error
+      = f.input :address1, :required => true, :input_html => {:class => "input-field"}
+      #address_error.font-error
+      = f.input :address2, :input_html => {:class => "input-field"}
+      = f.input :city, :required => true, :input_html => {:class => "input-field"}
+      #city_error.font-error
+      = f.input :state, :collection => states, :as => :select, :include_blank => false, :input_html => {:class => "select-type"}
+      = f.input :zip_code, :required => true, :input_html => {:class => "input-field valid_number"}
+      #zip_code_error.font-error
+      = f.input :individual_game, :as => :hidden, :input_html => {:value => individual_game}
+      = hidden_field_tag "schedule_id", schedule_id
+    .card.info-main.pull-left
+      .header-title-right
+        %h3= t("payment.header_card")
+      = #f.input :card_type, :collection => Order::CARD, :as => :select, :prompt => "Select card", :required => true, :input_html => {:class => "select-type input-field"}
+      #payment_card.control-group.string.required
+        %label.string.required.control-label
+          %abbr{:title => "required"} *
+          Card Type
+        .controls
+          %span
+            %input#rd-card-visa{:name => "order[card_type]", :type => "radio", :value => Order::TYPES[:visa]}
+            %label.collection_radio_buttons{:for => "rd-card-visa"}
+              .icon-credit-card.visa.pull-left
+          %span
+            %input#rd-card-master{:name => "order[card_type]", :type => "radio", :value => Order::TYPES[:master]}
+            %label.collection_radio_buttons{:for => "rd-card-master"}
+              .icon-credit-card.master.pull-left
+          %span
+            %input#rd-card-am-express{:name => "order[card_type]", :type => "radio", :value => Order::TYPES[:am_express]}
+            %label.collection_radio_buttons{:for => "rd-card-am-express"}
+              .icon-credit-card.am-express.pull-left
+          %span
+            %input#rd-card-discover{:name => "order[card_type]", :type => "radio", :value => Order::TYPES[:discover]}
+            %label.collection_radio_buttons{:for => "rd-card-discover"}
+              .icon-credit-card.discover.pull-left
+      #type_error.font-error
+
+      = f.input :card_number, :label => "Credit Card Number", :required => true, :input_html => {:class => "input-field"}
+      #card_error.font-error
+      %div
+        = f.input :card_expires_on, :label => "Expiration Date", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :input_html => {:class => "select-date", :require => true }
+        #expired_error.font-error{:style=>"text-align:right;"}
+      .pull-left{:style=> "margin-right: 5px; margin-top: 3px;"}= f.input :card_verification, :label => "Security Code", :required => true, :input_html => {:class => "input-field valid_number"}
+
+      .pull-left
+        %a.icon-question#cvv-popup{ :href => '#', :rel => "popover" }
+          = image_tag 'icon-question.png'
+      .clearfix
+      #cvv_error.font-error
+      - unless params[:option] || !(params[:action] == "new")
+        %div.term
+          .pull-left.checkbox= check_box_tag 'term_of_use', 'yes', false
+          .pull-left{:style=>"font-size: 10pt;"}= label_tag "term_of_use", "I agree with the"
+          .pull-left{:style=>"margin-left: 5px;"}
+            %a{ :href => term_of_use_orders_path, :target => "_blank" } Term of use
+          .clearfix
+          #warning-term.font-error
+        .clearfix
+        - if individual_game == "true"
+          %div.summary Order Summary
+          %div.type-summary Individual games ($5.00 / four hours)
+        - else
+          %div.summary Order Summary
+          %div.type-summary Monthly Supscription ($30.00 / month)
+      - else
+        = hidden_field_tag "term_of_use", "true"
+
+
+

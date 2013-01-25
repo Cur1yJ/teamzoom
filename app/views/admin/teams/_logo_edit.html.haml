@@ -1,0 +1,9 @@
+.modal#logo_change.hide
+	.modal-header
+		= link_to "X", "#",:class => "close", "data-dismiss" => "modal"
+		%h2 Change Team Logo
+	= simple_form_for logo, :html=> {:multipart => true} do |f|
+		.modal-body
+			= f.input :logo
+		.modal-footer
+			= f.submit "Save", :class => "btn btn-primary"#, "data-dismiss" => "modal"

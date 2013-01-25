@@ -1,0 +1,22 @@
+# add remote heroku
+git remote add heroku git@heroku.com:teamzoom.git
+
+# push current commit to heroku
+# **********************************************
+# NOTE: MAINLY USE THIS TASK TO DEPLOY TO HEROKU
+# **********************************************
+	git push staging master
+	git push production master
+
+# Or using heroku-san
+	rake staging deploy:force
+	rake production deploy:force
+
+# restart app
+heroku restart --app teamzoom
+heroku restart --app teamzoom-stg
+
+# See more https://github.com/fastestforward/heroku_san
+
+# staging mote
+heroku config:add RACK_ENV=staging RAILS_ENV=staging --remote staging --app teamzoom-stg

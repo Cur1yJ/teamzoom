@@ -1,0 +1,161 @@
+$bg_number_size: 70px;
+div.number {
+  background: url("/assets/bg_number.jpg");
+  background-size:100% 100%;
+  -moz-background-size:100% 100%; /* Firefox 3.6 */
+  background-repeat:no-repeat;
+  width: $bg_number_size;
+  height: $bg_number_size;
+  line-height: $bg_number_size;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
+.nav-width {
+  width: 200px;
+  margin-top: 60px;
+}
+.text-header {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.text-margin {
+  margin-top: 30px;
+  padding-right: 20px
+}
+.clear {
+  clear: both;
+}
+
+.content-sub {
+  width:70%;
+  float:right;
+  margin-top: 60px;
+
+  .text-box-to {
+    width: 70px;
+    margin-bottom: 0px;
+  }
+  .text-box-from {
+    width: 40px;
+    margin-bottom: 0px;
+  }
+  #from_date, #end_date {
+    width: 100px;
+  }
+  .date {
+
+    #from_date, #end_date {
+      width: 100px;
+    }
+    button {
+      margin-bottom: 12px;
+    }
+  }
+}
+.tran.nav-header {
+  padding: 0px;
+  .dashboard {
+    background: url("/assets/dashboard.png");
+    -moz-background-size:100% 100%; /* Firefox 3.6 */
+    background-repeat:no-repeat;
+    background-position:left;
+    padding-left: 20px;
+    padding-top: 3px;
+    fontsize: 11px;
+    background-color: #999;
+    color: black;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+  }
+}
+.account-text {
+  padding-left: 15px;
+  color: black;
+  background-color: #999;
+  height: 30px;
+  line-height: 30px;
+
+}
+.size-chart {
+  width: 560px;
+  height: 300px;
+}
+form.form-load {
+  // margin: 13px 0 13px !important;
+}
+.popup-schedule {
+  margin-left: -356px !important;
+  width: 714px !important;
+  top: 40% !important;
+
+  form#edit_team {
+    .modal-body {
+      max-height: 700px;
+    }
+    margin: 0;
+    .control-label {
+      float: left;
+      padding-top: 5px;
+      text-align: right;
+      width: 73px;
+    }
+    .controls {
+      margin-left: 90px;
+    }
+    #schedule_start_time_4i, #schedule_end_time_4i {
+      width: 69px;
+    }
+    #schedule_start_time_5i, #schedule_end_time_5i {
+      width: 55px;
+    }
+    #schedule_sport_id {
+      width: 136px;
+    }
+    .error-time {
+      padding-left: 91px !important;
+    }
+    #team_error, #subteam_error, #team_opponent_error, #opponent_error, #location_error {
+      text-align: left;
+    }
+    #team_error, #subteam_error, #location_error {
+      margin-left: 93px;
+    }
+    #team_opponent_error, #opponent_error {
+      margin-left: 100px;
+    }
+    .home {
+      width: 312px;
+      float:left;
+    }
+    .away {
+      width: 329px;
+      float:right;
+      margin-right: 10px;
+    }
+  }
+}
+
+.require{
+  background-color:#E89392 !important;
+}
+.send_report_email_button{
+  background-image: url("/assets/mail.jpg");
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  height:28px;
+  width: 35px;
+  margin-top: -11px;
+}
+// .event_time {
+//   margin-bottom: 18px;
+//   &:after {
+//     clear: both
+//   }
+//   .control-group {
+//     float:left;
+//     margin-right: 5px;
+//   }
+
+// }

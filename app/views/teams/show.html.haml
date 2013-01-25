@@ -1,0 +1,58 @@
+- if params[:pass]=="yes"
+  .modal#make_error.hide.fade
+    .modal-header
+      = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+      %h3 Permission denied
+    .modal-body
+      #choose
+        You can't access this page. Only Team Manager and Admin can access this page!
+- content_for :js do
+  <script type="text/javascript" src="https://apis.google.com/js/client.js?key=AIzaSyBwrcxyMhUSfj95oPz8cOEie_U-Ni-XgfA"></script>
+
+.ajax-loading.hidden= image_tag('common/loading.gif')
+.tab-content
+  .tab-pane.active#shedule.page-contents
+    / = form_tag search_teams_path, :method => :get do
+    = hidden_field_tag  "current_team_id" , @team.id
+    .row{:style => "margin-top: 1em;"}
+      .span3
+        = "Sport: "
+        = select("post", "select_team_id", @sport.collect {|p| [ p.name, p.id ] }, { :prompt => "All" } , :class => "select_team_schedule" )
+
+      .page-css.pagination
+        %p
+          %span#previous_date
+            = link_to "Previous week < ", change_date_path(:date => @date.weeks_ago(1).beginning_of_week.strftime("%d"), :month => @date.weeks_ago(1).beginning_of_week.strftime("%m"), :year => @date.weeks_ago(1).beginning_of_week.strftime("%Y")), :remote => true
+          %span#current_date
+            /  should be %m-%d-%Y format
+            = link_to @date.strftime("%m-%d-%Y"), "#calendar-picker", "data-toggle" => "modal" , :id => "select_date_of_week"
+          %span#next_date
+            = link_to " > Next week", change_date_path(:date => @date.weeks_ago(-1).beginning_of_week.strftime("%d"), :month => @date.weeks_ago(-1).beginning_of_week.strftime("%m"), :year => @date.weeks_ago(-1).beginning_of_week.strftime("%Y")), :remote => true
+      .modal.hide#calendar-picker.span7{:style => "margin-left:0;left: 30%;"}
+        .modal-header
+          = link_to "X", "#", "data-dismiss" => "modal", :class => "close"
+          %h2 Choose a day of week
+        .modal-body
+          .row
+            .span3.offset2
+              %span#prev_month
+                = link_to(' Previous Month < ',change_date_path(:date => (@date.at_beginning_of_month-1).strftime('%d'), :month => (@date.at_beginning_of_month-1).strftime('%m'), :year => (@date.at_beginning_of_month-1).strftime('%Y')), :remote => true)
+              %span#current_month
+                = @date.strftime('%b')
+              %span#next_month
+                = link_to(' > Next month ',change_date_path(:date => (@date.at_end_of_month+1).strftime('%d'), :month => (@date.at_end_of_month+1).strftime('%m'), :year => (@date.at_end_of_month+1).strftime('%Y')), :remote => true)
+          #remote_date
+            = render('teams/show_calendar', :dater => @date)
+      .span3{:style=>"margin-top:5px;"}
+        = link_to "Add Event", new_admin_team_schedule_path(@team || team), :class => "btn btn-primary", :style=>"margin-right:10px;", :remote => true if user_admin_with_edit_mode? || user_manager_with_edit_mode?
+        = link_to "Sports and Venues", load_sports_venues_path(:team_id => @team.id), :remote => true, :class => "btn btn-primary", "data-toggle" => "modal" if(user_admin_with_edit_mode? or user_manager_with_edit_mode?)
+    .row
+      .content-side
+        / .span11
+        #schedule-data-table= render 'schedule' , {:schedule => @schedule, :order => @order}
+  #conference.tab-pane
+  #account.tab-pane
+    #num
+= render "admin/teams/logo_edit", :logo => @team
+#find_or_initialize_teamsport
+  /= render "admin/teams/sports_team_edit", :teamsport => @teamsport

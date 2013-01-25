@@ -1,0 +1,29 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "head/application"
+    = csrf_meta_tags
+    = yield(:head)
+    %title
+      = (yield(:title) || "Teamzoom")
+  %body
+    = jw_player_headers
+    / .navbar.navbar-fixed-top
+    /   = render 'shared/top_navbar_inner'
+    .container.main-tab
+      = render 'shared/head_tab'
+      .row
+        .span9.offset3
+          = render 'shared/team'
+        .span12.home-contents
+          - flash.each do |key, val|
+            = content_tag :div, val, :class => "alert alert-info #{key}" unless val.blank?
+          = yield
+      .push
+    .footer-box.container
+      = render 'shared/footer'
+    = javascript_tag "Cufon.now()"
+    = javascript_include_tag "application"
+    = yield(:js)

@@ -1,0 +1,17 @@
+#users
+  .ajax-loading.hidden= image_tag('common/loading.gif')
+  .box-borders.pull-left{:style=>"width: 792px;"}
+    .row
+      .offset2.search
+        = form_tag admin_users_path, :method => :get do
+          .pull-left= label_tag "user", "Users"
+          .pull-right
+            = text_field_tag "email" 
+            = hidden_field_tag "page", params[:page] || 1
+            = submit_tag "Search", :class => "btn btn-primary btn-submit"
+  .clear
+  #render_users
+    .border_users{:style=>"margin-top: 10px;"}
+      = render "users"
+  .clear
+  .pull-left= will_paginate @users

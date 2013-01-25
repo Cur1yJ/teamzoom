@@ -1,0 +1,18 @@
+$("#render_wath_this_video").html("#{j(render('teams/video_popup', :s => @schedule))}");
+$("##{@schedule.id}_dialog").dialog({
+autoOpen: false,
+hide: null,
+closeOnEscape: true,
+width: 700,
+height: 640,
+close: function(){
+$(".ui-dialog").remove();
+$(".watch_video").remove();
+$("#jwaudio object").each(function(){
+var player = $(this).attr("id");
+jwplayer(player).stop();
+});
+},
+});
+$("##{@schedule.id}_dialog").dialog("open");
+console.log($("##{@schedule.id}_dialog").length);

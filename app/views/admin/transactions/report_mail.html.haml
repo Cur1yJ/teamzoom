@@ -1,0 +1,16 @@
+From Teamzoom.com
+%br
+This is the summary report about
+= @last_action
+of Team
+= @team.name
+=". "
+Here is the chart
+=link_to "Click Here to show the image",@chart_url
+%br
+%h1 
+	And Total raise:
+	= @total_raise
+%h2
+	See your team
+	= link_to "Click here","http://teamzoom.com"+admin_team_path(@team)

@@ -1,0 +1,21 @@
+.modal#check_login.fade{"style" => "width: 990px; left: 32%"}
+  .modal-header
+    = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+    .font-bold= title_check_account
+  .modal-body
+    - unless current_user
+      Please
+      = link_to "login", new_user_session_path
+      to watch this video.
+    - else !current_user.is_payment
+      / Please request
+      / = link_to "payment", "#watch", "data-toggle" => "modal", :id => "request_payment"
+      / to watch this video.
+      TeamZoom will charge you $5 / game ($2.50 to your school). Each single game purchase provides four hours of access to TeamZoom content.
+      %br
+        You are about to charge your card, please
+        = link_to "confirm", "#watch", "data-toggle" => "modal", :id => "request_payment"
+
+  .modal-footer
+    = link_to "Cancel", "#", :class => "btn btn-primary", "data-dismiss" => "modal"
+

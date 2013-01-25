@@ -1,0 +1,28 @@
+.tab-content.conferenceclass
+  %center
+  #conference.tab-pane.active
+    .conferenc-wrapper{:style => "float:left ; width:75%"}
+      %div.conference_directory
+        %table
+          %tr
+            %td
+              Conference :
+            %td
+              =@conference.name
+      %div
+        .border_team_page
+          %label.font Team :
+      %div
+        .border_team_directory
+          - @teams.each do |team|
+            %div.team_in
+              %table
+                %tr
+                  %td{:style =>"width:300px"}
+                    = link_to team.name, team ,:class =>"link_team"
+
+      = will_paginate @teams
+  #account.tab-pane
+    this is account pane
+
+

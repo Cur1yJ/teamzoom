@@ -1,0 +1,15 @@
+.navbar-inner
+  .container
+    %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to "TeamZoom" , home_index_url , :class => "brand"
+    .nav-collapse.collapse
+      %ul.nav
+        %li
+          = link_to "Find Your Team" ,find_team_teams_url
+        %li
+          = link_to "Pricing & Signup" , demo_pricing_signup_url
+        %li
+          = link_to "Admin" ,demo_admin_url

@@ -1,0 +1,8 @@
+$("#edit_details").modal('hide');
+$("#find_or_initialize_teamsport").html("#{j(render("admin/teams/sports_team_edit", :teamsport => @teamsport))}");
+$("#edit_details").modal('show');
+$("#venue-tab a:last").tab('show');
+-if @teamsport.errors.any?
+	$("#error_msg").fadeIn().html("<div class ='alert alert-error'>team is already exists or duplicated. Error!</div>");
+- else
+	$("#error_msg").fadeIn().html("<div class ='alert alert-success'>teams are successfully updated!</div>");

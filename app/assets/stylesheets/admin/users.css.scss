@@ -1,0 +1,56 @@
+.search {
+  height: 50px;
+  width: 350px;
+  .pull-left label{
+    margin-top: 4px;
+  }
+  .pull-right #email {
+    margin-bottom: 0px !important;
+  }
+  .btn-submit {
+    margin-top: 0px;
+  }
+}
+
+
+.navbar {
+  color: black;
+}
+.color-pen {
+  font-size:1.2em;
+  color:#000;
+}
+.border_users {
+  .btn-add {
+    float: right;
+    margin-bottom: 10px;
+  }
+  width:792px; 
+  margin-left: 1px;
+  .table {
+    thead tr.bg {
+      background-color: #ccc;
+      th.wid-action {
+        width: 50px;
+      }
+    }
+    tbody {
+      tr.bg-1 {
+        background-color: #e5e5e5 !important;
+      }
+      tr {
+        td.status_false {
+          color: red;
+          cursor: pointer;
+        }
+        td.status_true {
+          color: green;
+          cursor: pointer;
+        }
+        td.right {
+          text-align:right;
+        }
+      }
+    }
+  }
+}

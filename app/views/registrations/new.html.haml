@@ -1,0 +1,29 @@
+%h1{:style => "text-align: center;margin: 1em 0;"} Create an account to get started with TeamZoom.
+
+.row
+  .span8.offset2.form-wrapper
+    .progress-indicator
+      .round-wrapper{:style => "width: 80%; overflow: auto; margin: auto;"}
+        .round{:class => (resource.current == "user_register") ? "active" : ""} 1
+        .line
+        .round{:class => (resource.current == "term_condition") ? "active" : ""} 2
+        .line
+        .round{:class => (resource.current == "billing_details") ? "active" : ""} 3
+        .line
+        .round{:class => (resource.current == "billing_details") ? "active" : ""} 4
+      .text-wrapper{:style => "width: 100%; overflow: auto;"}
+        .row
+          .span-step{:style => "text-align: center;"} Create an account
+          .span-step{:style => "text-align: center;"} Billing Details
+          .span-step{:style => "text-align: center;"} Terms of Use
+          .span-step{:style => "text-align: center;"} Confirmation 
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "sign_up_form form-horizontal"}, :validate => true) do |f|
+      #register_error.alert.hidden
+        = "Please review the problems below:"
+      = f.error_notification
+      .form-inputs
+        = render "#{resource.current}_step", :f => f
+      .team-input
+        = render "team_reference", :f => f
+      .submit-button.clear
+        = f.button :submit, "Next", :class => "btn btn-primary btn-sg btn-register"

@@ -1,0 +1,27 @@
+.row
+  .span12
+    .row
+    .span11
+      %div.text-margin
+      = hidden_field_tag "team_id", params[:team_id]
+      = hidden_field_tag "individual", true
+      #total_raise= render "total_raise", :total_raise => @total_raise
+      %div.pull-right
+        = select_tag "filters", options_for_select(User::FITTER_DASH_BOARD.invert)
+        %div Next Payment Date: May 31, 2012  
+      .clear
+      = render "left_menu"
+      %div.content-sub
+        = render "mail_report"
+        %div.date.pull-right
+          = form_tag admin_team_load_data_for_select_path,:method => :get, :remote => true, :class => "form-load" do
+            = text_field_tag "from_date"
+            = "-"
+            = text_field_tag "end_date"
+            = hidden_field_tag "individual", true
+            = button_tag "Filter", :class => "btn btn-success"
+        .clear
+        #chart
+          = render "chart_subscribers"
+          
+

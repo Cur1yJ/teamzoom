@@ -1,0 +1,74 @@
+.row
+	.span12
+		.front-heading{:style => "width:80%;margin: auto;border-bottom: 2px dotted grey;"} The most innovative fundraising program since thin, minty cookies.
+		.modal#myModal.hide.fade
+			.modal-header
+				Requesting an installation
+				= link_to "X", "#", :class => "close", "data-dismiss" => "modal"
+			= form_tag request_installation_path,{:method => :post,:remote => true, :style => "margin-bottom:0;", :class => "form-horizontal"} do
+				.modal-body
+					#sent_message
+					%fieldset
+						.control-group
+							= label_tag "Name", nil, :class => "control-label"
+							.controls
+								= text_field_tag "name", nil, :class => "span2"
+						.control-group
+							= label_tag "Email", nil, :class => "control-label"
+							.controls
+								= email_field_tag "email", nil, :class => "span2"
+
+				.modal-footer
+					= submit_tag "request", :class => "btn btn-success"#, "data-dismiss" => "modal"
+		.sticky-banner{:style => "position:relative;"}
+			%h3 Coaches and Administrators
+			%span{:style => "position:absolute;top: 10px;right: 5px;"}
+				= link_to "Request an installation", "#myModal", :class => "btn btn-danger modal-gen", "data-toggle" => "modal"
+			%p
+				Learn more about the TeamZoom fundraising program.
+.row#home_coache
+	.span11
+		.tabbable.tabs-left
+			%ul.nav.nav-tabs
+				%li.active= link_to "Costs", "#costs", "data-toggle" => "tab"
+				%li= link_to "How Does it Look?", "#how", "data-toggle" => "tab"
+				%li= link_to "Technology Requirements", "#tech", "data-toggle" => "tab"
+				%li= link_to "Installation Process", "#install", "data-toggle" => "tab"
+				%li= link_to "Program Administration", "#program", "data-toggle" => "tab"
+				%li= link_to "Program marketing", "#program_market", "data-toggle" => "tab"
+			.tab-content
+				#costs.tab-pane.active
+					%p Zero. Seriously. TeamZoom invests in your athletic program by footing the bill for all software, hardware and ongoing maintenance expenses.
+				#how.tab-pane
+					%p View sample video as it will be seen by your subscribers.
+					%p Please note, Teamzoom currently utilizes stationary cameras (there is no "crew"). The broadcasts include the same audio experience that as the fan who attends a game, but there are currently no broadcasters.
+					.span2= link_to "Sample Video", "http://www.streamingtennis.com/index.php/stanford1", :class => "btn btn-primary modal-gen", :target => :_blank
+
+				#tech.tab-pane
+					%p Our system leverages your schools existing ethernet network.  The system requires approximately 5 megabytes / second of bandwidth for each playing surface (gymnasium, football field, etc.)  The good news is that most games occur during the evening and on weekends when school networks generally have excess capacity.
+
+					%p TeamZoom also needs secure access to the network to allow for the sending and receiving of game feeds.  This is generally accomplished in a 30 minute conversation with your district's IT manager.
+				#install.tab-pane
+					%p Our system requires only an ethernet connection to both power and "connect" the cameras.  For outdoor fields with no nearby ethernet connection, we have a wireless solution available.
+					%p For indoor venues, TeamZoom requires an ethernet connection be available on the wall at center court (either side of the court).  This is usually accomplished by the school's maintenance staff and requires running a cable from the nearest ethernet connection along the wall or from the ceiling to center court.
+
+					%p For outdoor venues, TeamZoom requires an ethernet cable be run from the nearest ethernet connection to the top of the press box, or stands at mid-field.  If no ethernet connection is within a reasonable distance, TeamZoom offers a wireless solution that will require the installation of a small antenna on the roof of whatever building houses the nearest ethernet connection.
+
+					%p Each installation usually requires a 30 minute phone conversation with your district IT manager to gain access to the school's network, and a 30 minute phone call with the school's facilities manager to locate the ethernet connections and develop a plan.
+
+					%p After the network and facilities are ready, a TeamZoom representative will arrive on site to install the cameras.  This process usually takes less than two hours and requires only a school representative to escort the technician around the building.
+					%p The installation typically takes 2-3 weeks from initial inquiry to installation.  TeamZoom requires that two primary tasks are completed before the actual installation: 1) contract execution and 2) network setup. In order to complete them, you will likely need to involve an Associate Principal (contract execution) and Network Administrator (network setup) in a program kick off phone call. TeamZoom will provide our standard contract and summary network requirements prior to the kick off call.
+					%p Once the contract is in place and the network setup is complete, our technicians will perform a site walkthrough with your facilities manager to plan the installation. It typically requires a full day to complete the installation. Your games will typically be ready for broadcast within 7 business days after installation.
+				#program.tab-pane
+					%p TeamZoom requires (at least) one school faculty member be designated as the program administrator.  That person will facilitate the installation process and act as a liason to the school's coaches and administrative staff.
+
+					%p TeamZoom automatically collects funds from credit cards and remits payment to the schools on an annual or tri-annual basis (depending on school preference). The program administrator will never have to manage cash or build expense/revenue ledgers.  All the details are available for viewing and downloading on your TeamZoom website.
+
+					%p TeamZoom is dedicated to being the easiest, least time consuming fundraising program available, so we have built a software platform that makes it extremely easy to get details on the program's effectiveness.  Your TeamZoom account manager will upload your game schedules, order your marketing materials and be available to answer any of your questions or concerns day or night.
+				#program_market.tab-pane
+					%p TeamZoom provides all marketing collateral necessary to effectively market the program.  Program success relies on the school partner to assist with marketing efforts including the following:
+					%ul
+						%li Hang banners in the gym and near the football field.
+						%li Pass out flyers to players.
+						%li Send emails to parents, alumni and boosters.
+

@@ -1,0 +1,86 @@
+<%if (@order.errors.any?)%>
+  <%errors = @order.errors%>
+  <% if errors[:card_type] -%>
+    $("#type_error").html("<%= escape_javascript ( errors[:card_type].first ) %>");
+  <%else%>
+    $("#type_error").html("");
+  <%end%>
+  <% if errors[:card_number] || errors.messages[:card_number] -%>
+    $("#card_error").html("<%= escape_javascript ( errors[:card_number].first ) %>");
+  <%else%>
+    $("#card_error").html("");
+  <%end%>
+  <% if errors[:card_verification]-%>
+    $("#cvv_error").html("<%= escape_javascript ( errors[:card_verification].first ) %>");
+  <%else%>
+    $("#cvv_error").html("");
+  <%end%>
+  <% if errors[:first_name]-%>
+    $("#firstname_error").html("<%= escape_javascript ( errors[:first_name].first ) %>");
+  <%else%>
+    $("#firstname_error").html("");
+  <%end%>
+  <% if errors[:last_name] -%>
+    $("#lastname_error").html("<%= escape_javascript ( errors[:last_name].first ) %>");
+  <%else%>
+    $("#lastname_error").html("");
+  <%end%>
+  <%if errors[:address1]-%>
+    $("#address_error").html("<%= escape_javascript ( errors[:address1].first ) %>");
+  <%else%>
+    $("#address_error").html("");
+  <%end%>
+  <% if errors[:city] -%>
+    $("#city_error").html("<%= escape_javascript ( errors[:city].first ) %>");
+  <%else%>
+    $("#city_error").html("");
+  <%end%>
+  <% if errors[:zip_code] -%>
+    $("#zip_code_error").html("<%= escape_javascript ( errors[:zip_code].first ) %>");
+  <%else%>
+    $("#zip_code_error").html("");
+  <%end%>
+  <% if errors[:card_expires_on] -%>
+    $("#expired_error").html("<%= escape_javascript ( errors[:card_expires_on].first ) %>");
+  <%else%>
+    $("#expired_error").html("");
+  <%end%>
+  $("#btn_payment").attr("disabled", false);
+<%else%>
+  $("#type_error").html("");
+  $("#card_error").html("");
+  $("#cvv_error").html("");
+  $("#firstname_error").html("");
+  $("#lastname_error").html("");
+  $("#address_error").html("");
+  $("#city_error").html("");
+  $("#zip_code_error").html("");
+  <% if @response.success? -%>
+    $("#order_first_name").val("");
+    $("#order_last_name").val("");
+    $("#order_address1").val("");
+    $("#order_address2").val("");
+    $("#order_city").val("");
+    $("#order_zip_code").val("");
+    $("#order_card_number").val("");
+    $("#order_card_verification").val("");
+    $("#watch").modal("hide");
+    $("#payment_input").modal("hide");
+    $("#confirm_monthly").modal("show");
+  <%else%>
+    <% if @response.params['text'].present? %>
+      alert("<%= @response.params['text'] %>");
+    <% end %>
+    <% if @response.params['response_reason_text'].present? %>
+      alert("<%= @response.params['response_reason_text'] %>");
+    <% end %>
+
+    $("#cvv_error").html("<%= escape_javascript ( @response.cvv_result['message'] ) %>");
+    if ("<%= @response.params['response_reason_code'] %>" == "78")
+      $("#cvv_error").html("<%= escape_javascript ( @response.params['response_reason_text'] ) %>");
+    $("#btn_payment").removeAttr("disabled");
+  <%end%>
+<%end%>
+
+
+

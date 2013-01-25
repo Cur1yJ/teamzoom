@@ -1,0 +1,2 @@
+$("#sport_wrapper").html("#{j(render('form', :decide => true,:@sport => @sport, :sport_url => admin_sport_path(@sport), :method => :put))}");
+$("#sport_popup").modal('show');

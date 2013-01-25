@@ -1,0 +1,21 @@
+.row
+  .span12
+    .row
+    .span11
+      %div.text-margin
+      /= render  "total_raise"
+      .clear
+      = render "left_menu"
+      %div.content-sub
+        /= render "mail_report"
+        %div.date.pull-right
+          / = form_tag "" do
+          /   = text_field_tag "from_date"
+          /   = "-"
+          /   = text_field_tag "end_date"
+          /   = button_tag "Filter",:class => "btn btn-success"
+        .clear
+        .chart
+          This is chart
+
+

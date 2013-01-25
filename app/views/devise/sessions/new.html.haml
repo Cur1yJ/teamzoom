@@ -1,0 +1,11 @@
+.row.signin-content
+	.span5.offset6
+		= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "sign_in form-horizontal"}) do |f|
+			= f.input :email, :required => false, :placeholder => "enter email", :autofocus => true, :label => "Username", :label_html => {:class => "label_input"},:input_html=> {:class => "span2"}, :hint => 'Usually, your email address'
+			= f.input :password, :required => false, :label_html =>{:class => "label_input"},:input_html=> {:class => "span2"}, :placeholder => "Enter password"
+			- if devise_mapping.recoverable? && controller_name != 'passwords'
+				= link_to "Forgot your password?", new_password_path(resource_name),:class => "span2 forget"
+			= f.input :remember_me, :as => :boolean,:wrapper_html =>{:id => "remember",:style => "width:120px;"} if devise_mapping.rememberable?
+			.form-actions
+				= f.button :submit, "Sign in", :class => "btn btn-danger submit"
+		/ = render "devise/shared/links"

@@ -1,0 +1,27 @@
+.row
+  .span12
+    .row
+    .span11
+      %div.text-margin
+      = hidden_field_tag "team_id", params[:team_id]
+      #total_raise= render "total_raise", :total_raise => @total_raise
+      %div.pull-right
+        = select_tag "viewers_date_filter", options_for_select(User::FITTER_DASH_BOARD.invert)
+        %div Next Payment Date: May 31, 2012
+      .clear
+      = render "left_menu"
+      %div.content-sub
+        = render "mail_report"
+        %div.date.pull-right
+          = form_tag admin_team_viewers_filter_path, :method =>:get,:remote=>true, :class => "offset0-5" do
+            = text_field_tag "from_date",  Date.today.beginning_of_month.strftime("%d-%m-%Y"), :class => "span1"
+            = "-"
+            = text_field_tag "end_date", Date.today.end_of_month.strftime("%d-%m-%Y"), :class => "span1"
+            = button_tag "Filter", :class => "btn btn-success"
+        .clear
+        .chart
+          .span1.offset3#loading
+            - if (@chart)
+              = image_tag "common/loading.gif"
+          #chart
+            = render "chart_subscribers"

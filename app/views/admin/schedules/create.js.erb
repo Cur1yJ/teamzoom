@@ -1,0 +1,44 @@
+<%if @schedule.errors.any?%>
+  <%errors = @schedule.errors%>
+  <% if errors[:event_date] -%>
+    $("#date_error").html("<%= escape_javascript ( errors[:event_date].last ) %>");
+  <%else%>
+    $("#date_error").html("");
+  <%end%>
+  <% if errors[:sport_id] -%>
+    $("#sport_error").html("<%= escape_javascript ( errors[:sport_id].last ) %>");
+  <%else%>
+    $("#sport_error").html("");
+  <%end%>
+  <% if errors[:subteam_id] -%>
+    $("#subteam_error").html("<%= escape_javascript ( errors[:subteam_id].last ) %>");
+  <%else%>
+    $("#subteam_error").html("");
+  <%end%>
+  <% if errors[:opponent_id] -%>
+    $("#opponent_error").html("<%= escape_javascript ( errors[:opponent_id].last ) %>");
+  <%else%>
+    $("#opponent_error").html("");
+  <%end%>
+  <% if errors[:venue_id] -%>
+    $("#location_error").html("<%= escape_javascript ( errors[:venue_id].last ) %>");
+  <%else%>
+    $("#location_error").html("");
+  <%end%>
+
+
+  $('#save_schedule').attr("disabled", false);
+<%else%>
+    $("#date_error").html("");
+    $("#time_error").html("");
+    $("#subteam_error").html("");
+    $("#opponent_error").html("");
+    $("#location_error").html("");
+    $("#sport_error").html("");
+    $("#schedule-data-table").html("<%= escape_javascript render :partial => "teams/schedule", :locals => {:schedule => @schedules} %>");
+    $("#popup_team").modal('hide');
+    $('.modal-backdrop.fade.in').remove();
+<%end%>
+
+
+

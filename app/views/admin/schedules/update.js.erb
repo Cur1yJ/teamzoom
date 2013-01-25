@@ -1,0 +1,28 @@
+<%if @schedule.errors.any?%>
+  <%@schedule.errors.full_messages.each do |error| -%>
+    <% if error.include?("Event date") -%>
+      $("#date_error").html("<%= escape_javascript ( error ) %>");
+    <% elsif error.include?("Time") -%>
+      $("#time_error").html("<%= escape_javascript ( error ) %>");
+    <% elsif error.include?("Subteam") -%>
+      $("#subteam_error").html("<%= escape_javascript ( error ) %>");
+    <% elsif error.include?("Opponent") -%>
+      $("#opponent_error").html("<%= escape_javascript ( error ) %>");
+    <% elsif error.include?("Venue") -%>
+      $("#location_error").html("<%= escape_javascript ( error ) %>");
+    <% elsif error.include?("Sport") -%>
+      $("#sport_error").html("<%= escape_javascript ( error ) %>");
+    <%end%>
+  <%end%>
+  $('#save_schedule').attr("disabled", false);
+<%else%>
+    $("#date_error").html("");
+    $("#time_error").html("");
+    $("#subteam_error").html("");
+    $("#opponent_error").html("");
+    $("#location_error").html("");
+    $("#sport_error").html("");
+    $("#schedule-data-table").html("<%= escape_javascript render :partial => "teams/schedule", :locals => {:schedule => @schedules, :order => @order} %>");
+    $('.modal-backdrop.fade.in').remove();
+<%end%>
+

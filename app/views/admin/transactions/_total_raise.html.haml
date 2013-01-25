@@ -1,0 +1,10 @@
+%div.pull-left.offset2.text-header.text-margin You've Raised: $ 
+- total_pay =[]
+- while total_raise > 0
+  - total_pay.insert(0, total_raise % 10)
+  - total_raise /= 10
+- while total_pay.length < 5
+  - total_pay.insert(0,0)
+- total_pay.each do |i|
+  .number.pull-left= i
+

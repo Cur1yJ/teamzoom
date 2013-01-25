@@ -1,0 +1,19 @@
+.tab-menu.right-it
+  - if !(params[:controller] == "demo" and params[:action] == "team_page")
+    %ul.nav.nav-pills{:style => "float:right;"}
+      %li
+        = link_to "Home"  ,home_index_url, :class => (params[:controller] == "home" and params[:action] == "index") ? "active" : ""
+      %li
+        = link_to "Find Your Team" ,find_team_teams_url, :class => (params[:controller] == "teams" and params[:action] == "find_team") ? "active" : ""
+      %li
+        = link_to "FAQ" , faq_path, :class => (params[:controller] == "home" and params[:action] == "faq") ? "active" : ""
+      %li
+        = link_to "About Us" , about_path, :style =>"margin-right:0;", :class => (params[:controller] == "home" and params[:action] == "about") ? "active" : ""
+  - else
+    %ul.nav.nav-tabs#myTeam{:style => "float:right;"}
+      %li.active
+        = link_to "Schedule", "#shedule", "data-toggle" => "tab"
+      %li
+        = link_to "Conference Directory", "#conference", "data-toggle" => "tab"
+      %li
+        = link_to "My Account", "#account", "data-toggle" => "tab", :style =>"margin-right:0;"

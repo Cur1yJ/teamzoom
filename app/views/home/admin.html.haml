@@ -1,0 +1,31 @@
+.navbar
+  .navbar-inner
+    .container
+      .nav-collapse
+        %ul.nav
+          %li.active
+            = link_to "Administration Management" #, "#home"
+          %li
+            = link_to "profile", "#profile" #, "data-toggle" => "tab"
+          %li
+            = link_to "message", "#messages" #, "data-toggle" => "tab"
+          %li
+            = link_to "settings", "#settings" #, "data-toggle" => "tab"
+
+/ .tab-content
+/   .tab-pane.active#home
+/     home
+/     = select_tag("home", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe)
+/     = submit_tag "Submit", :class => "btn btn-success"
+/   .tab-pane#profile
+/     profile
+/     = select_tag("home", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe)
+/     = submit_tag "Submit", :class => "btn btn-success"
+/   .tab-pane#messages
+/     message
+/     = select_tag("home", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe)
+/     = submit_tag "Submit", :class => "btn btn-success"
+/   .tab-pane#settings
+/     settings
+/     = select_tag("home", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe)
+/     = submit_tag "Submit", :class => "btn btn-success"

@@ -1,0 +1,267 @@
+@import "twitter/bootstrap/bootstrap";
+body {
+	padding-top: 60px;
+}
+
+// @import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: '/assets/fontawesome-webfont.eot';
+@fontAwesomeWoffPath: '/assets/fontawesome-webfont.woff';
+@fontAwesomeTtfPath: '/assets/fontawesome-webfont.ttf';
+@fontAwesomeSvgPath: '/assets/fontawesome-webfont.svg';
+
+// Font Awesome
+@import "fontawesome";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+@-ms-viewport {
+  width: device-width;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.visible-phone {
+  display: none !important;
+}
+
+.visible-tablet {
+  display: none !important;
+}
+
+.hidden-desktop {
+  display: none !important;
+}
+
+.visible-desktop {
+  display: inherit !important;
+}
+
+
+.row {
+  margin-left: -30px;
+  *zoom: 1;
+}
+.row:before,
+.row:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.row:after {
+  clear: both;
+}
+[class*="span"] {
+  float: left;
+  min-height: 1px;
+  margin-left: 30px;
+}
+.container,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  width: 1170px;
+}
+.span12 {
+  width: 1170px;
+}
+.span11 {
+  width: 1070px;
+}
+.span10 {
+  width: 970px;
+}
+.span9 {
+  width: 870px;
+}
+.span8 {
+  width: 770px;
+}
+.span7 {
+  width: 670px;
+}
+.span6 {
+  width: 570px;
+}
+.span5 {
+  width: 470px;
+}
+.span4 {
+  width: 370px;
+}
+.span3 {
+  width: 270px;
+}
+.span2 {
+  width: 170px;
+}
+.span1 {
+  width: 70px;
+}
+.offset12 {
+  margin-left: 1230px;
+}
+.offset11 {
+  margin-left: 1130px;
+}
+.offset10 {
+  margin-left: 1030px;
+}
+.offset9 {
+  margin-left: 930px;
+}
+.offset8 {
+  margin-left: 830px;
+}
+.offset7 {
+  margin-left: 730px;
+}
+.offset6 {
+  margin-left: 630px;
+}
+.offset5 {
+  margin-left: 530px;
+}
+.offset4 {
+  margin-left: 430px;
+}
+.offset3 {
+  margin-left: 330px;
+}
+.offset2 {
+  margin-left: 230px;
+}
+.offset1 {
+  margin-left: 130px;
+}
+
+input,
+textarea,
+.uneditable-input {
+  margin-left: 0;
+}
+.controls-row [class*="span"] + [class*="span"] {
+  margin-left: 30px;
+}
+input.span12,
+textarea.span12,
+.uneditable-input.span12 {
+  width: 1156px;
+}
+input.span11,
+textarea.span11,
+.uneditable-input.span11 {
+  width: 1056px;
+}
+input.span10,
+textarea.span10,
+.uneditable-input.span10 {
+  width: 956px;
+}
+input.span9,
+textarea.span9,
+.uneditable-input.span9 {
+  width: 856px;
+}
+input.span8,
+textarea.span8,
+.uneditable-input.span8 {
+  width: 756px;
+}
+input.span7,
+textarea.span7,
+.uneditable-input.span7 {
+  width: 656px;
+}
+input.span6,
+textarea.span6,
+.uneditable-input.span6 {
+  width: 556px;
+}
+input.span5,
+textarea.span5,
+.uneditable-input.span5 {
+  width: 456px;
+}
+input.span4,
+textarea.span4,
+.uneditable-input.span4 {
+  width: 356px;
+}
+input.span3,
+textarea.span3,
+.uneditable-input.span3 {
+  width: 256px;
+}
+input.span2,
+textarea.span2,
+.uneditable-input.span2 {
+  width: 156px;
+}
+input.span1,
+textarea.span1,
+.uneditable-input.span1 {
+  width: 56px;
+}
+.thumbnails {
+  margin-left: -30px;
+}
+.thumbnails > li {
+  margin-left: 30px;
+}
+.row-fluid .thumbnails {
+  margin-left: 0;
+}
+
+

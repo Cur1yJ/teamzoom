@@ -1,0 +1,31 @@
+.row.header
+  .row
+    #logo.span3
+      .team-logo.editable-by-admin
+        = dynamic_logo
+    .offset3.headmenu_span6
+      %ul.header-nav.nav.nav-pills
+        - if user_signed_in?
+          %li{:style => "margin-top:1em;"}
+            = link_to "Sign Out" , destroy_user_session_path, :style => "display:inline;padding-right:1px;"
+            %span= "| "
+            %span= link_to current_user.email, edit_user_registration_path
+          - if user_admin?
+            - if !user_admin_with_edit_mode?
+              %li= link_to "Administration",((params[:controller] == "teams" and params[:action] == "show") ? "?edit_mode=active" : admin_states_path(:edit_mode => "active")),:class => "btn btn-primary"
+            - else
+              %li= link_to "Exit Administration", "?edit_mode=inactive",:class => "btn btn-primary"
+          - if user_manager?
+            - if (params[:controller] == "teams" and params[:action] == "show")
+              - if !user_manager_with_edit_mode?
+                %li= link_to "Administration", "?edit_mode=active",:class => "btn btn-primary"
+              - else
+                %li= link_to "Exit Administration", "?edit_mode=inactive",:class => "btn btn-primary"
+        - else
+          %li= link_to "Sign In" , new_user_session_path
+        %li
+          = link_to_if((!user_signed_in?), "Subscribe", new_user_registration_path, :class => "btn btn-danger"){link_to("My Account", edit_user_registration_path, :class => "btn btn-info")}
+  / - if user_signed_in?
+  /   - if user_admin_with_edit_mode?
+  /     .admin_log_link
+  /       = link_to "Logs" , logs_path , :class => 'btn btn-info'

@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+    %p
+      Dear
+      = @user.name_from_email + ","
+    %p
+      You have purchased a Single Game Pass, and your card has been charge
+      = number_to_currency Order::PRICE_GAME
+    %p
+      - from_time = @order.created_at.in_time_zone(Schedule::US_TIME_ZONES[0])
+      You now have unlimited access to TeamZoom content for four hours from
+      = from_time
+      to
+      = from_time + User::LIMIT_PAYMENT_GAME.hours
+
+    %p
+      Yours sincerely,
+      %br/
+      TeamZoom.

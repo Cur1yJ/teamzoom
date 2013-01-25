@@ -1,0 +1,18 @@
+%table.table.table-hover.table-bordered
+  %thead
+    %tr.bg
+      %th Name
+      %th.wid-action Actions
+  %tbody
+    - @conferences.each_with_index do |conference, i|
+      %tr{:class=>"bg-#{i%2}"}
+        %td
+          = conference.name
+        %td
+          = link_to "", edit_admin_conference_path(conference), :remote => true, :class => "icon-pencil color-pen"
+          = " | "
+          - if conference.schools.empty?
+            - notice = "Are you sure?"
+          - else
+            - notice = "This conference had these schools, are you sure?"
+          = link_to "", change_status_admin_conference_path(conference), :data => { :confirm => notice }, :class => "icon-trash color-pen", :method => :put, :remote => true, :title => "Delete"

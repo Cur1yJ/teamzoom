@@ -1,0 +1,18 @@
+%table.table.table-hover.table-bordered
+  %thead
+    %tr.bg
+      %th Name
+      %th.wid-action Actions
+    %tbody
+    - @sports.each_with_index do |sport, i|
+      %tr{:class=>"bg-#{i%2}"}
+        %td
+          = sport.name
+        %td
+          = link_to "", edit_admin_sport_path(sport), :remote => true, :class => "icon-pencil color-pen"
+          = " | "
+          - if sport.teamsports.empty?
+            - notice = "Are you sure?"
+          - else
+            - notice = "This sport had these teams, are you sure?"
+          = link_to "", change_status_admin_sport_path(sport), :data => { :confirm => notice }, :class => "icon-trash color-pen", :method => :put, :remote => true, :title => "Delete"

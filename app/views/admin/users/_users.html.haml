@@ -1,0 +1,23 @@
+%table.table.table-hover.table-bordered
+  %caption 
+  %thead
+    %tr.bg
+      %th Email account
+      %th School 
+      %th Type
+      %th Role
+      %th Raised Funds
+      %th Next Payment 
+      %th Status 
+      %th Last Login
+  %tbody
+    - @users.each_with_index do |user, i|
+      %tr{:class=>"bg-#{i%2}"}
+        %td= user.email
+        %td= user.team.school.name rescue "N/A"
+        %td= user.user_type
+        %td= role(user)
+        %td.right= user.raised_funds
+        %td
+        %td{:class => "status_#{user.status}", :value => user.id}= User::STATUS[user.status]
+        %td= user.current_sign_in_at.strftime("%b %d, %Y %l:%M %p") rescue ""

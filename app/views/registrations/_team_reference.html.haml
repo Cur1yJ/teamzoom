@@ -1,0 +1,17 @@
+
+#state-regist-box
+	= select_tag "state_id_regist", options_from_collection_for_select(State.all, "id", "name", ((user_signed_in? and current_user.team) ? current_user.team.school.conference.state.id : nil)), {:prompt => 'Choose State'}#, {:id => "state_id_regist"}
+#conferences-regist-box
+	= select_tag "conference_id_regist", option_groups_from_collection_for_select(State.all, :conferences,:name, "id", "name",((user_signed_in? and current_user.team) ? current_user.team.school.conference.id : nil))#, {:prompt => 'Choose Conference'}, {:id => "conference_id_regist"}
+#school-regist-box
+	= select_tag "school_id_regist", option_groups_from_collection_for_select(Conference.all, :schools, :name, "id", "name", ((user_signed_in? and current_user.team) ? current_user.team.school.id : nil))#, {:prompt=> 'Choose School'}, {:id => "school_id_regist"}
+#team-regist-box
+	= f.hidden_field :team_id
+	#team_name
+		= (user_signed_in? and current_user.team) ? current_user.team.name : nil
+
+#school_check{:style => "overflow:auto;"}
+	= check_box_tag "not_school_list", 1, (user_signed_in? ? current_user.team.nil? : false), {:class => "not_school_list"}
+	= f.label "My School is Not Listed"
+#reference_error.clear.hidden{:style => "color: #B94A48"}
+	= "can't be blank"

@@ -1,0 +1,254 @@
+.form-around {
+  text-align:left !important;
+}
+#payment_input {
+  .modal-body {
+    max-height: none;
+  }
+}
+#payment_options, #payment_input, #payment_form, #confirm_monthly, #confirm_individual {
+  .width-logo {
+    width: 230px;
+  }
+  .confirm {
+    text-align: left;
+    margin-left: 50px;
+  }
+  .progress-out {
+    width: 80%;
+    overflow: auto;
+    margin: auto;
+  }
+  .introduce {
+    text-align:left;
+    margin-left: 30px;
+    width: 595px;
+    .title-type {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .price {
+      margin-bottom: 20px;
+    }
+    .align-line {
+      margin: 10px 0 10px 20px;
+    }
+  }
+  input#order_first_name, input#order_last_name,
+  input#order_address1, input#order_address2, input#order_city, input#order_state,
+  input#order_zip_code, input#order_card_number, input#order_card_expires_on, input#order_card_verification {
+    padding: 0px !important;
+  }
+  input#order_card_verification {
+      width: 75px;
+      float: left;
+  }
+  input#btn-align {
+    padding: 0 5px 0 5px !important;
+  }
+}
+#payment_form {
+  .info-main {
+    width: 379px;
+  }
+  .control-group {
+    margin-bottom: 5px;
+  }
+  .term {
+    margin-left: 30px;
+    .checkbox {
+      margin: -1px 2px 0 0;
+    }
+  }
+  .summary {
+    text-align: left;
+    font-size: 11pt;
+    margin-left: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .type-summary {
+    text-align: left;
+    margin-left: 43px;
+    margin-top: 10px;
+  }
+  .submit-order {
+    clear:both;
+    font-size: 9pt;
+    text-align:center;
+  }
+  #payment_card {
+    margin-bottom: 7px;
+    width: 420px;
+  }
+  #cvv-popup img{
+    margin-top: 6px;
+  }
+  .popover {
+    width: 480px;
+    .popover-title {
+      display: none;
+    }
+    .popover-content {
+      height: 202px;
+      width: 452px;
+    }
+  }
+  #firstname_error, #lastname_error, #address_error, #zip_code_error, #city_error {
+    padding-left: 160px;
+  }
+}
+
+#payment_card{
+  display:block;
+  input[type=radio] {
+    display: none;
+  }
+  .icon-credit-card {
+    background: url("/assets/icon-credit-cards.png") no-repeat;
+    //margin-right:5px;
+    width: 55px;
+    height: 33px;
+    &:before {
+      content: '';
+    }
+    &:hover, &.selected {
+      width: 49px;
+      height: 27px;
+      border: 3px solid #FFC91E;
+      border-radius: 7px;
+
+      &.visa {
+        background-position: -4px -5px;
+      }
+      &.master {
+        background-position: -62px -5px;
+      }
+      &.am-express {
+        background-position: -120px -5px;
+      }
+      &.discover {
+        background-position: -178px -5px;
+      }
+    }
+    &.visa {
+      background-position: -1px -2px;
+    }
+    &.master {
+      background-position: -59px -2px;
+    }
+    &.am-express {
+      background-position: -117px -2px;
+    }
+    &.discover {
+      background-position: -175px -2px;
+    }
+  }
+}
+.cancel-font {
+  color: red !important;
+  text-decoration: none !important;
+
+}
+.warning-term {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center;
+}
+.font-error {
+  color: red;
+}
+
+.next-confirm {
+  padding-top: 200px;
+}
+.term_and_service {
+  border: 1px solid black;
+  width: 90%;
+  height: 500px;
+  overflow: auto;
+  padding: 10px;
+  text-align:left;
+  margin: 10px auto;
+  .align-term {
+    padding-left: 40px;
+  }
+}
+.next-term {
+  text-align:center;
+  padding-bottom: 10px;
+}
+.select-type{
+  width: 210px;
+  width: 220px\9;
+}
+#order_state, #order_card_expires_on_2i, #order_card_type {
+  padding: 0px !important;
+  vertical-align: middle;
+}
+.select-date{
+  width: 126px;
+  width: 135.3px\9;
+}
+#order_card_expires_on_1i {
+  width: 80px !important;
+  padding: 0px !important;
+}
+.radio {
+  float: left;
+  margin-left: 20px !important;
+  margin-right: 10px !important;
+}
+input[type="radio"] {
+  margin: 0 10px !important;
+}
+.header-info {
+  text-align:center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.header-title {
+  text-align:center;
+  padding-bottom: 10px;
+}
+.header-title-right {
+  text-align:center;
+  padding-bottom: 4px;
+}
+
+.credit {
+  margin: 0px 0px 10px 104px;
+}
+#new_order {
+  margin: 10px 36px 10px -18px;
+}
+.btn-sg {
+  margin-left: 200px;
+}
+.input-field {
+  height: 25px !important;
+}
+.width-popup {
+  width: 874px !important;
+  margin-left: -450px !important;
+}
+#type_error, #card_error, #cvv_error, #expired_error{
+  padding-left: 160px;
+}
+
+#firstname_error, #lastname_error{
+  padding-left: 93px;
+}
+#address_error, #zip_code_error{
+  padding-left: 83px;
+}
+#city_error{
+  padding-left: 53px;
+}
+.font-bold {
+  font-weight: bold;
+}
+#order_last_name, #order_first_name, #order_address1, #order_address2, #order_city, #order_zip_code, #order_card_number, #order_card_verification {
+  padding: 4px 4px 8px 4px\9;
+}

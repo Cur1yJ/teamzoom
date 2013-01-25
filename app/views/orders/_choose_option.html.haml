@@ -1,0 +1,14 @@
+.modal#choose_popup.fade
+  .modal-header
+    = label_tag "Please choose one of these options"
+  .modal-body
+    #choose
+      = radio_button_tag "individual_game", "monthly", false, :class => "radio"
+      = label_tag "individual_game_monthly", "Monthly Subscription ($30 / month)", :class => "radio-label"
+      %div{:style=> "clear:both;"}
+      = radio_button_tag "individual_game", "individual", true, :class => "radio"
+      = label_tag "individual_game_individual", "Individual games (no immediate charge)", :class => "radio-label"
+
+  .modal-footer
+    = link_to "Next", "#", :class => "btn btn-primary", :id => "choose_option"
+
