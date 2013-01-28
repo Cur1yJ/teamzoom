@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20130104084231) do
   create_table "order_transactions", :force => true do |t|
     t.integer  "order_id"
     t.string   "action"
-    t.integer  "amount"
+    t.decimal  "amount"
     t.boolean  "success"
     t.string   "authorization"
     t.string   "message"
@@ -243,12 +243,6 @@ ActiveRecord::Schema.define(:version => 20130104084231) do
 
   add_index "teamsports", ["sport_id"], :name => "index_teamsports_on_sport_id"
   add_index "teamsports", ["team_id"], :name => "index_teamsports_on_team_id"
-
-  create_table "testings", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",   :null => false
