@@ -1,21 +1,36 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/01/2013
+# Coder- Shrikant Khandare
+# Description:Replaced code in initialize method. 
+#             Replaced code with use of ternary operator. Separated 
+#             existing code in two new methods 
+#             1)adminable and 2)managerable
+######################################################################
+
 class Ability
+
   include CanCan::Ability
-
-  def initialize(user)
-    user ||= User.new
-
-    alias_action :update_by_email, :delete_by_email, :to => :administration
-
-    if user.role =="Admin"
+  
+   def adminable
       can :manage, Team
       can [:manage,:administration], User
-    end
-    if user.role =="Manager"
-      can :read, Team
-      cannot [:index,:administration], User
-      cannot :index, Team
-      # can :admin, session[:edit_mode]
-    end
+   end
+ 
+   def managerable(user)
+       if user.role =="Manager"
+	  can :read, Team
+	  cannot [:index,:administration], User
+	  cannot :index, Team
+       end
+   end
+
+   def initialize(user)
+	  user ||= User.new 
+	  alias_action :update_by_email, :delete_by_email, :to => :administration
+	  (user.role =="Admin") ? adminable : managerable(user)
+   end
 
     # if user.role != "Admin"
     #   cannot :index, Team
@@ -45,5 +60,5 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
-  end
+ 
 end

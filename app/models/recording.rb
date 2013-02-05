@@ -1,3 +1,14 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/01/2013
+# Coder- Shrikant Khandare
+# Description: Rearranged code. Defined ralations first followed by 
+#              attributes followed by validations.
+#               
+######################################################################
+
+
 # == Schema Information
 #
 # Table name: recordings
@@ -15,10 +26,13 @@
 #
 
 class Recording < ActiveRecord::Base
-  DONE = 1
-  IN_PROCESS = 2
 
   belongs_to :schedule
   has_one :archive
+  
+  DONE = 1
+  IN_PROCESS = 2
+  
   attr_accessible :end_time, :last_modified, :recording_name, :schedule_id, :start_time, :status, :stream_name
-end
+
+ end

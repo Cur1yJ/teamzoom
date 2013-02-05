@@ -1,3 +1,13 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/01/2013
+# Coder- Shrikant Khandare
+# Description: Rearranged code. Defined ralations first followed by 
+#              attributes followed by validations.
+#               
+######################################################################
+
 # == Schema Information
 #
 # Table name: order_transactions
@@ -15,8 +25,11 @@
 #
 
 class OrderTransaction < ActiveRecord::Base
-  attr_accessible :action, :amount, :authorization, :message, :order_id, :params, :success
+
   belongs_to :order
+  
+  attr_accessible :action, :amount, :authorization, :message, :order_id, :params, :success
+ 
   serialize :params
 
   def response= (response)
@@ -32,5 +45,6 @@ class OrderTransaction < ActiveRecord::Base
       self.params = {}
     end
   end
+  
 end
 

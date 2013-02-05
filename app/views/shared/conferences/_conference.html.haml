@@ -4,4 +4,4 @@
       = select_tag "conference_id", options_from_collection_for_select(@conferences, "id", "name"), :prompt => 'Choose Conference'
     %td{:style => "padding-right: 1em"}
     %td
-      #school= render "schools/school", :schools => @schools || []
+      #school= render "shared/schools/school", :schools => @schools || []

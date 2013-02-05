@@ -1,6 +1,17 @@
 class Admin::TeamsController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate_user!
+  
+  ######################################################################
+  # Change History
+  ######################################################################
+  # Date-02/04/2013
+  # Coder- Shrikant Khandare
+  # Description: Moved partial "conference_admin" from view folder To 
+  #              "shared/conferences/conference_admin"
+  #              Changed render path to "shared/conferences/conference_admin"   
+  ######################################################################  
+
   #-----------------------------------FILTER-----------------------------------
   # TODO
   #----------------------------------------------------------------------------
@@ -75,10 +86,10 @@ class Admin::TeamsController < ApplicationController
   def search    
     if params[:state_id].blank?
       @conferences =[]
-      render :partial => "conferences/conference_admin"
+      render :partial => "shared/conferences/conference_admin"
     else
       @conferences = Conference.active.scoped_by_state_id(params[:state_id])
-      render :partial => "conferences/conference_admin"
+      render :partial => "shared/conferences/conference_admin"
     end
   end
   

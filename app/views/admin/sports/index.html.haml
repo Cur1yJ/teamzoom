@@ -1,8 +1,17 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "sports" from view folder To
+//#              "shared/admin/sports/sports"
+//#               Changed render path to "shared/admin/sports/sports"
+//######################################################################
 #sports
   #render_sports
     .border_users
       .btn-add= link_to "New Sport", new_admin_sport_path, :class => "btn btn-primary clear span", :remote => true
       .clear
       #render_sports 
-        = render "sports"
+        = render "shared/admin/sports/sports"
 #sport_wrapper

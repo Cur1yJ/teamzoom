@@ -1,4 +1,13 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "chart_subscribers" from view folder To
+//#              'shared/admin/transactions/chart_subscribers'
+//#               Changed render path to 'shared/admin/transactions/chart_subscribers'
+//######################################################################
 $("#loading").show()
 $("#chart").hide()
-$("#chart").html("<%= escape_javascript render 'chart_subscribers' %>");
+$("#chart").html("<%= escape_javascript render 'shared/admin/transactions/chart_subscribers' %>");
 $("chart").show()

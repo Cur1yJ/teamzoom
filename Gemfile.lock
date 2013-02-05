@@ -337,3 +337,35 @@ DEPENDENCIES
   validates_timeliness
   watu_table_builder
   will_paginate
+1)
+  guard
+  guard-annotate
+  guard-bundler
+  guard-coffeescript
+  guard-rails
+  haml (>= 3.1.4)
+  haml-rails (>= 0.3.4)
+  heroku_san
+  hpricot
+  jquery-rails
+  jquery-ui-rails
+  lazy_high_charts (~> 1.1.5)
+  nested_form
+  paperclip (~> 3.0)
+  pg
+  rack-google_analytics (= 1.0.2)
+  rails (>= 3.2.6)
+  rails-erd
+  remotipart (~> 1.0)
+  rmagick
+  rspec-rails (>= 2.8.1)
+  ruby_parser
+  rvm-capistrano
+  sass-rails (~> 3.2.3)
+  simple_form
+  spork
+  twitter-bootstrap-rails!
+  uglifier (>= 1.0.3)
+  validates_timeliness (~> 3.0)
+  watu_table_builder
+  will_paginate

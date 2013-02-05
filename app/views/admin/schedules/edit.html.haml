@@ -1,6 +1,15 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "form" from view folder To
+//#             'shared/admin/schedules/form'
+//#               Changed render path to 'shared/admin/schedules/form'
+//######################################################################
 %h1 Editing schedule
 
-= render 'form'
+= render 'shared/admin/schedules/form'
 
 = link_to 'Show', @schedule
 \|

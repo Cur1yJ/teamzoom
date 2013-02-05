@@ -1,3 +1,12 @@
-$("#state_render_popup").html("#{j(render 'form', :url => admin_state_path(@state), :method => :put )}");
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "form" from view folder To
+//#              'shared/admin/states/form'
+//#               Changed render path to 'shared/admin/states/form'
+//######################################################################
+$("#state_render_popup").html("#{j(render 'shared/admin/states/form', :url => admin_state_path(@state), :method => :put )}");
 $("#popup_state").modal('show');
 

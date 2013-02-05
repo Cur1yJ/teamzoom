@@ -1,3 +1,15 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/01/2013
+# Coder- Shrikant Khandare
+# Description: Rearrange code in following methods
+#	      1) create
+#	      2) update_by_email
+#	      3) change_manager_by_email
+
+######################################################################
+
 class Admin::UsersController < ApplicationController
   respond_to :js, :html, :json
   #-----------------------------------FILTER-----------------------------------
@@ -15,10 +27,9 @@ class Admin::UsersController < ApplicationController
       @users = User.order("email ASC").paginate(:page => page, :per_page => User::PER_PAGE)
     end
     render :layout => "admin"
-    
   end
   #----------------------------------------------------------------------------
-  #           ADD NEW USER (EXIST OR NOT) TO BE A TEAM MANAGER
+  #    ADD NEW USER (EXIST OR NOT) TO BE A TEAM MANAGER
   #    If exist user =>   update action
   #    If new user   =>   create action
   #    Add checking method for every action!
@@ -27,11 +38,9 @@ class Admin::UsersController < ApplicationController
   def create
     flash[:notice]=fail_message
     if valid_user?
-      @user = User.new(:email=>params[:user][:email],
-        :password=>params[:user][:password])
+      @user = User.new(:email=>params[:user][:email],:password=>params[:user][:password])
       if @user.save
-        if TeamManagement.new(:user_id =>@user.id, 
-            :team_id =>@team.id).save
+        if TeamManagement.new(:user_id =>@user.id,:team_id =>@team.id).save
           flash[:notice] = success_message
         end
       end
@@ -48,8 +57,7 @@ class Admin::UsersController < ApplicationController
     user = User.find_by_email(params[:email])
     flash[:notice] = fail_message
     if user
-      if !user.teamsmanage.include?(Team.find(params[:team_id])) &&
-        user.role != User.administrator_role
+      if !user.teamsmanage.include?(Team.find(params[:team_id])) && user.role != User.administrator_role
         #if user.update_attributes(:role => User.manager_role)
         if TeamManagement.new(:user_id =>user.id, :team_id =>@team.id).save
           flash[:notice] = success_message
@@ -69,7 +77,6 @@ class Admin::UsersController < ApplicationController
     puts params["email"], params["team"]
     manager = User.find_by_email(params["email"])
     manager.team_managements.find_by_team_id(params["team"]).destroy()
-    
   end
   #----------------------------------------------------------------------------
   def change_manager_by_email
@@ -78,8 +85,7 @@ class Admin::UsersController < ApplicationController
     if new_manager
       if not_admin?(new_manager) && !team.managers.include?(new_manager)
           if User.find_by_email(params["old_email"]).team_managements.find_by_team_id(params["team"]).destroy() &&
-            TeamManagement.create(:user_id =>
-              new_manager.id, :team_id => team.id)
+            TeamManagement.create(:user_id => new_manager.id, :team_id => team.id)
             render :json => {:result => true}
           return
         end

@@ -1,3 +1,12 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandareusers
+//# Description:  Moved partial "schedule" from view folder To
+//#              "shared/teams/schedule"
+//#               Changed render path to "shared/teams/schedule"
+//######################################################################
 <%if @schedule.errors.any?%>
   <%errors = @schedule.errors%>
   <% if errors[:event_date] -%>
@@ -35,7 +44,7 @@
     $("#opponent_error").html("");
     $("#location_error").html("");
     $("#sport_error").html("");
-    $("#schedule-data-table").html("<%= escape_javascript render :partial => "teams/schedule", :locals => {:schedule => @schedules} %>");
+    $("#schedule-data-table").html("<%= escape_javascript render :partial => "shared/teams/schedule", :locals => {:schedule => @schedules} %>");
     $("#popup_team").modal('hide');
     $('.modal-backdrop.fade.in').remove();
 <%end%>

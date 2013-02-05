@@ -1,3 +1,15 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "conference_admin" from view folder To
+//#              "shared/conferences/conference_admin"
+//#               Changed render path to "shared/conferences/conference_admin"
+//#                Moved partial "team_admin" from view folder To
+//#              'shared/admin/teams/team_admin'
+//#               Changed render path to 'shared/admin/teams/team_admin'
+//######################################################################
 .clear
 .admin_search
   .conferenc-wrapper{:style => "float:left ; width:68%"}
@@ -11,7 +23,7 @@
               = hidden_field_tag "edit_mode", 'active'
               =select_tag "state_id_admin", options_from_collection_for_select(@states, "id", "name", params[:state_id_admin]), :prompt => 'Choose State'
             %td
-              #conference_admin= render "conferences/conference_admin", :conferences => @conferences || []
+              #conference_admin= render "shared/conferences/conference_admin", :conferences => @conferences || []
             %td
               = text_field_tag :school_admin
             %td
@@ -23,4 +35,4 @@
   .team_admin{:style => "float:left ; width:68%; margin-top: 10px;"}
     #render_teams 
       - if params[:conference_id_admin]
-        = render 'admin/teams/team_admin'
+        = render 'shared/admin/teams/team_admin'

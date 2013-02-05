@@ -1,4 +1,25 @@
 class TeamsController < ApplicationController
+
+  ######################################################################
+  # Change History
+  ######################################################################
+  # Date-02/04/2013
+  # Coder- Shrikant Khandare
+  # Description:  Moved partial "schedule" from view folder To 
+  #              "shared/teams/schedule"
+  #               Changed render path to "shared/teams/schedule"
+  #               Moved partial "teams" from view folder To 
+  #              "shared/teams/teams"
+  #               Changed render path to "shared/teams/teams"
+  #               Moved partial "team_select" from view folder To 
+  #              "shared/registrations/team_select"
+  #               Changed render path to "shared/registrations/team_select"
+  ######################################################################  
+  
+  
+
+
+
   #load_and_authorize_resource
    # before_filter :authenticate_user!, :except => [ :show, :index]
   # before_filter :authenticate_user!
@@ -23,7 +44,7 @@ class TeamsController < ApplicationController
     team_id = params[:team_id]
     team = Team.find_by_id(team_id)
     @schedule = Schedule.filter_schedule(team_id, session[:date], session[:sport]) || []
-    render :partial => "teams/schedule", :locals => {:schedule => @schedule, :team => team}
+    render :partial => "shared/teams/schedule", :locals => {:schedule => @schedule, :team => team}
   end
 
   def find_or_initial_teamsport
@@ -140,7 +161,7 @@ class TeamsController < ApplicationController
 
   def search
     @teams = Team.scoped_by_school_id(params[:school_id])
-    render :partial => "teams/teams"
+    render :partial => "shared/teams/teams"
   end
 
   #Loading schedule data by sport type in the time
@@ -153,7 +174,7 @@ class TeamsController < ApplicationController
     @schedule = nil
     @schedule = Schedule.filter_schedule(team_id, date, sport_id)
     @date
-    render :partial => "teams/schedule", :locals => {:schedule => @schedule, :team => team}
+    render :partial => "shared/teams/schedule", :locals => {:schedule => @schedule, :team => team}
   end
 
   #Loading school data by school
@@ -164,9 +185,9 @@ class TeamsController < ApplicationController
       @school = School.find_by_id(params[:school_id])
       if @school
         @teams = @school.teams
-        return render :partial => "registrations/team_select", :locals => {:teams => @teams}
+        return render :partial => "shared/registrations/team_select", :locals => {:teams => @teams}
       else
-        return render :partial => "registrations/team_select", :locals => {:teams => nil}
+        return render :partial => "shared/registrations/team_select", :locals => {:teams => nil}
       end
     end
 

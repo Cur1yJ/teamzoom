@@ -1,3 +1,12 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/05/2013
+//# Coder- Shrikant Khandareusers
+//# Description:  Moved partial "admin/teams/sports_team_edit" from view folder To
+//#              "shared/admin/teams/sports_team_edit"
+//#               Changed render path to "shared/admin/teams/sports_team_edit"
+//######################################################################
 $("#edit_details").modal('hide');
-$("#find_or_initialize_teamsport").html("#{j(render("admin/teams/sports_team_edit", :teamsport => @teamsport))}");
+$("#find_or_initialize_teamsport").html("#{j(render("shared/admin/teams/sports_team_edit", :teamsport => @teamsport))}");
 $("#edit_details").modal('show');

@@ -1,2 +1,11 @@
-$("#find_or_initialize_teamsport").html("<%= escape_javascript render 'admin/teams/sports_team_edit', :teamsport => @teamsport %>");
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "sports_team_edit'" from view folder To
+//#             'shared/admin/teams/sports_team_edit'
+//#               Changed render path to 'shared/admin/teams/sports_team_edit'
+//######################################################################
+$("#find_or_initialize_teamsport").html("<%= escape_javascript render 'shared/admin/teams/sports_team_edit', :teamsport => @teamsport %>");
 $("#edit_details").modal('show');

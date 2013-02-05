@@ -1,5 +1,14 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "form" from view folder To
+//#              'shared/admin/sports/form'
+//#               Changed render path to 'shared/admin/sports/form'
+//######################################################################
 %h1 New sport
 
-= render 'form'
+= render 'shared/admin/sports/form'
 
 = link_to 'Back', sports_path

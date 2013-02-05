@@ -1,3 +1,12 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/05/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "/admin/conferences/form" from view folder To
+//#              'shared/admin/conferences/form'
+//#               Changed render path to 'shared/admin/conferences/form'
+//######################################################################
 //TODO should refactor below section
 .page-contents.find-team
   %center
@@ -39,10 +48,11 @@
               %tr
                 %td
                   =select_tag "state_id", options_from_collection_for_select(@states, "id", "name"), :prompt => 'Choose State'
+	           
                 %td{:style => "padding-right: 1em"}
 
                 %td
-                  #conference= render "conferences/conference", :conferences => @conferences, :schools => @schools
+                  #conference= render "shared/conferences/conference", :conferences => @conferences, :schools => @schools
         .span2.offset5.manualmargin
           %p{:style => "margin-top: -1em;"}
           = link_to "Don't see your school?  Request TeamZoom at your school" ,"#myModal1" , :class => "request_team" ,"data-toggle" => "modal"          

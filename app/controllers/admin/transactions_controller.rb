@@ -1,4 +1,19 @@
 class Admin::TransactionsController < ApplicationController
+
+  ######################################################################
+  # Change History
+  ######################################################################
+  # Date-02/04/2013
+  # Coder- Shrikant Khandare
+  # Description:  Moved partial "total_raise" from view folder To 
+  #               "shared/admin/transactions/total_raise"
+  #               Changed render path to "shared/admin/transactions/total_raise"  
+  #               Moved partial "chart_subscribers" from view folder To 
+  #               "shared/admin/transactions/chart_subscribers" 
+  #               Changed render path to "shared/admin/transactions/chart_subscribers" 
+  ######################################################################  
+
+
   before_filter :authenticate_user! # check user_signed_in?
   before_filter :team #retrieve team
   before_filter :can_access?
@@ -27,19 +42,19 @@ class Admin::TransactionsController < ApplicationController
     when User::THIS_YEAR
       data = current_user.get_subscriber_for_this_year(@team.id, params[:individual])
       @total_raise = data[:fees].round
-      render :partial => "total_raise", :locals => {:total_raise => @total_raise}
+      render :partial => "shared/admin/transactions/total_raise", :locals => {:total_raise => @total_raise}
     when User::THIS_MONTH
       data = current_user.get_subscriber_for_this_month(@team.id, params[:individual])
       @total_raise = data[:fees].round
-      render :partial => "total_raise", :locals => {:total_raise => @total_raise}
+      render :partial => "shared/admin/transactions/total_raise", :locals => {:total_raise => @total_raise}
     when User::INCEPTION
       data = current_user.get_subscriber_for_this_year(@team.id, params[:individual])
       @total_raise = data[:fees].round
-      render :partial => "total_raise", :locals => {:total_raise => @total_raise}
+      render :partial => "shared/admin/transactions/total_raise", :locals => {:total_raise => @total_raise}
     when User::PERIOD
       data = current_user.get_subscriber_for_this_month(@team.id, params[:individual])
       @total_raise = data[:fees].round
-      render :partial => "total_raise", :locals => {:total_raise => @total_raise}
+      render :partial => "shared/admin/transactions/total_raise", :locals => {:total_raise => @total_raise}
     else
       data = current_user.load_data_for_distance_time(@team.id, params[:from_date], params[:end_date], params[:individual])
       @array_data = GoogleVisualr::DataTable.new
@@ -173,7 +188,7 @@ class Admin::TransactionsController < ApplicationController
 
     puts "------------------",@array_data.inspect
     @chart = GoogleVisualr::Interactive::LineChart.new(@array_data, option)
-    render :partial => "chart_subscribers"
+    render :partial => "shared/admin/transactions/chart_subscribers"
   end
 
   #----------------------------------FILTER-------------------------------------
@@ -242,22 +257,22 @@ class Admin::TransactionsController < ApplicationController
       subcribers = current_user.get_subscriber_for_this_year(@team.id, false)
       games = current_user.get_subscriber_for_this_year(@team.id, true)
       @total_raise = (subcribers[:fees] + games[:fees]).round
-      render :partial => "total_raise", :locals => {:total_raise => @total_raise}
+      render :partial => "shared/admin/transactions/total_raise", :locals => {:total_raise => @total_raise}
     when User::THIS_MONTH
       subcribers = current_user.get_subscriber_for_this_month(@team.id, false)
       games = current_user.get_subscriber_for_this_month(@team.id, true)
       @total_raise = (subcribers[:fees] + games[:fees]).round
-      render :partial => "total_raise", :locals => {:total_raise => @total_raise}
+      render :partial => "shared/admin/transactions/total_raise", :locals => {:total_raise => @total_raise}
     when User::INCEPTION
       subcribers = current_user.get_subscriber_for_this_year(@team.id, false)
       games = current_user.get_subscriber_for_this_year(@team.id, true)
       @total_raise = (subcribers[:fees] + games[:fees]).round
-      render :partial => "total_raise", :locals => {:total_raise => @total_raise}
+      render :partial => "shared/admin/transactions/total_raise", :locals => {:total_raise => @total_raise}
     when User::PERIOD
       subcribers = current_user.get_subscriber_for_this_month(@team.id, false)
       games = current_user.get_subscriber_for_this_month(@team.id, true)
       @total_raise = (subcribers[:fees] + games[:fees]).round
-      render :partial => "total_raise", :locals => {:total_raise => @total_raise}
+      render :partial => "shared/admin/transactions/total_raise", :locals => {:total_raise => @total_raise}
     else
       data = current_user.load_data_for_distance_time(@team.id, params[:from_date], params[:end_date], params[:individual])
       @array_data.add_rows(data[:table_data])

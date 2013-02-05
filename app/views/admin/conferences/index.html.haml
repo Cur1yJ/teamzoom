@@ -1,9 +1,18 @@
+//######################################################################
+//# Change History
+//######################################################################
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "conferences" from view folder To 
+//#               shared/admin/conferences/conferences"
+//#               Changed render path to shared/admin/conferences/conferences"
+//######################################################################  
 #conference_wrapper
 
 .border_users
   .btn-add= link_to "New Conference", new_admin_conference_path, :class => "btn btn-primary clear span", :remote => true
   .clear
   #render_conferences
-    = render "conferences"
+    = render "shared/admin/conferences/conferences"
    
 

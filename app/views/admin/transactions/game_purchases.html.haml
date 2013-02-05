@@ -1,3 +1,21 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "total_raise" from view folder To
+//#              "shared/admin/transactions/total_raise"
+//#               Changed render path to "shared/admin/transactions/total_raise"
+//#               Moved partial "left_menu" from view folder To
+//#              "shared/admin/transactions/left_menu"
+//#               Changed render path to "shared/admin/transactions/left_menu"
+//#               Moved partial "mail_report" from view folder To
+//#              "shared/admin/transactions/mail_report"
+//#               Changed render path to "shared/admin/transactions/mail_report"
+//#               Moved partial "chart_subscribers" from view folder To
+//#              "shared/admin/transactions/chart_subscribers"
+//#               Changed render path to "shared/admin/transactions/chart_subscribers"
+//######################################################################
 .row
   .span12
     .row
@@ -5,14 +23,14 @@
       %div.text-margin
       = hidden_field_tag "team_id", params[:team_id]
       = hidden_field_tag "individual", true
-      #total_raise= render "total_raise", :total_raise => @total_raise
+      #total_raise= render "shared/admin/transactions/total_raise", :total_raise => @total_raise
       %div.pull-right
         = select_tag "filters", options_for_select(User::FITTER_DASH_BOARD.invert)
         %div Next Payment Date: May 31, 2012  
       .clear
-      = render "left_menu"
+      = render "shared/admin/transactions/left_menu"
       %div.content-sub
-        = render "mail_report"
+        = render "shared/admin/transactions/mail_report"
         %div.date.pull-right
           = form_tag admin_team_load_data_for_select_path,:method => :get, :remote => true, :class => "form-load" do
             = text_field_tag "from_date"
@@ -22,6 +40,6 @@
             = button_tag "Filter", :class => "btn btn-success"
         .clear
         #chart
-          = render "chart_subscribers"
+          = render "shared/admin/transactions/chart_subscribers"
           
 

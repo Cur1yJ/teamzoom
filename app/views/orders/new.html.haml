@@ -1,5 +1,17 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/05/2013
+//# Coder- Shrikant Khandareusers
+//# Description:  Moved partial "form" from view folder To
+//#              "shared/orders/form"
+//#               Changed render path to '"shared/orders/form"
+//#               Moved partial "choose_option" from view folder To
+//#              "shared/orders/choose_option"
+//#               Changed render path to "shared/orders/choose_option"
+//######################################################################
 - if params[:option] == "true"
-  = render "choose_option"
+  = render "shared/orders/choose_option"
 %h1{:style => "text-align: center;margin: 1em 0;"} Create an account to get started with TeamZoom.
 .row
   .span-order.offset2.form-wrapper
@@ -21,7 +33,7 @@
 
     #render-payment-on-registering
       - if params[:option] || !(params[:action] == "new")
-        = render "form", :order => @order, :url => orders_path, :method => :post, :remote => true, :individual_game => false, :schedule_id => "", :reload_page => true
+        = render "shared/orders/form", :order => @order, :url => orders_path, :method => :post, :remote => true, :individual_game => false, :schedule_id => "", :reload_page => true
         .clearfix
     %div{:style=>"margin: 10px 0;"}
       %center= submit_tag "Next", :class => "btn btn-primary", :id => "btn_payment"

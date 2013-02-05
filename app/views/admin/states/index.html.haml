@@ -1,7 +1,16 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "states" from view folder To
+//#               "shared/admin/states/states"
+//#               Changed render path to  "shared/admin/states/states"
+//######################################################################
 #state_render_popup
 .border_users
   .btn-add= link_to "New State", new_admin_state_path, :class => "btn btn-primary", :remote => true
   .clear
   #render_states 
-    = render "states", :states => @states
+    = render "shared/admin/states/states", :states => @states
 

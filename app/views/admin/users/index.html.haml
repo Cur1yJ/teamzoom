@@ -1,3 +1,12 @@
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "users" from view folder To
+//#              "shared/admin/users/users"
+//#               Changed render path to "shared/admin/users/users"
+//######################################################################
 #users
   .ajax-loading.hidden= image_tag('common/loading.gif')
   .box-borders.pull-left{:style=>"width: 792px;"}
@@ -12,6 +21,6 @@
   .clear
   #render_users
     .border_users{:style=>"margin-top: 10px;"}
-      = render "users"
+      = render "shared/admin/users/users"
   .clear
   .pull-left= will_paginate @users

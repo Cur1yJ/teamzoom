@@ -1,2 +1,11 @@
-$("#conference_wrapper").html("#{j(render('form', :decide => true,:@conference => @conference, :conference_url => admin_conference_path(@conference), :method => :put))}")
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "form" from view folder To
+//#              'shared/admin/conferences/form'
+//#               Changed render path to 'shared/admin/conferences/form'
+//######################################################################
+$("#conference_wrapper").html("#{j(render('shared/admin/conferences/form', :decide => true,:@conference => @conference, :conference_url => admin_conference_path(@conference), :method => :put))}")
 $("#conference_popup").modal('show')

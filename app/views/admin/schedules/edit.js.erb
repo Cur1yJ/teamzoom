@@ -1,3 +1,12 @@
-$("#edit_render").html("<%= escape_javascript render 'form', :url => admin_team_schedule_path(@team, @schedule), :method => :put %>");
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "form" from view folder To
+//#             'shared/admin/schedules/form'
+//#               Changed render path to 'shared/admin/schedules/form'
+//######################################################################
+$("#edit_render").html("<%= escape_javascript render 'shared/admin/schedules/form', :url => admin_team_schedule_path(@team, @schedule), :method => :put %>");
 $("#popup_team").modal('show');
 

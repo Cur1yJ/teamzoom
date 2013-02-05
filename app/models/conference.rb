@@ -1,3 +1,14 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/01/2013
+# Coder- Shrikant Khandare
+# Description: Rearranged code. Defined ralations first followed by 
+#              attributes followed by validations.
+#               
+######################################################################
+
+
 # == Schema Information
 #
 # Table name: conferences
@@ -12,13 +23,18 @@
 #
 
 class Conference < ActiveRecord::Base
-  belongs_to :state
-  attr_accessible :address, :name ,:state_id, :schools_attributes, :state_attributes, :active
-  validates_presence_of :state_id
-  validates :name, :presence => true, :uniqueness => true
+
   has_many :schools
   has_many :teams, :through => :schools
+  belongs_to :state
+  
+  attr_accessible :address, :name ,:state_id, :schools_attributes, :state_attributes, :active
+ 
+  validates_presence_of :state_id
+  validates :name, :presence => true, :uniqueness => true
+  
   accepts_nested_attributes_for :schools, :state
   
   scope :active, lambda {where(:active => true)}
+  
 end

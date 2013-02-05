@@ -1,2 +1,11 @@
-$("#sport_wrapper").html("#{j(render('form', :decide => true,:@sport => @sport, :sport_url => admin_sports_path, :method => :post))}");
+//######################################################################
+//# Change History
+//###################################################################### 
+//# Date-02/04/2013
+//# Coder- Shrikant Khandare
+//# Description:  Moved partial "form" from view folder To
+//#              'shared/admin/sports/form'
+//#               Changed render path to 'shared/admin/sports/form'
+//######################################################################
+$("#sport_wrapper").html("#{j(render('shared/admin/sports/form', :decide => true,:@sport => @sport, :sport_url => admin_sports_path, :method => :post))}");
 $("#sport_popup").modal('show');
