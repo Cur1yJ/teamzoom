@@ -7,6 +7,6 @@
 //#              'shared/admln/teams/form'
 //#               Changed render path to 'shared/admln/teams/form'
 //######################################################################
-$("#team_render_popup").html("#{j(render 'shared/admln/teams/form', :url => admin_teams_path(@team), :method => :post )}");
+$("#team_render_popup").html("#{j(render 'shared/admin/teams/form', :url => admin_teams_path(@team), :method => :post )}");
 
 $("#edit_team_popup").modal('show');
