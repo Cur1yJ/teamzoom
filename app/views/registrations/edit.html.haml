@@ -1,12 +1,4 @@
-//######################################################################
-//# Change History
-//###################################################################### 
-//# Date-02/05/2013
-//# Coder- Shrikant Khandareusers
-//# Description:  Moved partial "team_reference" from view folder To
-//#              "shared/registrations/team_reference"
-//#               Changed render path to "shared/registrations/team_reference"
-//######################################################################
+
 %h2
   Edit #{resource_name.to_s.humanize}
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal" }) do |f|

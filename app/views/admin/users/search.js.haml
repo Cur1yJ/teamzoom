@@ -1,10 +1,1 @@
-//######################################################################
-//# Change History
-//###################################################################### 
-//# Date-02/04/2013
-//# Coder- Shrikant Khandare
-//# Description:  Moved partial "users" from view folder To
-//#              "shared/admin/users/users"
-//#               Changed render path to "shared/admin/users/users"
-//######################################################################
 $("#render_users").html("#{j render :partial => "shared/admin/users/users", :locals => {:users => @users}}")

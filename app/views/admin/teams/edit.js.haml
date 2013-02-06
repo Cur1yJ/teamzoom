@@ -1,11 +1,2 @@
-//######################################################################
-//# Change History
-//###################################################################### 
-//# Date-02/04/2013
-//# Coder- Shrikant Khandare
-//# Description:  Moved partial "form" from view folder To
-//#              'shared/admln/teams/form'
-//#               Changed render path to 'shared/admln/teams/form'
-//######################################################################
 $("#team_render_popup").html("#{j(render 'shared/admln/teams/form', :url => admin_team_path(@team), :method => :put )}");
 $("#edit_team_popup").modal('show');

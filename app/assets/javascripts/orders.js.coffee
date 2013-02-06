@@ -1,16 +1,3 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/06/2013
-# Coder- Shrikant Khandare
-# Description: live method doesnot work properly.
-#              Instead of using live method used bind method. 
-#            
-######################################################################
-
-
-
-
 
 CARDNUM_VALIDATOR = undefined
 CVV = undefined

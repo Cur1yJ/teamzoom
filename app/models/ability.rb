@@ -1,13 +1,4 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/01/2013
-# Coder- Shrikant Khandare
-# Description:Replaced code in initialize method. 
-#             Replaced code with use of ternary operator. Separated 
-#             existing code in two new methods 
-#             1)adminable and 2)managerable
-######################################################################
+
 
 class Ability
 

@@ -1,12 +1,3 @@
-//######################################################################
-//# Change History
-//###################################################################### 
-//# Date-02/04/2013
-//# Coder- Shrikant Khandare
-//# Description:  Moved partial "form" from view folder To
-//#               'shared/admin/states/form'
-//#               Changed render path to 'shared/admin/states/form'
-//######################################################################
 $("#state_render_popup").html("#{j(render 'shared/admin/states/form', :url => admin_states_path(@state), :method => :post )}");
 
 $("#popup_state").modal('show');

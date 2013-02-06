@@ -1,11 +1,2 @@
-//######################################################################
-//# Change History
-//###################################################################### 
-//# Date-02/04/2013
-//# Coder- Shrikant Khandare
-//# Description:  Moved partial 'form' from view folder To
-//#             'shared/admin/schedules/form'
-//#               Changed render path to 'shared/admin/schedules/form'
-//######################################################################
 $("#edit_render").html("<%= escape_javascript render 'shared/admin/schedules/form', :url => admin_team_schedules_path(@team), :method => :post %>");
 $("#popup_team").modal('show');

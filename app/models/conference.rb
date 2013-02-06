@@ -1,13 +1,3 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/01/2013
-# Coder- Shrikant Khandare
-# Description: Rearranged code. Defined ralations first followed by 
-#              attributes followed by validations.
-#               
-######################################################################
-
 
 # == Schema Information
 #

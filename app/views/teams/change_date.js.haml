@@ -1,15 +1,4 @@
-//######################################################################
-//# Change History
-//###################################################################### 
-//# Date-02/05/2013
-//# Coder- Shrikant Khandareusers
-//# Description:  Moved partial "show_calendar" from view folder To
-//#              'shared/teams/show_calendar'
-//#               Changed render path to 'shared/teams/show_calendar'
-//#               Moved partial "schedule" from view folder To
-//#              "shared/teams/schedule"
-//#               Changed render path to "shared/teams/schedule"
-//######################################################################
+
 $("#next_date").html("#{escape_javascript(link_to " > next week", change_date_path(:date => @date.weeks_ago(-1).beginning_of_week.strftime("%d"), :month => @date.weeks_ago(-1).beginning_of_week.strftime("%m"), :year => @date.weeks_ago(-1).beginning_of_week.strftime("%Y")), :remote => true)}");
 
 $("#current_date").html("#{escape_javascript(link_to @date.strftime("%m-%d-%Y"), "#calendar-picker", "data-toggle" => "modal" , :id => "select_date_of_week")}");

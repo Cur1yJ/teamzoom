@@ -1,19 +1,5 @@
 class Admin::TransactionsController < ApplicationController
 
-  ######################################################################
-  # Change History
-  ######################################################################
-  # Date-02/04/2013
-  # Coder- Shrikant Khandare
-  # Description:  Moved partial "total_raise" from view folder To 
-  #               "shared/admin/transactions/total_raise"
-  #               Changed render path to "shared/admin/transactions/total_raise"  
-  #               Moved partial "chart_subscribers" from view folder To 
-  #               "shared/admin/transactions/chart_subscribers" 
-  #               Changed render path to "shared/admin/transactions/chart_subscribers" 
-  ######################################################################  
-
-
   before_filter :authenticate_user! # check user_signed_in?
   before_filter :team #retrieve team
   before_filter :can_access?

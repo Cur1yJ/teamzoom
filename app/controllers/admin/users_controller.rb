@@ -1,15 +1,3 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/01/2013
-# Coder- Shrikant Khandare
-# Description: Rearrange code in following methods
-#	      1) create
-#	      2) update_by_email
-#	      3) change_manager_by_email
-
-######################################################################
-
 class Admin::UsersController < ApplicationController
   respond_to :js, :html, :json
   #-----------------------------------FILTER-----------------------------------

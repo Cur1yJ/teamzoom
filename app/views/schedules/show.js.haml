@@ -1,12 +1,4 @@
-//######################################################################
-//# Change History
-//###################################################################### 
-//# Date-02/05/2013
-//# Coder- Shrikant Khandareusers
-//# Description:  Moved partial "video_popup" from view folder To
-//#              'shared/teams/video_popup'
-//#               Changed render path to 'shared/teams/video_popup'
-//######################################################################
+
 $("#render_wath_this_video").html("#{j(render('shared/teams/video_popup', :s => @schedule))}");
 $("##{@schedule.id}_dialog").dialog({
 autoOpen: false,
