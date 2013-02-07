@@ -1,25 +1,5 @@
 class TeamsController < ApplicationController
 
-  ######################################################################
-  # Change History
-  ######################################################################
-  # Date-02/04/2013
-  # Coder- Shrikant Khandare
-  # Description:  Moved partial "schedule" from view folder To 
-  #              "shared/teams/schedule"
-  #               Changed render path to "shared/teams/schedule"
-  #               Moved partial "teams" from view folder To 
-  #              "shared/teams/teams"
-  #               Changed render path to "shared/teams/teams"
-  #               Moved partial "team_select" from view folder To 
-  #              "shared/registrations/team_select"
-  #               Changed render path to "shared/registrations/team_select"
-  ######################################################################  
-  
-  
-
-
-
   #load_and_authorize_resource
    # before_filter :authenticate_user!, :except => [ :show, :index]
   # before_filter :authenticate_user!

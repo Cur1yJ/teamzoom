@@ -1,17 +1,5 @@
 class ConferencesController < ApplicationController
 
-  ######################################################################
-  # Change History
-  ######################################################################
-  # Date-02/04/2013
-  # Coder- Shrikant Khandare
-  # Description:  Moved partial "conference" from view folder To 
-  #               "shared/conferences/conference"
-  #               Changed render path to "shared/conferences/conference"   
-  ######################################################################  
-  
-
-
   # Search conference
   def search
     if params[:state_id].blank?
