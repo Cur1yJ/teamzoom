@@ -6,6 +6,10 @@ class Ability
   
    def adminable
       can :manage, Team
+     #can :manage, Sport
+      can [:manage,:administration], Sport 
+      can [:manage,:administration], Conference 
+      can [:manage,:administration], State
       can [:manage,:administration], User
    end
  

@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
-  respond_to :js, :html, :json
+ 
+ load_and_authorize_resource 
+ respond_to :js, :html, :json
   #-----------------------------------FILTER-----------------------------------
   # TODO
   #----------------------------------------------------------------------------
