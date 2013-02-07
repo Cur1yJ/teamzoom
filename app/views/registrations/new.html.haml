@@ -26,6 +26,6 @@
       .form-inputs
         = render "#{resource.current}_step", :f => f
       .team-input
-        = render "team_reference", :f => f
+        = render "shared/registrations/team_reference", :f => f
       .submit-button.clear
         = f.button :submit, "Next", :class => "btn btn-primary btn-sg btn-register"
