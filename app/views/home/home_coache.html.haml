@@ -20,7 +20,9 @@
 
 				.modal-footer
 					= submit_tag "request", :class => "btn btn-success"#, "data-dismiss" => "modal"
+					= link_to "close", "#", :class => "btn btn-success", "data-dismiss" => "modal"
 		.sticky-banner{:style => "position:relative;"}
+		                        
 			%h3 Coaches and Administrators
 			%span{:style => "position:absolute;top: 10px;right: 5px;"}
 				= link_to "Request an installation", "#myModal", :class => "btn btn-danger modal-gen", "data-toggle" => "modal"
