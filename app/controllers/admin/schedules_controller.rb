@@ -1,9 +1,17 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
+######################################################################
+
 class Admin::SchedulesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :team
   # Load data for select
   def load_subteams
-    subteams = Team.find(params[:team]).teamsports.where(:sport_id => params[:sport_id]).collect{|t_sport| t_sport.subteams}
+    subteams = Team.find(params[:team].to_s).teamsports.where(:sport_id => params[:sport_id]).collect{|t_sport| t_sport.subteams}
     results = []
     subteams.each {|sub|
       unless sub.empty?
@@ -14,12 +22,12 @@ class Admin::SchedulesController < ApplicationController
   end
 
   def load_teams
-    teams = Sport.find(params[:sport]).teamsports.collect {|sport| sport.team}
+    teams = Sport.find(params[:sport].to_s).teamsports.collect {|sport| sport.team}
     @teams = teams.uniq
     render :json => @teams.to_json
   end
   def load_venues
-    team = Team.find_by_id(params[:team_id])
+    team = Team.find_by_id(params[:team_id].to_s)
     venues = team.venues
     render :json => venues.to_json
   end
@@ -33,12 +41,12 @@ class Admin::SchedulesController < ApplicationController
 
   # GET /schedules/1/edit
   def edit
-    @schedule = Schedule.find(params[:id])
+    @schedule = Schedule.find(params[:id].to_s)
   end
 
   # Load team for sport
   def load_teams_for_sport
-    sport = Sport.find(params[:sport_id])
+    sport = Sport.find(params[:sport_id].to_s)
     teams = sport.teamsports.map {|sport| sport.team}
     subteams = Subteam.joins(:teamsport).order("name ASC").where("teamsport_id IN (?)", Teamsport.where(:sport_id => sport.id))
     render :json => [subteams, teams]

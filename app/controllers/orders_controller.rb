@@ -1,3 +1,11 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
+######################################################################
+
 class OrdersController < ApplicationController
 
   def new
@@ -7,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:id].to_s)
   end
 
 
@@ -45,7 +53,7 @@ class OrdersController < ApplicationController
     @is_purchase = false
 
     @order = current_user.orders.build(params[:order])
-    schedule = Schedule.find(params[:schedule_id])
+    schedule = Schedule.find(params[:schedule_id].to_s)
     unless current_user.team.nil?
       if [schedule.subteam_home.teamsport.team.id, schedule.subteam_opponent.teamsport.team.id ].include?(current_user.team.id)
         @order.school_id = current_user.team.school.id

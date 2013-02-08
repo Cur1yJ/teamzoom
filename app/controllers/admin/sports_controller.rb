@@ -1,6 +1,12 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
+######################################################################
+
 class Admin::SportsController < ApplicationController
-  
-  load_and_authorize_resource 
   before_filter :authenticate_user!
   layout "admin"
   
@@ -9,7 +15,7 @@ class Admin::SportsController < ApplicationController
   end
 
   def show
-    @sport = Sport.find(params[:id])
+    @sport = Sport.find(params[:id].to_s)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +34,7 @@ class Admin::SportsController < ApplicationController
   end
 
   def edit
-    @sport = Sport.find(params[:id])
+    @sport = Sport.find(params[:id].to_s)
     respond_to do |format|
       format.html
       format.js
@@ -36,7 +42,7 @@ class Admin::SportsController < ApplicationController
   end
 
   def create
-    @sport = Sport.find_by_name(params[:sport][:name])
+    @sport = Sport.find_by_name(params[:sport][:name].to_s)
 	  if @sport
 	    @sport.active = true 
 	  else 
@@ -57,7 +63,7 @@ class Admin::SportsController < ApplicationController
   end
 
   def update
-    @sport = Sport.find(params[:id])
+    @sport = Sport.find(params[:id].to_s)
 
     respond_to do |format|
       if @sport.update_attributes(params[:sport])
@@ -73,7 +79,7 @@ class Admin::SportsController < ApplicationController
   end
 
   def change_status 
-    @sport = Sport.find(params[:id])
+    @sport = Sport.find(params[:id].to_s)
     @sport.update_attribute(:active, false)
   end
 end

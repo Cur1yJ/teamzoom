@@ -1,6 +1,12 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
+######################################################################
+
 class Admin::StatesController < ApplicationController
-  
-  load_and_authorize_resource
   before_filter :authenticate_user!
   respond_to :js, :html
   layout "admin"
@@ -13,16 +19,16 @@ class Admin::StatesController < ApplicationController
   end
   
   def edit 
-    @state = State.find(params[:id])
+    @state = State.find(params[:id].to_s)
   end 
   
   def update 
-    @state = State.find(params[:id])
+    @state = State.find(params[:id].to_s)
     @state.update_attributes(params[:state])
   end 
   
   def create
-    @state = State.find_by_name(params[:state][:name])
+    @state = State.find_by_name(params[:state][:name].to_s)
     if @state 
       @state.active = true 
     else
@@ -38,7 +44,7 @@ class Admin::StatesController < ApplicationController
   end
   
   def change_status
-    @state = State.find(params[:id])
+    @state = State.find(params[:id].to_s)
     conferences = @state.conferences 
     other = State.find_or_create_by_name("Other")
     other.update_attribute(:active, true)

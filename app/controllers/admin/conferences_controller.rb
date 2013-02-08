@@ -1,6 +1,12 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
+######################################################################
+
 class Admin::ConferencesController < ApplicationController
-  
-  load_and_authorize_resource 
   before_filter :authenticate_user!
   layout "admin"
   
@@ -16,7 +22,7 @@ class Admin::ConferencesController < ApplicationController
 	end
 
 	def create
-	  @conference = Conference.find_by_name(params[:conference][:name])
+	  @conference = Conference.find_by_name(params[:conference][:name].to_s)
 	  if @conference
 	    @conference.active = true 
 	  else 
@@ -32,14 +38,14 @@ class Admin::ConferencesController < ApplicationController
 	end
 
 	def edit
-		@conference = Conference.find params[:id]
+		@conference = Conference.find params[:id].to_s
 		respond_to do |format|
 			format.js
 		end
 	end
 
   def update
-    @conference = Conference.find params[:id]
+    @conference = Conference.find params[:id].to_s
     respond_to do |format|
       if @conference.update_attributes(params[:conference])
         format.js
@@ -50,7 +56,7 @@ class Admin::ConferencesController < ApplicationController
   end
 
   def change_status 
-    @conference = Conference.find(params[:id])
+    @conference = Conference.find(params[:id].to_s)
     schools = @conference.schools
     other_state = State.find_or_create_by_name("Other")
     other_conf = Conference.find_by_name("Other")

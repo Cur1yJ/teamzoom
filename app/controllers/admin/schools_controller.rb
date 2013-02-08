@@ -1,3 +1,11 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
+######################################################################
+
 class Admin::SchoolsController < ApplicationController
   #-----------------------------------FILTER-----------------------------------
   # TODO
@@ -42,7 +50,7 @@ class Admin::SchoolsController < ApplicationController
     end
 
     def get_team
-      @team  = Team.find(params[:team_id])
+      @team  = Team.find(params[:team_id].to_s)
     end
 
     def checkblank?

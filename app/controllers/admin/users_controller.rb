@@ -1,7 +1,13 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
+######################################################################
+
 class Admin::UsersController < ApplicationController
- 
- load_and_authorize_resource 
- respond_to :js, :html, :json
+  respond_to :js, :html, :json
   #-----------------------------------FILTER-----------------------------------
   # TODO
   #----------------------------------------------------------------------------
@@ -44,10 +50,10 @@ class Admin::UsersController < ApplicationController
   #--------------------------------------------------------------------------
 
   def update_by_email
-    user = User.find_by_email(params[:email])
+    user = User.find_by_email(params[:email].to_s)
     flash[:notice] = fail_message
     if user
-      if !user.teamsmanage.include?(Team.find(params[:team_id])) && user.role != User.administrator_role
+      if !user.teamsmanage.include?(Team.find(params[:team_id].to_s)) && user.role != User.administrator_role
         #if user.update_attributes(:role => User.manager_role)
         if TeamManagement.new(:user_id =>user.id, :team_id =>@team.id).save
           flash[:notice] = success_message
@@ -65,16 +71,16 @@ class Admin::UsersController < ApplicationController
   #----------------------------------------------------------------------------
   def delete_by_email
     puts params["email"], params["team"]
-    manager = User.find_by_email(params["email"])
-    manager.team_managements.find_by_team_id(params["team"]).destroy()
+    manager = User.find_by_email(params["email"].to_s)
+    manager.team_managements.find_by_team_id(params["team"].to_s).destroy()
   end
   #----------------------------------------------------------------------------
   def change_manager_by_email
-    new_manager = User.find_by_email(params["new_email"])
-    team = Team.find(params["team"])
+    new_manager = User.find_by_email(params["new_email"].to_s)
+    team = Team.find(params["team"].to_s)
     if new_manager
       if not_admin?(new_manager) && !team.managers.include?(new_manager)
-          if User.find_by_email(params["old_email"]).team_managements.find_by_team_id(params["team"]).destroy() &&
+          if User.find_by_email(params["old_email"].to_s).team_managements.find_by_team_id(params["team"].to_s).destroy() &&
             TeamManagement.create(:user_id => new_manager.id, :team_id => team.id)
             render :json => {:result => true}
           return
@@ -86,7 +92,7 @@ class Admin::UsersController < ApplicationController
 
   def change_status
     begin
-      user = User.find(params[:id])
+      user = User.find(params[:id].to_s)
       user.update_attribute(:status, User::CHANGE_STATUS[params[:status]])
       @status = User::STATUS[user.status]
       render :json => {:status => user.status, :value => @status}
@@ -95,7 +101,7 @@ class Admin::UsersController < ApplicationController
   end 
   private
   def get_team
-    @team = Team.find(params[:team_id])
+    @team = Team.find(params[:team_id].to_s)
   end
   def success_message 
     "Add new Manager successfully"
@@ -110,7 +116,7 @@ class Admin::UsersController < ApplicationController
     params[:user][:email].blank? || params[:user][:password].blank?
   end
   def valid_user?
-    if !User.find_by_email(params[:user][:email]) && 
+    if !User.find_by_email(params[:user][:email].to_s) && 
         params[:user][:password] == params[:user][:password_confirm] && !blank_user?
       puts"valid user"
       true

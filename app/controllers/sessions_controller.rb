@@ -1,6 +1,14 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
+######################################################################
+
 class SessionsController < Devise::SessionsController
   def create
-    user = User.find_by_email params[:user][:email]
+    user = User.find_by_email params[:user][:email].to_s
     if user
       if user.status == false
         redirect_to  new_user_session_path, :alert => "Your account is blocking" and return
