@@ -1,3 +1,18 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: Outgoing E-Mail address 
+#              address => "smtpout.secureserver.net",
+#              port => 25,
+#              domain => 'teamzoom.com',
+#              user_name => 'admin@teamzoom.com',
+#              password => 'Rkruizer',
+#            
+######################################################################
+
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -61,17 +76,17 @@ module Teamzoom
     config.assets.version = '1.0'
     # config.assets.initialize_on_precompile = false
     config.middleware.use "Rack::GoogleAnalytics", :web_property_id => "UA-34084113-1"
-
-    config.action_mailer.default_url_options = { :host => 'teamzoom.com' }
+    
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-        :address => "smtp.gmail.com",
-        :port => 587,
+        :address => "smtpout.secureserver.net",
+        :port => 25,
         :domain => 'teamzoom.com',
-        :user_name => 'tpldev1',
-        :password => 'tpldev1@',
+        :user_name => 'admin@teamzoom.com',
+        :password => 'Rkruizer',
         :authentication => 'plain',
-        :enable_starttls_auto => true
+       :enable_starttls_auto => true
     }
+  
   end
 end

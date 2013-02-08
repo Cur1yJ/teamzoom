@@ -1,5 +1,13 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder-Michael Lungo
+# Description:Change default from to admin@teamzoom.com. 
+#            
+######################################################################
 class UserMailer < ActionMailer::Base
-  default :from => "notifications@example.com"
+  default from: "admin@teamzoom.com"
 
   def welcome_email(user)
     @name = user.name_from_email
