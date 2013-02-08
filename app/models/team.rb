@@ -1,3 +1,12 @@
+######################################################################
+# Change History
+######################################################################
+# Date-02/08/2013
+# Coder- Michael Lungo 
+# Description: Admin team logo edit 
+#			   bucket => "teamzoom" is added              
+######################################################################
+
 # == Schema Information
 #
 # Table name: teams
@@ -62,7 +71,8 @@ class Team < ActiveRecord::Base
                    :storage => :s3,
                    :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
                    :default_url => 'common/logo_null.jpg',
-                   :path => "logos/:id/:style.:extension"
+                   :path => "logos/:id/:style.:extension",
+                   :bucket => "teamzoom" 
   validates_attachment_size :logo, :less_than => 5.megabytes
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png']
   validates :mascot, :name, :presence => true
