@@ -4,6 +4,7 @@ ruby "1.9.3"
 
 gem 'rails', '3.2.11'
 #gem 'sqlite3'
+gem "heroku", "~> 2.35.0"
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'nested_form'
