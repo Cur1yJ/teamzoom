@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'sqlite3'
+#gem 'sqlite3'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'nested_form'
@@ -15,6 +15,7 @@ gem 'hpricot'
 gem 'ruby_parser'
 gem 'faker'
 gem 'pg' # for postgresql
+gem 'thin'
 gem 'cancan'
 gem 'activemerchant'
 gem "better_states_select"
@@ -25,7 +26,7 @@ gem 'event-calendar', :require => 'event_calendar'
 gem "watu_table_builder", :require => "table_builder"
 gem "paperclip"
 gem "aws-sdk"
-#gem "rmagick"
+gem "rmagick"
 gem "remotipart"
 gem 'validates_timeliness'
 
@@ -48,8 +49,8 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-ui-rails'
 
-group :development do
-  gem 'sqlite3'
+#group :development do
+  #gem 'sqlite3'
   gem "rspec-rails"#, ">= 2.8.1"
   gem 'rails-erd'
   gem 'faker'
@@ -59,7 +60,7 @@ group :development do
   gem "guard-coffeescript"
   gem "guard-rails"
   gem 'guard-annotate'
-end
+#end
 
 gem 'lazy_high_charts'#, '~> 1.1.5'
 group :test do
@@ -78,6 +79,16 @@ gem "google_visualr"#, ">= 2.1"
 # gem 'jbuilder'
 
 # Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+gem 'capistrano'
+gem 'rvm-capistrano'
+
+# To use debugger
+# gem 'debugger'
+
+ #as the app server
 # gem 'unicorn'
 
 # Deploy with Capistrano
