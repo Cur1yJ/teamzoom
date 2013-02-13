@@ -71,6 +71,9 @@ module Teamzoom
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    
+    # heroku mailer default
+    config.action_mailer.default_url_options = { :host => 'teamzoom-stg.herokuapp.com' }
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
