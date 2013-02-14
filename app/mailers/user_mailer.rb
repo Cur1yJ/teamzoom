@@ -19,7 +19,7 @@ class UserMailer < ActionMailer::Base
   def request_installation(user)
     @user = user
     mail(
-      to: "ryan.kruizenga@gmail.com",
+	  to: "mike@michaellungo.com",
       subject: "request for installation",
       from: @user,
       date: Time.now,

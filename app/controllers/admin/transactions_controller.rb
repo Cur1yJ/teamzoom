@@ -296,7 +296,7 @@ class Admin::TransactionsController < ApplicationController
     # More information about query look for http://ga-dev-tools.appspot.com/explorer/
     #   and gem rack-google_analytics
     # ---------------------------------------------------------------------------------
-    Garb::Session.login("tpldev.teamzoom@gmail.com","teamzoom1234")
+    Garb::Session.login("tztest2013@gmail.com","Ryantz23!")
     @profile = Garb::Management::Profile.all.detect {|p| p.web_property_id == 'UA-34084113-1'}
     puts 11111111111111111111, @profile.inspect
   end
