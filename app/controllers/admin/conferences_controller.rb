@@ -1,10 +1,3 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/08/2013
-# Coder- Michael Lungo 
-# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
-######################################################################
 
 class Admin::ConferencesController < ApplicationController
   before_filter :authenticate_user!

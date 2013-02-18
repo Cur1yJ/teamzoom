@@ -1,10 +1,3 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/08/2013
-# Coder- Michael Lungo 
-# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
-######################################################################
 
 class SchedulesController < ApplicationController
   

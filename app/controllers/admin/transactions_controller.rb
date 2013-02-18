@@ -1,11 +1,3 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/08/2013
-# Coder- Michael Lungo 
-# Description: SQL Injection-changed find(params[:id]) to  find(params[:id].to_s)              
-######################################################################
-
 class Admin::TransactionsController < ApplicationController
   before_filter :authenticate_user! # check user_signed_in?
   before_filter :team #retrieve team

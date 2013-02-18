@@ -1,18 +1,3 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/08/2013
-# Coder- Michael Lungo 
-# Description: Outgoing E-Mail address 
-#              address => "smtpout.secureserver.net",
-#              port => 25,
-#              domain => 'teamzoom.com',
-#              user_name => 'admin@teamzoom.com',
-#              password => 'Rkruizer',
-#            
-######################################################################
-
-
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'

@@ -20,5 +20,5 @@
 
         / = render "more_info", :user => current_user
   .form-actions
-    = button_tag "Submit",:type => "button", :class => 'btn btn-primary update_user'
+    = f.button :submit, "Submit", :class => "btn btn-primary update_user"
     / = link_to "Back", :back, :class => "btn btn-primary"

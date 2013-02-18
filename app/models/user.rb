@@ -250,5 +250,13 @@ class User < ActiveRecord::Base
   def is_manager?
     role == "Manager" || !self.team_managements.empty?
   end
+  
+  after_update :update_info
+
+
+  def update_info 
+    UserMailer.update_info(self).deliver
+  end
+  
 end
 

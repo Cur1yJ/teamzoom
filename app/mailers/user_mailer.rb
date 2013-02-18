@@ -1,18 +1,17 @@
-######################################################################
-# Change History
-######################################################################
-# Date-02/08/2013
-# Coder-Michael Lungo
-# Description:Change default from to admin@teamzoom.com. 
-#            
-######################################################################
+
 class UserMailer < ActionMailer::Base
   default from: "admin@teamzoom.com"
 
   def welcome_email(user)
     @name = user.name_from_email
     @url = url_for :controller=>'sessions', :action=>'new'
-    mail(:to => user.email, :subject => "Welcome to TeamZoom Site")
+    mail(:to => user.email, :subject => "Welcome to TeamZoom!")
+  end
+  
+   def update_info(user)
+    @name = user.name_from_email
+    @url = url_for :controller=>'registrations', :action=>'edit'
+    mail(:to => user.email, :subject => "You have updated your profile successfully!")
   end
 
 
