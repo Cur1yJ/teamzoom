@@ -1,0 +1,34 @@
+!!!
+%html
+	%head
+		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+	%body
+		%h1
+		%p
+			Request installation information:
+		%p
+			Name: 
+			= @admin.name + "," 
+		%p			
+			Requested School: 
+			= @admin.school + ","
+		%p
+			State: 
+			= @admin.state + "," 
+		%p			
+			Zip Code: 
+			= @admin.zip_code + ","
+		%p			
+			Phone: 
+			= "#{@admin.phone}" + ","
+		%p			
+			City: 
+			= @admin.city + ","
+		%p			
+			Address: 
+			= @admin.address + ","
+		%p			
+			How did you learn about it?: 
+			= @admin.learnabout + ","
+		
+		

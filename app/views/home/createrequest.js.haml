@@ -1,0 +1,8 @@
+- if @home.errors.any?
+  - errors = "";
+  - @home.errors.full_messages.each do |error|
+    - errors = errors+"<li>#{error}</li>"
+  $(".home_errors_at_create").html("<div class = 'alert alert-error'><ul>#{raw(errors)}</ul></div>");
+- else
+  $("#home_new").modal('hide');
+  location.reload();

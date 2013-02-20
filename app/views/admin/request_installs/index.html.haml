@@ -1,0 +1,34 @@
+.border_request_installs{:style=>"margin-top: 10px;"}
+%table.table.table-hover.table-bordered
+  %caption 
+  %thead
+    %tr.bg
+      %th Name
+      %th Email
+      %th School 
+      %th State
+      %th Zip Code
+      %th Phone
+      %th City 
+      %th Address 
+      %th How did you learn about us?
+      %th Created at
+  %tbody
+    - @requests.each_with_index do |request, i|
+      %tr{:class=>"bg-#{i%2}"}
+        %td= request.name
+        %td= request.email
+        %td= request.school
+        %td= request.state
+        %td= request.zip_code
+        %td= request.phone
+        %td= request.city
+        %td= request.address
+        %td= request.learnabout
+        %td= request.created_at.strftime("%b %d, %Y %l:%M %p")
+  .pull-left= will_paginate @requests
+ 
+
+
+
+

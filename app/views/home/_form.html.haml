@@ -1,0 +1,61 @@
+.modal#sport_popup.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} X
+    %h3#requetLabel Request an installation
+  .modal-body
+    = simple_form_for(@home,:url => {:controller=>'home',:action=>'createrequest'},:method => method, :remote => decide,:html => {:class => "form-horizontal"}) do |f|
+      = f.error_notification
+      .home_errors_at_create
+      .home_errors_at_update
+      %fieldset
+      .control-group
+      = label_tag "*Name", nil, :class => "control-label"
+      .controls
+      = text_field :home, :name, :required => true, :placeholder => "Enter Name",:autofocus => true, :class => "span2"
+
+      .control-group
+      = label_tag "*Email", nil, :class => "control-label"
+      .controls
+      = text_field :home, :email, :class => "span2", :required => true, :placeholder => "Enter Email",:autofocus => true
+
+      .control-group
+      = label_tag "*School", nil, :class => "control-label"
+      .controls
+      = text_field :home, :school, :class => "span2", :required => true, :placeholder => "Enter School",:autofocus => true
+
+      .control-group
+      = label_tag "*State", nil, :class => "control-label"
+      .controls
+      = text_field :home, :state,  :class => "span2", :required => true, :placeholder => "Enter State",:autofocus => true
+
+      .control-group
+      = label_tag "*Zip Code", nil, :class => "control-label"
+      .controls
+      = text_field :home, :zip_code, :class => "span2", :required => true, :placeholder => "Enter Zip code",:autofocus => true
+
+      .control-group
+      = label_tag "Phone", nil, :class => "control-label"
+      .controls
+      = text_field :home, :phone, :class => "span2", :placeholder => "Enter Phone number"
+
+      .control-group
+      = label_tag "City", nil, :class => "control-label"
+      .controls
+      = text_field :home, :city,  :class => "span2", :placeholder => "Enter City"
+
+      .control-group
+      = label_tag "Address", nil, :class => "control-label"
+      .controls
+      = text_field :home, :address, :class => "span2", :placeholder => "Enter Address"
+
+      .control-group
+      = label_tag "How did you learn about us?", nil, :class => "control-label"
+      .controls
+      = text_field :home, :learnabout, :class => "span2", :placeholder => "Enter Address"
+      %br/
+      %br/
+      %br/
+      .modal-footer
+        = f.button :submit, :Request,:class => "btn btn-primary"
+        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal",:class => "btn btn-primary"} Close
+        
