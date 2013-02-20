@@ -10,7 +10,7 @@ class RequestInstall < ActiveRecord::Base
   
   regex = /^[a-zA-Z]/
   validates :name,:format => {  :with => regex  ,:message=>"-Please enter string only"}
-  validates_format_of :email,:presence => true,:with  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,:message=>"-Please enter correct email"  
+  validates_format_of :email,:presence => true,:with=>  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,:message=>"-Please enter correct email"  
   
   validates_format_of :zip_code, :presence => true,:with => %r{\d{5}(-\d{4})?},:message => "should be 12345 or 12345-1234"
 
