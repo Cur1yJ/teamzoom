@@ -32,6 +32,7 @@ gem "aws-sdk"
 gem "rmagick"
 gem "remotipart"
 gem 'validates_timeliness'
+gem 'newrelic_rpm'
 
 gem 'client_side_validations'
 
