@@ -11,6 +11,7 @@ class Ability
       can [:manage,:administration], Conference 
       can [:manage,:administration], State
       can [:manage,:administration], User
+      can [:manage,:administration], RequestInstall
    end
  
    def managerable(user)

@@ -5,27 +5,13 @@
 			.modal-header
 				Requesting an installation
 				= link_to "X", "#", :class => "close", "data-dismiss" => "modal"
-			= form_tag request_installation_path,{:method => :post,:remote => true, :style => "margin-bottom:0;", :class => "form-horizontal"} do
-				.modal-body
-					#sent_message
-					%fieldset
-						.control-group
-							= label_tag "Name", nil, :class => "control-label"
-							.controls
-								= text_field_tag "name", nil, :class => "span2"
-						.control-group
-							= label_tag "Email", nil, :class => "control-label"
-							.controls
-								= email_field_tag "email", nil, :class => "span2"
-
-				.modal-footer
-					= submit_tag "request", :class => "btn btn-success"#, "data-dismiss" => "modal"
-					= link_to "close", "#", :class => "btn btn-success", "data-dismiss" => "modal"
-		.sticky-banner{:style => "position:relative;"}
-		                        
+				= link_to "close", "#", :class => "btn btn-success", "data-dismiss" => "modal"
+		.sticky-banner{:style => "position:relative;"}                        
 			%h3 Coaches and Administrators
 			%span{:style => "position:absolute;top: 10px;right: 5px;"}
-				= link_to "Request an installation", "#myModal", :class => "btn btn-danger modal-gen", "data-toggle" => "modal"
+				= link_to "Request an installation",{:controller=>'home',:action=>'newrequest'} , :class => "btn btn-danger modal-gen",:remote => true
+				#sport_wrapper
+
 			%p
 				Learn more about the TeamZoom fundraising program.
 .row#home_coache

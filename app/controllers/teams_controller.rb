@@ -134,7 +134,7 @@ class TeamsController < ApplicationController
 
   def find_team
     @states = State.active
-    @conferences = []
+    @conferences = Conference.all
     @schools = []
     @request = Request.new
   end

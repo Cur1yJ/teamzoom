@@ -25,13 +25,14 @@ class HomeController < ApplicationController
   def find_team
   end
 
-	def home_coache
+  def home_coache
+            
   end
 
-	def home_parent
+  def home_parent
   end
 
-	def popup_demo
+  def popup_demo
   end
 
   def pricing_signup
@@ -39,11 +40,35 @@ class HomeController < ApplicationController
 
   def team_page
   end
-  
-  def request_installation
-    UserMailer.request_installation(params[:email]).deliver
+   
+  def newrequest
+    @home = RequestInstall.new
     respond_to do |format|
+      format.html # new.html.erb
+     # format.json { render json: @request }
       format.js
     end
   end
+  
+  def createrequest
+    @home = RequestInstall.new(params[:home])
+    respond_to do |format|
+      if @home.save
+         #UserMailer.request_installation(params[:email]).deliver  
+         UserMailer.request_installation_to_admin(@home).deliver
+         UserMailer.request_installation_to_user(@home).deliver
+        format.html { redirect_to @home, notice: 'request was successfully created.' }
+        #format.json { render json: @home, status: :created, location: @home }
+        format.js
+      else
+         format.html { render action: "new" }
+        #format.json { render json: @home.errors, status: :unprocessable_entity }
+        format.js
+      end
+    end
+  end
+
+
+  
 end
+

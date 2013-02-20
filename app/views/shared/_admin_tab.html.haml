@@ -13,5 +13,8 @@
             = link_to "Sport Management", admin_sports_path(:edit_mode=>"active")
           %li{:class => "#{(params[:action] == 'index' && params[:controller] != "admin/users") ? '' : 'active'}"}
             = link_to "User Management", admin_users_path(:edit_mode=>"active")
+          %li{:class => "#{(params[:action] == 'index' && params[:controller] != "admin/request_installs") ? '' : 'active'}"}
+            = link_to "Installation Requests", admin_request_installs_path(:edit_mode=>"active")
+	  
 
 
