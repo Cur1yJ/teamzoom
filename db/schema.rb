@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104084231) do
+ActiveRecord::Schema.define(:version => 20130220133833) do
 
   create_table "archives", :force => true do |t|
     t.integer  "bucket_id"
@@ -113,6 +113,20 @@ ActiveRecord::Schema.define(:version => 20130104084231) do
     t.datetime "last_modified"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "request_installs", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "school"
+    t.string   "state"
+    t.string   "zip_code"
+    t.integer  "phone"
+    t.string   "city"
+    t.string   "address"
+    t.string   "learnabout"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "requests", :force => true do |t|
