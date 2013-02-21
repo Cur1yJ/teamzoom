@@ -1,3 +1,6 @@
+$("#sub").click ->
+  alert "Please enter school & resubmit"  if $("#school_req").val() is ""
+
 $("#button_request").click (e) ->
   $(".find-team .error.length").addClass "none"
   unless $(".validator").val()
@@ -69,11 +72,15 @@ window.teamObject =
   validateInput: ->
     $(".valid_number").filter_input
       regex: "[0-9\r\n]"
-      bind: true
+      on: true
 
 
   validateExpiredDateCard: ->
-    $("#order_card_expires_on_2i").bind "change", ->
+    $("#order_card_expires_on_2i").on "change", ->
+      choose_date = undefined
+      month = undefined
+      today = undefined
+      year = undefined
       choose_date = undefined
       month = undefined
       today = undefined
@@ -90,12 +97,14 @@ window.teamObject =
 
 
   limitInput: ->
-    $("#order_zip_code, #order_card_verification").bind "keypress", (event) ->
+    $("#order_zip_code, #order_card_verification").on "keypress", (event) ->
+      key = undefined
       key = undefined
       key = ((if event.charCode then event.charCode else ((if event.keyCode then event.keyCode else 0))))
       if $(this).attr("id") is "order_zip_code"
-        event.preventDefault()  unless key is 8 or key is 9 or key is 35 or key is 36 or key is 37 or key is 39 or key is 46  if $(this).val().length > 4
-      else event.preventDefault()  unless key is 8 or key is 9 or key is 35 or key is 36 or key is 37 or key is 39 or key is 46  if $(this).val().length > 3  if $(this).attr("id") is "order_card_verification"
+        event.preventDefault()  unless (if $(this).val().length > 4 then key is 8 or key is 9 or key is 35 or key is 36 or key is 37 or key is 39 or key is 46 else undefined)
+      else
+        event.preventDefault()  unless (if ((if $(this).attr("id") is "order_card_verification" then $(this).val().length > 3 else undefined)) then key is 8 or key is 9 or key is 35 or key is 36 or key is 37 or key is 39 or key is 46 else undefined)
 
 
   clickClose: ->
@@ -123,13 +132,15 @@ window.teamObject =
       @teamSection.find(".error.school").html "Please choose school"
 
   clickSchool: ->
-    $("#school_id").bind "change", (e) ->
+    $("#school_id").on "change", (e) ->
       $(".find-team .error.school").addClass "none"
 
 
   clickOnGoButton: ->
+    _this = undefined
     _this = this
     $("#show_list").click (e) ->
+      form = undefined
       form = undefined
       if (_this.checkSelectedValues()) is true
         $(".find-team .list-teams .loading").removeClass "none"
@@ -153,7 +164,7 @@ window.teamObject =
 
 
   clickConference: ->
-    $("#conference_id").bind "change", (e) ->
+    $("#conference_id").on "change", (e) ->
       $(".find-team .error.conference").addClass "none"
       $.ajax
         type: "GET"
@@ -207,6 +218,13 @@ window.teamObject =
     edit_user_sch_val = undefined
     schools = undefined
     states = undefined
+    conferences = undefined
+    edit_user_con_text = undefined
+    edit_user_con_val = undefined
+    edit_user_sch_text = undefined
+    edit_user_sch_val = undefined
+    schools = undefined
+    states = undefined
     states = $("#state_id_regist").html()
     conferences = $("#conference_id_regist").html()
     schools = $("#school_id_regist").html()
@@ -222,7 +240,9 @@ window.teamObject =
     else
       $("#edit_user #conference_id_regist").html "<option val = '" + edit_user_con_val + "'>" + edit_user_con_text + "</option>"
       $("#edit_user #school_id_regist").html "<option val = '" + edit_user_sch_val + "'>" + edit_user_sch_text + "</option>"
-    $("#state_id_regist").bind "change", ->
+    $("#state_id_regist").on "change", ->
+      filtered_conferences = undefined
+      selected_state = undefined
       filtered_conferences = undefined
       selected_state = undefined
       selected_state = $("#state_id_regist :selected").text()
@@ -230,7 +250,9 @@ window.teamObject =
       filtered_conferences = $(conferences).filter("optgroup[label='" + selected_state + "']").html()
       if filtered_conferences
         $("#conference_id_regist").html "<option val = ''>Choose Conference</option>" + filtered_conferences
-        $("#conference_id_regist").bind "change", ->
+        $("#conference_id_regist").on "change", ->
+          filtered_schools = undefined
+          selected_conference = undefined
           filtered_schools = undefined
           selected_conference = undefined
           $("#user_team_id").removeAttr "value"
@@ -247,7 +269,8 @@ window.teamObject =
 
 
   clickOnSchoolRegisterButton: ->
-    $("#school_id_regist").bind "change", ->
+    $("#school_id_regist").on "change", ->
+      current_school_id = undefined
       current_school_id = undefined
       current_school_id = $(this).val()
       if current_school_id and current_school_id isnt "Choose School"
@@ -274,7 +297,8 @@ window.teamObject =
 
 
   clickOnNotListedCheckbox: ->
-    $("#not_school_list").bind "click", ->
+    $("#not_school_list").on "click", ->
+      not_list = undefined
       not_list = undefined
       not_list = $("#not_school_list")
       if not_list.is(":checked")
@@ -284,7 +308,7 @@ window.teamObject =
 
 
   clickCheck: ->
-    $("#teamsport_sport_id").bind "change", ->
+    $("#teamsport_sport_id").on "change", ->
       $.post "/find_or_initial_teamsport",
         teamsport_id: $(this).val()
         team_id: $("#teamsport_team_id").val()

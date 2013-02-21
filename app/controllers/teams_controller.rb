@@ -132,11 +132,26 @@ class TeamsController < ApplicationController
     end
   end
 
-  def find_team
+ def find_team
+    @school_request = SchoolRequest.new
     @states = State.active
     @conferences = Conference.all
     @schools = []
     @request = Request.new
+ 
+  end
+
+  def createrequest
+    @states = State.active
+    @conferences = Conference.all
+    @schools = []
+    @school_request = SchoolRequest.new(params[:school_request])
+      if @school_request.save      
+         UserMailer.schooladdrequest(@school_request).deliver
+         redirect_to :action=>'find_team'
+      else
+          render("find_team")
+      end
   end
 
   def search

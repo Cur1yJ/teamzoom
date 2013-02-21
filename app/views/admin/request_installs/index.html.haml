@@ -3,8 +3,8 @@
   %caption 
   %thead
     %tr.bg
-      %th Name
-      %th Email
+      %th State
+      %th School
       %th School 
       %th State
       %th Zip Code
@@ -26,7 +26,8 @@
         %td= request.address
         %td= request.learnabout
         %td= request.created_at.strftime("%b %d, %Y %l:%M %p")
-  .pull-left= will_paginate @requests
+
+.pull-left= will_paginate @requests
  
 
 

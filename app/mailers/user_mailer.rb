@@ -36,6 +36,20 @@ class UserMailer < ActionMailer::Base
       content_type: "text/html"
     )
   end
+  
+  def schooladdrequest(user)
+   
+   @school = user
+   mail(
+      
+      to: "admin@teamzoom.com",
+      subject: "Proposal to add new school",
+      from: "proposedinstall@teamzoom.com",
+      date: Time.now,
+      content_type: "text/html"
+    )
+  end
+
 
 
 end

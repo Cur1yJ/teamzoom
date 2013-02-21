@@ -90,6 +90,11 @@ Teamzoom::Application.routes.draw do
         get :index
       end
     end
+    resources :school_requests do
+      member do
+        get :index
+      end
+    end
     resources :teams do
       collection do
         get :search

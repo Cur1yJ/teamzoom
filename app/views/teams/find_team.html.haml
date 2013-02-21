@@ -1,39 +1,28 @@
-
 .page-contents.find-team
   %center
     #myModal1.modal.hide.fade.span4{:style => "left:37%;"}
       .modal-header
-        = link_to "X", "#", :class => "close", "data-dismiss" => "modal"
-        = "Please enter school"
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} X
+        %h4#requetLabel Please enter school
+        /= "Please enter school"
       .modal-body
-        %table
-          %tr
-            %td{:align => "right"}
-              = label_tag :state , "State "
-            %td
-            %td{:style => "width:230;"}
-              = select_tag "state", options_for_select(State::US_STATES)
-          %tr
-            %td{:align => "right"}
-              = label_tag :team ,"School "
-            %td
-            %td{:style => "width:230"}
-              = text_field_tag :team, nil,{:class => "validator"}
-          %tr
-            %td{:colspan =>"3" ,:style => "border-bottom:solid 1px #E8E7E6;padding:-5px"}
-          %tr
-            %td{:style => "height:5px"}
-          %tr
-            %td
-            %td
-            %td.error.length.schools.none{:style =>"color:red"}
-          %tr
-            %td{:colspan => "3",:align =>"right"}
-              %button#button_request.btn.btn-primary Submit
+        = simple_form_for(@school_request,:url => {:controller=>'teams',:action=>'createrequest'}) do |f|
+          .sport_errors_at_create
+          .sport_errors_at_update
+          = ' *State  '
+          = f.select "state", options_for_select(State::US_STATES)
+          %br/
+          = "*School"
+          = text_field :school_request, :school,:id=>"school_req",:required => true,:autofocus => true, :placeholder => "Enter School"
+          %br/
+          %br/
+          .modal-footer
+            = f.button :submit, :Submit,:id=>"sub",:class => "btn btn-primary"
+            %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal",:class => "btn btn-primary"} Close  
   .box-borders
     .row
       .span6#form_fix_width
-        = form_tag search_teams_path, :method => :get do
+        = form_for search_teams_path, :method => :get do
           .span6{:style => "margin-top: 0.5em"}
             %table
               %tr

@@ -12,6 +12,7 @@ class Ability
       can [:manage,:administration], State
       can [:manage,:administration], User
       can [:manage,:administration], RequestInstall
+      can [:manage,:administration], SchoolRequest
    end
  
    def managerable(user)

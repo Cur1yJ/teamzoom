@@ -1,0 +1,22 @@
+.ajax-loading.hidden= image_tag('common/loading.gif')
+.border_request_installs{:style=>"margin-top: 10px;"}
+%table.table.table-hover.table-bordered
+  %caption 
+  %thead
+    %tr.bg
+      %th State
+      %th School
+      %th Created at
+  %tbody
+    - @school_requests.each_with_index do |request, i|
+      %tr{:class=>"bg-#{i%2}"}
+        %td= request.state
+        %td= request.school
+        %td= request.created_at.strftime("%b %d, %Y %l:%M %p")
+
+.pull-left= will_paginate @school_requests
+ 
+
+
+
+
