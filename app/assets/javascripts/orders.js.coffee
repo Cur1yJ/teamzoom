@@ -1,4 +1,3 @@
-
 CARDNUM_VALIDATOR = undefined
 CVV = undefined
 CARDNUM_VALIDATOR = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/
@@ -70,7 +69,7 @@ $("#choose_option").click ->
   option_value = $("#choose input[type=radio]:checked").val()
   if option_value is "monthly"
     $("#choose_popup").modal "hide"
-  else window.location.href = "term_and_service"  if option_value is "individual"
+  else window.location.href = "/teams/find_team"  if option_value is "individual"
 
 $("#order_card_number").change ->
   card_type = undefined
