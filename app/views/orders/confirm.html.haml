@@ -1,8 +1,6 @@
-
-
 %h1{:style => "text-align: center;margin: 1em 0;"} Create an account to get started with TeamZoom.
 .row
-  .span8.offset2.form-wrapper{:style=>"height: 400px"}
+  .span8.offset2.form-wrapper{:style => "height: 400px"}
     .progress-indicator
       .round-wrapper{:style => "width: 85%; overflow: auto; margin: auto;"}
         .round 1
@@ -13,14 +11,9 @@
         .line
         .round.active 4
       .text-wrapper{:style => "width: 100%; overflow: auto; margin: auto;"}
-        .row
-          .span-step{:style => "text-align: center;"} Create an account
-          .span-step{:style => "text-align: center;"} Billing Details
-          .span-step{:style => "text-align: center;"} Terms of Use
-          .span-step{:style => "text-align: center;"} Confirmation
+        = render(:partial => 'shared/row')
     %div
-      %div{:style=>"text-align:center"}
+      %div{:style => "text-align:center"}
         %h2 Congratulations!  You have joined TeamZoom.
-
-        %div.next-confirm= link_to "Ok", root_path,:class => "btn btn-primary"
-
+        .next-confirm
+          = link_to('Ok', root_path,:class => "btn btn-primary")

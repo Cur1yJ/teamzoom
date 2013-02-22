@@ -14,11 +14,7 @@
         .line
         .round{:class => (resource.current == "billing_details") ? "active" : ""} 4
       .text-wrapper{:style => "width: 100%; overflow: auto; margin: auto;"}
-        .row
-          .span-step{:style => "text-align: center;"} Create an account
-          .span-step{:style => "text-align: center;"} Billing Details
-          .span-step{:style => "text-align: center;"} Terms of Use
-          .span-step{:style => "text-align: center;"} Confirmation 
+        = render(:partial => 'shared/row')
     = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "sign_up_form form-horizontal"}, :validate => true) do |f|
       #register_error.alert.hidden
         = "Please review the problems below:"

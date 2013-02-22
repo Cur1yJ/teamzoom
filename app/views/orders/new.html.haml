@@ -14,11 +14,7 @@
         .line
         .round 4
       .text-wrapper{:style => "width: 100%; overflow: auto; margin: auto;"}
-        .row
-          .span-step{:style => "text-align: center;"} Create an account
-          .span-step{:style => "text-align: center;"} Billing Details
-          .span-step{:style => "text-align: center;"} Terms of Use
-          .span-step{:style => "text-align: center;"} Confirmation
+        = render(:partial => 'shared/row')
 
     #render-payment-on-registering
       - if params[:option] || !(params[:action] == "new")

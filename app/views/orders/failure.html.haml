@@ -1,25 +1,25 @@
-%h1{:style => "text-align: center;margin: 1em 0;"} Create an account to get started with TeamZoom.
-.row
-  .span8.offset2.form-wrapper{:style=>"height: 400px"}
-    .progress-indicator
-      .round-wrapper{:style => "width: 80%; overflow: auto; margin: auto;"}
-        .round 1
-        .line
-        .round.active 2
-        .line
-        .round 3
-        .line
-        .round 4
-      .text-wrapper{:style => "width: 100%; overflow: auto; margin: auto;"}
-        .row
-          .span-step{:style => "text-align: center;"} Create an account
-          .span-step{:style => "text-align: center;"} Billing Details
-          .span-step{:style => "text-align: center;"} Terms of Use
-          .span-step{:style => "text-align: center;"} Confirmation
-
-    %div
-      %div{:style=>"width: 500px; height: 150px;text-align:left; margin: 10px auto;"}
-        %h5 Sorry. Your Billing Information is wrong. Please go back to correct it.
-
-      %center= link_to "Back", new_order_path(:option => "back"), :class => "btn btn-primary"
-
+<h1 style='text-align: center;margin: 1em 0;'>Create an account to get started with TeamZoom.</h1>
+<div class='row'>
+  <div class='span8 offset2 form-wrapper' style='height: 400px'>
+    <div class='progress-indicator'>
+      <div class='round-wrapper' style='width: 80%; overflow: auto; margin: auto;'>
+        <div class='round'>1</div>
+        <div class='line'></div>
+        <div class='round active'>2</div>
+        <div class='line'></div>
+        <div class='round'>3</div>
+        <div class='line'></div>
+        <div class='round'>4</div>
+      </div>
+      <div class='text-wrapper' style='width: 100%; overflow: auto; margin: auto;'>
+        <%= render(:partial => 'shared/row') %>
+      </div>
+    </div>
+    <div>
+      <div style='width: 500px; height: 150px;text-align:left; margin: 10px auto;'>
+        <h5>Sorry. Your Billing Information is wrong. Please go back to correct it.</h5>
+      </div>
+      <center><%= link_to('Back', new_order_path(:option => "back"), :class => "btn btn-primary" )%></center>
+    </div>
+  </div>
+</div>
