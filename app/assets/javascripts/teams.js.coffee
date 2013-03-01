@@ -265,30 +265,22 @@ jQuery ->
 
   $('#school_id').change ->
     state = $('#school_id :selected').text()
-    console.log("State: " + state)
-    options = $(conferences).filter("optgroup[label=#{state}]").html()
-    console.log("Conferences: " + conferences)
-    console.log("Options: " + options)
-    if options
-      $('#school_conference_id').html(options)
-      $('#school_conference_id').parent().show()
+    escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    conf_options = $(conferences).filter("optgroup[label=#{escaped_state}]").html()
+    if conf_options
+      $('#school_conference_id').html(conf_options).parent().show()
     else
-      $('#school_conference_id').empty()
-      $('#school_conference_id').parent().hide()
+      $('#school_conference_id').empty().parent().hide()
+      $('#school_name').empty().parent().hide()
 
   $('#school_conference_id').change ->
     conference = $('#school_conference_id :selected').text()
-    console.log("Conference: " + conference)
-    console.log("Schools: " + schools)
-    options = $(schools).filter("optgroup[label=#{conference}]").html()
-    console.log("Options2")
-    console.log(options)
-    if options
-      $('#school_name').html(options)
-      $('#school_name').parent().show()
+    escaped_conference = conference.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    school_options = $(schools).filter("optgroup[label=#{escaped_conference}]").html()
+    if school_options
+      $('#school_name').html(school_options).parent().show()
     else
-      $('#school_name').empty()
-      $('#school_name').parent().hide()
+      $('#school_name').empty().parent().hide()
 
 
 
