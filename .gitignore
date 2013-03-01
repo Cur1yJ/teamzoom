@@ -99,3 +99,5 @@ capybara-*html
 #rvm
 .rvmrc
 .rvmrc.*
+
+/Gemfile.lock
