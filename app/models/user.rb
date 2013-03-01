@@ -255,7 +255,7 @@ class User < ActiveRecord::Base
 
 
   def update_info 
-    UserMailer.update_info(self).deliver
+    #UserMailer.update_info(self).deliver
   end
   
 end

@@ -228,7 +228,7 @@ class Admin::TransactionsController < ApplicationController
     email = params[:email]
     chart_url = params[:chart_url]
     last_action = params[:last_action]
-    GoogleAnalyticsMailer.report_mail(team, email, total_raise,chart_url,last_action).deliver()
+    #GoogleAnalyticsMailer.report_mail(team, email, total_raise,chart_url,last_action).deliver()
     direct_page = "/admin/teams/"+@team.slug+"/"+last_action
 
     redirect_to direct_page

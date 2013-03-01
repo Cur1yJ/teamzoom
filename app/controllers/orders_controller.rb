@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
       if @order.save
         @response = @order.purchase_recurring
         if @response.success?
-          PaymentMailer.monthly_subscription(current_user, @order).deliver
+          #PaymentMailer.monthly_subscription(current_user, @order).deliver
           format.html { render :action => "term_and_service" }
           format.js{ render(:js => "window.location.href = '#{term_and_service_orders_path}'") if params['reload_page'] == 'true' }
         else
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         @response = @order.purchase
-        PaymentMailer.single_game(current_user, @order).deliver if @response.success?
+        #PaymentMailer.single_game(current_user, @order).deliver if @response.success?
       end
       format.js
     end

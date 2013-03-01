@@ -20,7 +20,7 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
-        UserMailer.welcome_email(resource).deliver
+        #UserMailer.welcome_email(resource).deliver
         respond_with resource, :location => after_sign_up_path_for(resource)
         flash[:notice] = "Sign up successfully"
       else

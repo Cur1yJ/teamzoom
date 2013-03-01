@@ -55,8 +55,8 @@ class HomeController < ApplicationController
     respond_to do |format|
       if @home.save
          #UserMailer.request_installation(params[:email]).deliver  
-         UserMailer.request_installation_to_admin(@home).deliver
-         UserMailer.request_installation_to_user(@home).deliver
+         #UserMailer.request_installation_to_admin(@home).deliver
+         #UserMailer.request_installation_to_user(@home).deliver
         format.html { redirect_to @home, notice: 'request was successfully created.' }
         #format.json { render json: @home, status: :created, location: @home }
         format.js
