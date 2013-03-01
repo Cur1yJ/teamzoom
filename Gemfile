@@ -28,7 +28,7 @@ gem "aws-sdk"
 gem "remotipart", "~> 1.0"
 gem 'validates_timeliness', '~> 3.0'
 
-gem 'client_side_validations', '3.2.0.beta.6', :git => 'https://github.com/bcardarella/client_side_validations.git'
+gem 'client_side_validations', '3.2.1', :git => 'https://github.com/bcardarella/client_side_validations.git'
 gem 'less-rails-bootstrap'
 gem 'therubyracer'
 gem "friendly_id", "~> 4.0.1"
