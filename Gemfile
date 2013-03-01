@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '>=3.2.11'
+gem 'rails', '>=3.2.12'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'nested_form'
@@ -53,9 +53,11 @@ group :development do
   gem "guard-coffeescript"
   gem "guard-rails"
   gem 'guard-annotate'
+  gem 'sextant' # Help me see routes in browser. Go to /rails/routes to see them
 end
 
-gem 'lazy_high_charts', '~> 1.1.5'
+# This gem breaks compilation, be sure to activate it later
+#gem 'lazy_high_charts', '~> 1.1.5'
 
 group :test do
   gem "factory_girl_rails"

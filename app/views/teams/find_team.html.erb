@@ -1,0 +1,13 @@
+<h1>Find your team</h1>
+
+<%= form_for @school do |f| %>
+  <div class="field">
+    <%= f.label "State" %><br />
+    <%= f.collection_select :id, State.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label "Conference" %><br />
+    <%= f.grouped_collection_select :conference_id, State.order(:name), :conferences, :name, :id, :name, include_blank: true %>
+  </div>
+  <div class="actions"><%= f.submit %></div>
+<% end %>

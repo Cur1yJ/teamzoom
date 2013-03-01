@@ -254,3 +254,18 @@ window.teamObject =
   #     $.post '/teams/'+$("#teamsport_team_id").val(),$(".form_for_venue").serializeArray()
   #     return
   #   return
+
+jQuery ->
+  $('#school_conference_id').parent().hide()
+  conferences = $('#school_conference_id').html()
+  console.log(conferences)
+  $('#school_id').change ->
+    state = $('#school_id :selected').text()
+    options = $(conferences).filter("optgroup[label=#{state}]").html()
+    console.log(options)
+    if options
+      $('#school_conference_id').html(options)
+      $('#school_conference_id').parent().show()
+    else
+      $('#school_conference_id').empty()
+      $('#school_conference_id').parent().hide()
