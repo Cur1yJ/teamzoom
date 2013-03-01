@@ -255,17 +255,40 @@ window.teamObject =
   #     return
   #   return
 
+# Script to create dynamic select menus
 jQuery ->
   $('#school_conference_id').parent().hide()
+  $('#school_name').parent().hide()
+  
   conferences = $('#school_conference_id').html()
-  console.log(conferences)
+  schools = $('#school_name').html()
+
   $('#school_id').change ->
     state = $('#school_id :selected').text()
+    console.log("State: " + state)
     options = $(conferences).filter("optgroup[label=#{state}]").html()
-    console.log(options)
+    console.log("Conferences: " + conferences)
+    console.log("Options: " + options)
     if options
       $('#school_conference_id').html(options)
       $('#school_conference_id').parent().show()
     else
       $('#school_conference_id').empty()
       $('#school_conference_id').parent().hide()
+
+  $('#school_conference_id').change ->
+    conference = $('#school_conference_id :selected').text()
+    console.log("Conference: " + conference)
+    console.log("Schools: " + schools)
+    options = $(schools).filter("optgroup[label=#{conference}]").html()
+    console.log("Options2")
+    console.log(options)
+    if options
+      $('#school_name').html(options)
+      $('#school_name').parent().show()
+    else
+      $('#school_name').empty()
+      $('#school_name').parent().hide()
+
+
+

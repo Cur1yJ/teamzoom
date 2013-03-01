@@ -9,5 +9,9 @@
     <%= f.label "Conference" %><br />
     <%= f.grouped_collection_select :conference_id, State.order(:name), :conferences, :name, :id, :name, include_blank: true %>
   </div>
+  <div class="field">
+    <%= f.label "School" %><br />
+    <%= f.grouped_collection_select :name, Conference.order(:name), :schools, :name, :id, :name, include_blank: true %>
+  </div>
   <div class="actions"><%= f.submit %></div>
 <% end %>

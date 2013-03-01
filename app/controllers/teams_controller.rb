@@ -135,10 +135,12 @@ class TeamsController < ApplicationController
  def find_team
     @school = School.new
     @state = State.new
-    @school_request = SchoolRequest.new
+
     @states = State.active
     @conferences = Conference.active
-    @schools = []
+    @schools = School.all
+
+    @school_request = SchoolRequest.new
     @request = Request.new
  
   end
