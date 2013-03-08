@@ -56,6 +56,7 @@ group :development do
   gem 'sextant' # Help me see routes in browser. Go to /rails/routes to see them
   gem "better_errors" # Better errors from https://github.com/charliesome/better_errors
   gem "airbrake" # For error tracking with airbrake.io
+end
 
 # This gem breaks compilation, be sure to activate it later
 #gem 'lazy_high_charts', '~> 1.1.5'
@@ -82,4 +83,4 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 # To use debugger
-# gem 'debugger'
+# gem "debugger"
