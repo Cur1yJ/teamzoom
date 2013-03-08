@@ -1,0 +1,40 @@
+.watch_video{:id => "#{s.id}_dialog", :title => "Watch Video"}
+	.modal-header
+		%h2 watch stream video
+		- if s.venue and s.venue.url
+			%h3= s.venue.venue
+			/ - stream_ip = s.venue.url.gsub(/\@[a-zA-z\.0-9\,]*/,'')
+			/ - s.venue.url.gsub!(/[\:\.\/a-zA-Z0-9]*\@/,'')
+			/ - stream_file_array = s.venue.url.split(",")
+	.modal-body{:style => "max-height: none;"}
+		- if s.venue and s.venue.url
+			- if s.event_date.to_date == Date.today_in_zone(s.us_timezone) && time_without_zone(Time.now, s.us_timezone) >= s.start_time && time_without_zone(Time.now, s.us_timezone) <= s.end_time
+				#jwaudio
+					/ %iframe{:src => s.venue.url, :width => 900, :height => 400}
+					/ - for i in stream_file_array
+					/	= jw_player(i, :image => "/stream/profile-pic.png",:width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip",:streamer => stream_ip, provider: "rtmp", allowscriptaccess: 'always', autostart: true)
+					%div{:id => "jwplayer_#{s.id}"}
+						Loading the player...
+				= javascript_tag do
+					var venue_id = '#{s.venue.id}';
+					var venue_url = '#{s.venue.url}';
+					var container = "jwplayer_#{s.id}";
+					window.streaming = new window.StreamingVideo(venue_id, venue_url, container);
+			- elsif Date.today_in_zone(s.us_timezone) > s.event_date.to_date || time_without_zone(Time.now, s.us_timezone) >= s.end_time
+				- recording = s.recording
+				- if recording.present?
+					= jw_player(recording.archive.file_name,:width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip", allowscriptaccess: 'always', autostart: true)
+				- else
+					Stream not found
+					/
+						%div{:id => "jwplayer_#{s.id}"}
+							Loading the player...
+						= jw_player("6.stream",id: "jwplayer_#{s.id}",jw_id:"jwplayer_#{s.id}",:width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip",:streamer => 'rtmp://54.243.187.20/live/', name: 'final', provider: "rtmp", allowscriptaccess: 'always', autostart: true)
+						= javascript_tag do
+							var venue_id = '#{s.venue.id}';
+							var venue_url = '#{s.venue.url}';
+							var container = "jwplayer_#{s.id}";
+							window.streaming = new window.StreamingVideo(venue_id, venue_url, container);
+
+		- else
+			.alert.alert-error There is No video for this location.

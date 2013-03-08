@@ -26,10 +26,10 @@
           - if s.event_date
             = month_day_of_date(s.event_date)
         %td.center
-          = s.start_time.strftime("%H:%M %p")
+          /= s.start_time.strftime("%H:%M %p")
           %br= s.time_zone_abbreviation
         %td.center
-          = s.end_time.strftime("%H:%M %p")
+          /= s.end_time.strftime("%H:%M %p")
           %br= s.time_zone_abbreviation
         %td.center
           = s.sport.name rescue  ""
@@ -49,12 +49,15 @@
         %td.center.hide
           %span.bluetext= popup_check_account("Buy",s)
         %td.center
+          %span.bluetext
+            = link_to "Watch", "player", :id => "#{s.id}", :class => "watch_this_video"
+            #render_watch_video
           - if user_signed_in?
             - if current_user.is_payment or (current_user.role == "Admin")
               - if ( s.event_date.to_date < Date.today_in_zone(s.us_timezone) || (s.event_date.to_date == Date.today_in_zone(s.us_timezone) && s.start_time <= time_without_zone(Time.now, s.us_timezone) && time_without_zone(Time.now, s.us_timezone) <= s.end_time) || (s.event_date.to_date == Date.today_in_zone(s.us_timezone) && time_without_zone(Time.now, s.us_timezone) >= s.end_time) )
                 %span.bluetext
                   = link_to "Watch", "##{s.id}", :id => "#{s.id}", :class => "watch_this_video"
-                  #render_wath_this_video
+                  #render_watch_video
               - else
                 %span.bluetext
                   = link_to("Coming soon","#")

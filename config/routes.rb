@@ -23,6 +23,7 @@ Teamzoom::Application.routes.draw do
 
   resources :schedules
   resources :requests
+  resources :states
 
   resources :conferences do
     collection do
@@ -48,6 +49,7 @@ Teamzoom::Application.routes.draw do
       post :payment
       get :schedule_loading
       get :get_team_by_scholl
+      get :player
     end
 
     member do

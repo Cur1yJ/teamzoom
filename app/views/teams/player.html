@@ -1,0 +1,12 @@
+<script type="text/javascript" src="/playertest/swfobject.js"></script>
+</head>
+<body>
+<div id="player">This text will be replaced</div>
+
+<script type="text/javascript">
+var so = new SWFObject('/playertest/player.swf','mpl','470','290','9');
+so.addParam('allowscriptaccess','always');
+so.addParam('allowfullscreen','true');
+so.addParam('flashvars','&file=amazons3/tzarchive/6_02262013_064600.mp4&streamer=rtmp://ec2-54-234-165-115.compute-1.amazonaws.com:1935/vods3/_definst_/');
+so.write('player');
+</script>

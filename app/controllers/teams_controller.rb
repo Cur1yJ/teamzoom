@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
   
   def show
     @team = Team.find_by_slug(params[:id])
-    @teamsport = @team.teamsports.build  
+    @teamsport = @team.teamsports.build
     @order = current_user.orders.build if current_user
     @date = session[:date] ? session[:date] : DateTime.now
     @date = @date.beginning_of_week
@@ -191,7 +191,10 @@ class TeamsController < ApplicationController
         return render :partial => "shared/registrations/team_select", :locals => {:teams => nil}
       end
     end
+  end
 
+  # Player testing, delete it later
+  def player
   end
 
 private

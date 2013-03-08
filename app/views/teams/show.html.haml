@@ -45,7 +45,7 @@
           #remote_date
             = render('shared/teams/show_calendar', :dater => @date)
       .span3{:style=>"margin-top:5px;"}
-        = link_to "Add Event", new_admin_team_schedule_path(@team || team), :class => "btn btn-primary", :style=>"margin-right:10px;", :remote => true if user_admin_with_edit_mode? || user_manager_with_edit_mode?
+        /= link_to "Add Event", new_admin_team_schedule_path(@team || team), :class => "btn btn-primary", :style=>"margin-right:10px;", :remote => true if user_admin_with_edit_mode? || user_manager_with_edit_mode?
         = link_to "Sports and Venues", load_sports_venues_path(:team_id => @team.id), :remote => true, :class => "btn btn-primary", "data-toggle" => "modal" if(user_admin_with_edit_mode? or user_manager_with_edit_mode?)
     .row
       .content-side
