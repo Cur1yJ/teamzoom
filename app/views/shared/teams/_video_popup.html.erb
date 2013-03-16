@@ -1,0 +1,48 @@
+<div class="watch_video" id="1_dialog" title="Watch Video">
+  <div class="modal-header">
+    <h2>Watch Stream Video</h2>
+    <%- if s.venue and s.venue.url %>
+      <h3><%= s.venue.venue %></h3>
+      <% 
+        stream_ip = s.venue.url.gsub(/\@[a-zA-z\.0-9\,]*/,'')
+        s.venue.url.gsub!(/[\:\.\/a-zA-Z0-9]*\@/,'')
+        stream_file_array = s.venue.url.split(",")
+      %>
+      <div class="modal-body" style="max-heigh: none;">
+        <%- if s.venue and s.venue.url %>
+          <!-- The event is currently in progress, so we show the streaming source -->
+          <% if s.event_date.to_date == Date.today_in_zone(s.us_timezone) && time_without_zone(Time.now, s.us_timezone) >= s.start_time && time_without_zone(Time.now, s.us_timezone) <= s.end_time %>
+              <!-- Needs a player -->
+          <!-- The event has already finished. We are either ahead of the day or ahead of the finishing time -->
+          <%- elsif Date.today_in_zone(s.us_timezone) > s.event_date.to_date || time_without_zone(Time.now, s.us_timezone) >= s.end_time %>
+            <% recording = s.recording %>
+            <% if recording.present? %>
+              <% if recording.status == Recording::DONE %>
+                <% file = Recording.find(s.id).recording_name.to_s
+                  streamer = "rtmp://" + s.venue.url.to_s
+                  flashvars = "&file=#{file}&streamer=#{streamer}" %>
+
+                <div id="player">This text will be replaced</div>
+                <script type="text/javascript">
+                  var so = new SWFObject('/playertest/player.swf','mpl','470','290','9');
+                  so.addParam('allowscriptaccess','always');
+                  so.addParam('allowfullscreen','true');
+                  so.addParam('flashvars','<%= flashvars %>');
+                  so.write('player');
+                </script>
+              <% else %>
+                <div id = "jwplayer_#{s.id}">
+                  <% file = Recording.find(s.id).stream_name %>
+
+				  <%= jw_player("#{file} ", id: "jwplayer_#{s.id}", jw_id:"jwplayer_#{s.id}", :width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip", :streamer => 'rtmp://54.243.187.20/live/', name:"final", provider: "rtmp", allowscriptaccess: "always", autostart: true) %>
+			    </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <%- end %>
+      </div>
+    <% else %>
+      <p>There is no video for this location</p>
+    <%- end %>
+  </div>
+</div>

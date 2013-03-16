@@ -14,7 +14,7 @@
 					/ - for i in stream_file_array
 					/	= jw_player(i, :image => "/stream/profile-pic.png",:width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip",:streamer => stream_ip, provider: "rtmp", allowscriptaccess: 'always', autostart: true)
 					%div{:id => "jwplayer_#{s.id}"}
-						Loading the player...
+						Loading the players...
 				= javascript_tag do
 					var venue_id = '#{s.venue.id}';
 					var venue_url = '#{s.venue.url}';
@@ -24,20 +24,24 @@
 				- recording = s.recording
 				- if recording.present?
 					- if recording.status == Recording::DONE
-						= jw_player(recording.archive.file_name,:width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip", allowscriptaccess: 'always', autostart: true)
+						= jw_player("rtmp://ec2-54-234-165-115.compute-1.amazonaws.com:1935/vods3/_definst_/amazons3/tzarchive/6_02262013_064600.mp4",:width => 700, :height => 360, :skin => "/jwplayer/skins/snel.zip", provider: "rtmp", allowscriptaccess: 'always', autostart: true)
 					- else
 						Uploading, please wait
 				- else
-					Stream not found
-					/
-						%div{:id => "jwplayer_#{s.id}"}
-							Loading the player...
-						= jw_player("6.stream",id: "jwplayer_#{s.id}",jw_id:"jwplayer_#{s.id}",:width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip",:streamer => 'rtmp://54.243.187.20/live/', name: 'final', provider: "rtmp", allowscriptaccess: 'always', autostart: true)
-						= javascript_tag do
-							var venue_id = '#{s.venue.id}';
-							var venue_url = '#{s.venue.url}';
-							var container = "jwplayer_#{s.id}";
-							window.streaming = new window.StreamingVideo(venue_id, venue_url, container);
-
+					%div{:id => "jwplayer_#{s.id}"}
+						Loading the player...
+				<script type="text/javascript">
+				var so = new SWFObject('/playertest/player.swf','mpl','470','290','9');
+				so.addParam('allowscriptaccess','always');
+				so.addParam('allowfullscreen','true');
+				so.addParam('flashvars','&file=amazons3/tzarchive/6_02262013_064600.mp4&streamer=rtmp://ec2-54-234-165-115.compute-1.amazonaws.com:1935/vods3/_definst_/');
+				so.write('player');
+				</script>
+				= jw_player("6.stream", id: "jwplayer_#{s.id}", jw_id:"jwplayer_#{s.id}", :width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip", :streamer => 'rtmp://54.243.187.20/live/', name:"final", provider: "rtmp", allowscriptaccess: "always", autostart: true)
+				= javascript_tag do
+					var venue_id = '#{s.venue.id}';
+					var venue_url = '#{s.venue.url}';
+					var container = "jwplayer_#{s.id}";
+					window.streaming = new window.StreamingVideo(venue_id, venue_url, container);
 		- else
 			.alert.alert-error There is No video for this location.

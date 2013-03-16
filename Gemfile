@@ -54,7 +54,7 @@ group :development do
   gem "guard-rails"
   gem 'guard-annotate'
   gem 'sextant' # Help me see routes in browser. Go to /rails/routes to see them
-  gem "better_errors" # Better errors from https://github.com/charliesome/better_errors
+  gem 'better_errors' # Better errors from https://github.com/charliesome/better_errors
 end
 
 # This gem breaks compilation, be sure to activate it later
@@ -82,4 +82,4 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 # To use debugger
-# gem "debugger"
+# gem 'debugger'

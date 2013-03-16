@@ -16,7 +16,7 @@ module Admin::UserHelper
 	def user_manager?
 		if user_signed_in?
 			if (params[:id] and params[:controller] == "teams") && params[:team_id].nil?
-				if Team.find(params[:id]).user_ids.include?(current_user.id)
+				if Team.find_by_slug(params[:id]).user_ids.include?(current_user.id)
 					current_user.is_manager?
 				else
 					false

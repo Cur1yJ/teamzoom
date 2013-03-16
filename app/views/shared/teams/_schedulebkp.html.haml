@@ -50,7 +50,7 @@
           %span.bluetext= popup_check_account("Buy",s)
         %td.center
           %span.bluetext
-            = link_to "Watch", "player", :id => "#{s.id}", :class => "watch_this_video"
+            = link_to "Watch", "##{s.id}", :id => "#{s.id}", :class => "watch_this_video"
             #render_watch_video
           - if user_signed_in?
             - if current_user.is_payment or (current_user.role == "Admin")

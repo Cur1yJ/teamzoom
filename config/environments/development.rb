@@ -36,9 +36,9 @@ Teamzoom::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = false
 
-  # config.assets.compile = false
+  config.assets.compile = true
 
-  # config.assets.enabled = false
+  config.assets.enabled = true
 
   config.after_initialize do
     # ActiveMerchant::Billing::Base.mode = :production

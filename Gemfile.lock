@@ -62,9 +62,6 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
-    better_errors (0.7.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
     better_states_select (1.0.0)
       rails (>= 1.2)
     bootstrap-datepicker-rails (0.6.39)
@@ -296,7 +293,6 @@ PLATFORMS
 DEPENDENCIES
   activemerchant (>= 1.20.1)
   aws-sdk
-  better_errors
   better_states_select
   bootstrap-datepicker-rails
   bootstrap-will_paginate

@@ -9,7 +9,7 @@ module JwPlayerOnRails
 
       options.merge!(flashplayer: "/jwplayer/player.swf", file: path)
       %Q[
-<div id="jwplayer_#{@@player_count}">Loading the player...</div>
+<div id="jwplayer_#{@@player_count}">Loading the players...</div>
 <script type="text/javascript">
   //<![CDATA[
       jwplayer("jwplayer_#{@@player_count}").setup(#{options.to_json});

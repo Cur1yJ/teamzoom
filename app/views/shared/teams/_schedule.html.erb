@@ -1,0 +1,110 @@
+<% if user_admin_with_edit_mode? || user_manager_with_edit_mode? %>
+  <div class="edit_render"></div>
+<% end %>
+<table class="list-teampage lists table-size table-striped table">
+  <thead>
+    <tr>
+      <% if user_admin_with_edit_mode? || user_manager_with_edit_mode? %>
+        <th></th>
+      <% end %>
+      <th class="center">DATE</th>
+      <th class="center">START TIME</th>
+      <th class="center">END TIME</th>
+      <th class="center">SPORT</th>
+      <th class="center">TEAM</th>
+      <th class="center">HOME / AWAY</th>
+      <th class="center">Location</th>
+      <th class="hide">Purchase</th>
+      <th>Watch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% schedule.each do |s| %>
+      <tr class="editable-by-admin">
+        <% if user_admin_with_edit_mode? || user_manager_with_edit_mode? %>
+          <td class="center">
+            <%= link_to "", edit_admin_team_schedule_path(@team || team, s), :remote => true, :class => "icon-pencil color-pen", :title => "Edit" %>
+            </br>
+            <%= link_to "", admin_team_schedule_path(@team || team, s), :data => { :confirm => 'Are you sure?' }, :class => "icon-trash color-pen", :method => :delete, :remote => true, :title => "Delete" %>
+          </td>
+        <% end %>
+        <td class="center">
+          <% if s.event_date %>
+            <%= month_day_of_date(s.event_date) %>
+          <% end %>
+        </td>
+        <td class="center">
+          <%= s.start_time.strftime("%H:%M %p") %>
+          </br>
+          <%= s.time_zone_abbreviation %>
+        </td>
+        <td class="center">
+          <%= s.end_time.strftime("%H:%M %p") %>
+          </br>
+          <%= s.time_zone_abbreviation %>
+        </td>
+        <td class="center">
+          <%= s.sport.name rescue  "" %>
+        </td>
+        <td class="center">
+          <%= s.subteam_home.name rescue "" %>
+          <p class="line-sub"></p>
+          <%= s.subteam_opponent.name rescue "" %>
+        </td>
+        <td>
+          <%= image_tag(get_logo_team(s.subteam_home.teamsport.team), :class => 'schedule_logo_team') rescue "" %>
+          <%= s.subteam_home.teamsport.team.name rescue "" %>
+          <p class="line"></p>
+          <%= image_tag(get_logo_team(s.subteam_opponent.teamsport.team), :class => 'schedule_logo_team') rescue "" %>
+          <%= s.subteam_opponent.teamsport.team.name rescue "" %>
+        </td>
+        <td>
+          <%= s.venue.venue rescue "" %>
+        </td>
+        <td class="center hide">
+          <span class="bluetext">
+            <%= popup_check_account('Buy',s) %>
+          </span>
+        </td>
+        <td class="center">
+          <% if user_signed_in? %>
+            <% if current_user.is_payment or (current_user.role == "Admin") %>
+              <% if ( s.event_date.to_date < Date.today_in_zone(s.us_timezone) || (s.event_date.to_date == Date.today_in_zone(s.us_timezone) && s.start_time <= time_without_zone(Time.now, s.us_timezone) && time_without_zone(Time.now, s.us_timezone) <= s.end_time) || (s.event_date.to_date == Date.today_in_zone(s.us_timezone) && time_without_zone(Time.now, s.us_timezone) >= s.end_time) ) %>
+                <span class="bluetext">
+                  <%= link_to "Watch", "##{s.id}", :id => "#{s.id}", :class => "watch_this_video" %>
+                  <div id="render_watch_video"></div>
+                </span>
+              <% else %>
+                <span class="bluetext">
+                  <%= link_to("Coming soon","#") %>
+                  <%= link_to_if((s.event_date.to_date<=Date.today and s.start_time <= Time.now),"Watch", "##{s.id}", :id => "#{s.id}", :class => "watch_this_video") { link_to("coming soon","#") } %>
+                    <!-- and (Time.now <= 6.hours.since(s.time)) is another condition for future implementation -->
+                </span>
+              <% end %>
+            <% else %>
+              <% if ( s.event_date.to_date > Date.today_in_zone(s.us_timezone) || (s.event_date.to_date == Date.today_in_zone(s.us_timezone) &&  s.start_time >= time_without_zone(Time.now, s.us_timezone)) ) %>
+                <span class="bluetext">
+                  <%= link_to("Coming soon","#")%>
+                </span>
+              <% else %>
+                <span class="bluetext"> 
+                  <%= link_to("Purchase to watch", "#payment_options", "data-toggle" => "modal", :id => "payment1", :value => s.id) %>
+                  <%= render "teams/check_login" %>
+                  <%= render "orders/payment_options", :schedule => s.id %>
+                  <%= render "orders/confirm_monthly" %>
+                  <%= render "orders/confirm_individual" %>
+                  <%= render_payment_input %>
+                </span>
+              <% end %>
+            <% end %>
+          <% else %>
+            <span class="bluetext">
+              <%= link_to("Login to watch", "#check_login", "data-toggle" => "modal") %>
+              <%= render "teams/check_login" %>
+            </span>
+          <% end %>
+        </td>
+      </tr>  
+    <% end %>
+  </tbody>
+</table>
