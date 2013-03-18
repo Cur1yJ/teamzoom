@@ -27,6 +27,7 @@ gem "aws-sdk"
 #gem "rmagick"
 gem "remotipart", "~> 1.0"
 gem 'validates_timeliness', '~> 3.0'
+gem 'taps'
 
 gem 'client_side_validations', '3.2.1', :git => 'https://github.com/bcardarella/client_side_validations.git'
 gem 'less-rails-bootstrap'
