@@ -258,29 +258,29 @@ window.teamObject =
 # Script to create dynamic select menus
 jQuery ->
   $('#school_conference_id').parent().hide()
-  $('#school_name').parent().hide()
+  $('#school_id').parent().hide()
   
   conferences = $('#school_conference_id').html()
-  schools = $('#school_name').html()
+  schools = $('#school_id').html()
 
-  $('#school_id').change ->
-    state = $('#school_id :selected').text()
+  $('#state_id').change ->
+    state = $('#state_id :selected').text()
     escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
     conf_options = $(conferences).filter("optgroup[label=#{escaped_state}]").html()
     if conf_options
       $('#school_conference_id').html(conf_options).parent().show()
     else
       $('#school_conference_id').empty().parent().hide()
-      $('#school_name').empty().parent().hide()
+      $('#school_id').empty().parent().hide()
 
   $('#school_conference_id').change ->
     conference = $('#school_conference_id :selected').text()
     escaped_conference = conference.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
     school_options = $(schools).filter("optgroup[label=#{escaped_conference}]").html()
     if school_options
-      $('#school_name').html(school_options).parent().show()
+      $('#school_id').html(school_options).parent().show()
     else
-      $('#school_name').empty().parent().hide()
+      $('#school_id').empty().parent().hide()
 
 
 

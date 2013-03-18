@@ -161,7 +161,7 @@ class TeamsController < ApplicationController
 
 
   def search
-    @teams = Team.scoped_by_school_id(params[:school_id])
+    @teams = Team.scoped_by_school_id(params[:school][:id])
     render :partial => "shared/teams/teams"
   end
 

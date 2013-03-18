@@ -1,17 +1,71 @@
-<h1>Find your team</h1>
+<div class='page-contents find-team'>
+  <center>
+  <div id="myModal1" class="modal hide fade span4" style='left:37%;'>
+    <div class="modal-header">
+      <%= link_to "X", "#", :class => "close", "data-dismiss" => "modal" %>
+      <p>Please enter school </p>
+    </div>
+    <div class="modal-body">
+      <table>
+        <tr>
+          <td align="right"><%= label_tag :state , "State " %></td>
+          <td></td>
+          <td style='width:230;'><%= select_tag "state", options_for_select(State::US_STATES) %></td>
+        </tr>
+        <tr>
+          <td align="right"><%= label_tag :team ,"School " %></td>
+          <td></td>
+          <td style="width:230"><%= text_field_tag :team, nil, {:class => "validator"} %></td>
+        </tr>
+        <tr>
+          <td colspan="3", style="border-bottom:solid 1px #E8E7E6;padding:-5px"></td>
+        </tr>
+        <tr>
+          <td style="height:5px"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="error length schools none style="color:red""></td>
+        </tr>
+        <tr>
+          <td colspan="3", align="right">
+          <button class="btn btn-primary" id="button_request">Submit</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  </center>
 
-<%= form_for @school do |f| %>
-  <div class="field">
-    <%= f.label "State" %><br />
-    <%= f.collection_select :id, State.order(:name), :id, :name, include_blank: true %>
+  <div class='box-borders'>
+    <div class='row'>
+      <div class='span6' id='form_fix_width'>
+        <%= form_tag search_teams_path, :method => :get do %>
+          <div class="span6" style="margin-top: 0.5em">
+            <table>
+              <tr>
+                <td><%= collection_select :state, :id, State.order(:name), :id, :name, include_blank: true %></td>
+                <td><%= grouped_collection_select :school, :conference_id, State.order(:name), :conferences, :name, :id, :name, include_blank: true %></td>
+                <td><%= grouped_collection_select :school, :id, Conference.order(:name), :schools, :name, :id, :name, include_blank: true %></td>
+              </tr>
+            </table>
+          </div>
+        <% end %>
+        <div class='span clearfix' style='margin-top :0.6em;margin-left:3.6em;pading-left: 5em'>
+            <%= submit_tag "Go", options = { :class => 'btn btn btn-primary', :id => 'show_list', :style => 'padding-left:2em;padding-right: 2em;'} %>
+        </div>
+        <div class='span2 offset5 manualmargin'>
+          <p style='margin-top: -1em;'></p>
+          <a href="#myModal1" class="request_team" data-toggle="modal">Don't see your school?  Request TeamZoom at your school</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Conference" %><br />
-    <%= f.grouped_collection_select :conference_id, State.order(:name), :conferences, :name, :id, :name, include_blank: true %>
+
+  <div class='row btn-toolbar list-teams'>
+    <div class='span9'>
+      <div class='loading none'><img alt="Loading" src="common/loading.gif" /></div>
+      <div class='teams none'></div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "School" %><br />
-    <%= f.grouped_collection_select :name, Conference.order(:name), :schools, :name, :id, :name, include_blank: true %>
-  </div>
-  <div class="actions"><%= f.submit %></div>
-<% end %>
+</div>

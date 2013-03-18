@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '>=3.2.12'
+gem 'rails', '>=3.2.13'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'nested_form'
@@ -55,6 +55,7 @@ group :development do
   gem 'guard-annotate'
   gem 'sextant' # Help me see routes in browser. Go to /rails/routes to see them
   gem 'better_errors' # Better errors from https://github.com/charliesome/better_errors
+  gem "binding_of_caller"
 end
 
 # This gem breaks compilation, be sure to activate it later
