@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221164405) do
+ActiveRecord::Schema.define(:version => 20130316012040) do
 
   create_table "archives", :force => true do |t|
     t.integer  "bucket_id"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20130221164405) do
     t.integer  "venue_id"
     t.datetime "end_time"
     t.string   "us_timezone",    :default => "Eastern Time (US & Canada)"
+    t.string   "venue_url"
   end
 
   create_table "school_requests", :force => true do |t|
