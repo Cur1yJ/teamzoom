@@ -19,11 +19,13 @@ class Admin::SchedulesController < ApplicationController
     @teams = teams.uniq
     render :json => @teams.to_json
   end
+
   def load_venues
     team = Team.find_by_id(params[:team_id].to_s)
     venues = team.venues
     render :json => venues.to_json
   end
+
   def new
     @schedule = Schedule.new
     @subteam_home = @schedule.build_subteam_home
@@ -32,7 +34,6 @@ class Admin::SchedulesController < ApplicationController
     @team_opponent = @subteam_opponent.build_team_opponent
   end
 
-  # GET /schedules/1/edit
   def edit
     @schedule = Schedule.find(params[:id].to_s)
   end
@@ -44,7 +45,7 @@ class Admin::SchedulesController < ApplicationController
     subteams = Subteam.joins(:teamsport).order("name ASC").where("teamsport_id IN (?)", Teamsport.where(:sport_id => sport.id))
     render :json => [subteams, teams]
   end
-  # POST /schedules
+
   def create
     team_id = params[:schedule][:subteam_home][:team_id].to_i
     params[:schedule].delete :subteam_opponent
@@ -77,7 +78,6 @@ class Admin::SchedulesController < ApplicationController
     end
   end
 
-  # PUT /schedules/1
   def update
     @schedule = Schedule.find(params[:id])
     @order = current_user.orders.build if current_user
@@ -111,7 +111,6 @@ class Admin::SchedulesController < ApplicationController
     end
   end
 
-  # DELETE /schedules/1
   def destroy
     @schedule = Schedule.find(params[:id])
     team_id = @schedule.subteam_home.teamsport.team.id

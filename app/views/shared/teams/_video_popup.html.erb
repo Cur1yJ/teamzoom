@@ -1,6 +1,7 @@
-<div class="watch_video" id="1_dialog" title="Watch Video">
+<% recording = Recording.find_by_schedule_id(s.id) %>
+<div class="watch_video" id="<%= s.id %>_dialog" title="Watch Video">
   <div class="modal-header">
-    <h2>Watch Stream Video</h2>
+    <h2>Watch Stream Videos</h2>
     <%- if s.venue and s.venue.url %>
       <h3><%= s.venue.venue %></h3>
       <% 
@@ -18,7 +19,7 @@
             <% recording = s.recording %>
             <% if recording.present? %>
               <% if recording.status == Recording::DONE %>
-                <% file = Recording.find(s.id).recording_name.to_s
+                <% file = recording.recording_name.to_s
                   streamer = "rtmp://" + s.venue.url.to_s
                   flashvars = "&file=#{file}&streamer=#{streamer}" %>
 
@@ -28,13 +29,14 @@
                   so.addParam('allowscriptaccess','always');
                   so.addParam('allowfullscreen','true');
                   so.addParam('flashvars','<%= flashvars %>');
+                  console.log(so);
                   so.write('player');
                 </script>
               <% else %>
                 <div id = "jwplayer_#{s.id}">
-                  <% file = Recording.find(s.id).stream_name %>
+                  <% stream = recording.stream_name %>
 
-				  <%= jw_player("#{file} ", id: "jwplayer_#{s.id}", jw_id:"jwplayer_#{s.id}", :width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip", :streamer => 'rtmp://54.243.187.20/live/', name:"final", provider: "rtmp", allowscriptaccess: "always", autostart: true) %>
+				  <%= jw_player("#{stream} ", id: "jwplayer_#{s.id}", jw_id:"jwplayer_#{s.id}", :width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip", :streamer => 'rtmp://54.243.187.20/live/', name:"final", provider: "rtmp", allowscriptaccess: "always", autostart: true) %>
 			    </div>
               <% end %>
             <% end %>
