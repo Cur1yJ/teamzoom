@@ -96,10 +96,6 @@ capybara-*html
 .sass-cache
 .sass-cache/*
 
-#rvm
-.rvmrc
-.rvmrc.*
-
 /Gemfile.lock
 /config/teamzoom_postgres.pem
 /config/teamzoom-1.pem
