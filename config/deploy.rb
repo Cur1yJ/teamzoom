@@ -18,7 +18,6 @@ set :repository,  "git@github.com:TKVR/teamzoom.git"
 set :scm_username, 'TKVR'
 set :git_enable_submodules, 1
 set :git_shallow_clone, 1
-ssh_options[:forward_agent] = true
 set :branch, 'master'
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -31,6 +30,9 @@ role :db,  domain, :primary => true# 'ec2-23-23-156-118.compute-1.amazonaws.com'
 
 # deply options
 default_run_options[:pty] = true
+set :ssh_options, {:forward_agent => true}
+set :ssh_options, {:auth_methods => "publickey"}
+set :ssh_options, {:keys => ["~/sites/teamzoom/config/teamzoom-1.pem"]}
 set :deploy_to, "/home/ubuntu/teamzoom_pro_set"
 set :deploy_via, :remote_cache
 set :use_sudo, false
