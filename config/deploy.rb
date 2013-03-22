@@ -32,7 +32,7 @@ role :db,  domain, :primary => true# 'ec2-23-23-156-118.compute-1.amazonaws.com'
 default_run_options[:pty] = true
 set :ssh_options, {:forward_agent => true}
 set :ssh_options, {:auth_methods => "publickey"}
-set :ssh_options, {:keys => ["~/sites/teamzoom/config/teamzoom-1.pem"]}
+set :ssh_options, {:keys => ["~/Downloads/teamzoom-1.pem"]}
 set :deploy_to, "/home/ubuntu/teamzoom_pro_set2"
 set :deploy_via, :remote_cache
 set :use_sudo, false
@@ -67,6 +67,12 @@ namespace :deploy do
   desc "Symlink shared resources on each release - not used"
   task :symlink_config, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+  
+  after "deploy:update_code", :precompile_assets
+  desc "precompile the assets"
+  task :precompile_assets, :roles => :app do
+    run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile"
   end
 
   after 'deploy:finalize_update', 'deploy:symlink_config'
