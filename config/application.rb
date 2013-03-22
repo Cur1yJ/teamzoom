@@ -61,8 +61,8 @@ module Teamzoom
     config.action_mailer.default_url_options = { :host => 'teamzoom-stg.herokuapp.com' }
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
-    config.assets.initialize_on_precompile = false
+    config.assets.version = '1.1'
+    config.assets.initialize_on_precompile = true
     config.middleware.use "Rack::GoogleAnalytics", :web_property_id => "UA-34084113-1"
     
     config.action_mailer.delivery_method = :smtp

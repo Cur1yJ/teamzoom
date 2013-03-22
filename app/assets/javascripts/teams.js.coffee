@@ -256,6 +256,8 @@ window.teamObject =
   #   return
 
 # Script to create dynamic select menus
+# Shows and hides menus depending on the data on DB
+
 jQuery ->
   $('#school_conference_id').parent().hide()
   $('#school_id').parent().hide()
@@ -281,6 +283,3 @@ jQuery ->
       $('#school_id').html(school_options).parent().show()
     else
       $('#school_id').empty().parent().hide()
-
-
-
