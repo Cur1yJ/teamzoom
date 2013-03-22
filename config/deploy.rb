@@ -14,8 +14,8 @@ set :keep_releases, 2 # It keeps on two old releases.
 
 # git repo details
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-set :repository,  "git@git.assembla.com:teamzoom.git"
-set :scm_username, 'Dzung Nguyen'
+set :repository,  "git@github.com:TKVR/teamzoom.git"
+set :scm_username, 'TKVR'
 set :git_enable_submodules, 1
 set :git_shallow_clone, 1
 ssh_options[:forward_agent] = true
