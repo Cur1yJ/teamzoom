@@ -306,7 +306,6 @@ DEPENDENCIES
   country_select
   devise (>= 2.0.0)
   event-calendar
-  execjs
   friendly_id (~> 4.0.1)
   garb
   google_visualr (>= 2.1)

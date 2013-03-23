@@ -62,7 +62,7 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'client_side_validations', '3.2.1', :git => 'https://github.com/bcardarella/client_side_validations.git'
 gem 'less-rails-bootstrap'
 gem 'therubyracer'
-gem "execjs"
+#gem "execjs"
 gem "friendly_id", "~> 4.0.1"
 
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
