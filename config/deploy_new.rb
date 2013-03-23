@@ -34,7 +34,7 @@ set :ssh_options, {:forward_agent => true}
 set :ssh_options, {:auth_methods => "publickey"}
 set :ssh_options, {:keys => ["~/Downloads/teamzoom-1.pem"]}
 set :deploy_to, "/home/ubuntu/teamzoom_pro_set2"
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 set :use_sudo, false
 
 # if you want to clean up old releases on each deploy uncomment this:
