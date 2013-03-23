@@ -32,7 +32,7 @@ role :db,  domain, :primary => true# 'ec2-23-23-156-118.compute-1.amazonaws.com'
 default_run_options[:pty] = true
 set :ssh_options, {:forward_agent => true}
 set :ssh_options, {:auth_methods => "publickey"}
-set :ssh_options, {:keys => ["~/sites/teamzoom/configteamzoom-1.pem"]}
+set :ssh_options, {:keys => ["~/sites/teamzoom/config/teamzoom-1.pem"]}
 set :deploy_to, "/home/ubuntu/teamzoom_pro_set2"
 set :deploy_via, :remote_cache
 set :use_sudo, false
