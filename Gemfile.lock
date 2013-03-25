@@ -109,13 +109,6 @@ GEM
     excon (0.16.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (4.2.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.2.1)
-      factory_girl (~> 4.2.0)
-      railties (>= 3.0.0)
-    faker (1.1.2)
-      i18n (~> 0.5)
     friendly_id (4.0.9)
     garb (0.9.1)
       activesupport (>= 2.2.0)
@@ -202,6 +195,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -265,7 +260,6 @@ GEM
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     slop (3.4.3)
-    spork (0.9.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -312,8 +306,6 @@ DEPENDENCIES
   country_select
   devise (>= 2.0.0)
   event-calendar
-  factory_girl_rails
-  faker
   friendly_id (~> 4.0.1)
   garb
   google_visualr (>= 2.1)
@@ -332,8 +324,9 @@ DEPENDENCIES
   nested_form
   paperclip (~> 3.0)
   pg
+  quiet_assets
   rack-google_analytics (= 1.0.2)
-  rails (>= 3.2.12)
+  rails (= 3.2.12)
   rails-erd
   remotipart (~> 1.0)
   rspec-rails (>= 2.8.1)
@@ -342,7 +335,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sextant
   simple_form
-  spork
   therubyracer
   twitter-bootstrap-rails!
   uglifier (>= 1.0.3)

@@ -37,10 +37,6 @@ coverage
 public/system/*
 public/themes/*
 
-# Public Cache
-public/javascripts/cache
-public/stylesheets/cache
-
 # Vendor Cache
 vendor/cache
 
