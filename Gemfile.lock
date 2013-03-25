@@ -333,7 +333,7 @@ DEPENDENCIES
   paperclip (~> 3.0)
   pg
   rack-google_analytics (= 1.0.2)
-  rails (>= 3.2.13)
+  rails (>= 3.2.12)
   rails-erd
   remotipart (~> 1.0)
   rspec-rails (>= 2.8.1)
