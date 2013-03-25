@@ -264,6 +264,7 @@ jQuery ->
   
   conferences = $('#school_conference_id').html()
   schools = $('#school_id').html()
+  neverusedvar_deleteme = 1
 
   $('#state_id').change ->
     state = $('#state_id :selected').text()
