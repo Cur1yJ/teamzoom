@@ -44,9 +44,9 @@
           <div class="span6" style="margin-top: 0.5em">
             <table>
               <tr>
-                <td><%= collection_select :state, :id, State.order(:name), :id, :name, include_blank: true %></td>
-                <td><%= grouped_collection_select :school, :conference_id, State.order(:name), :conferences, :name, :id, :name, include_blank: true %></td>
-                <td><%= grouped_collection_select :school, :id, Conference.order(:name), :schools, :name, :id, :name, include_blank: true %></td>
+                <td><%= collection_select :state, :id, State.order(:name), :id, :name, :prompt => "Select State" %></td>
+                <td><%= grouped_collection_select :school, :conference_id, State.order(:name), :conferences, :name, :id, :name, :prompt => "Select Conference" %></td>
+                <td><%= grouped_collection_select :school, :id, Conference.order(:name), :schools, :name, :id, :name, :prompt => "Select Team" %></td>
               </tr>
             </table>
           </div>

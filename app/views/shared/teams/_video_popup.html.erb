@@ -11,7 +11,8 @@
           <% if s.event_date.to_date == Date.today_in_zone(s.us_timezone) && time_without_zone(Time.now, s.us_timezone) >= s.start_time && time_without_zone(Time.now, s.us_timezone) <= s.end_time %>
             <!-- The event is currently in progress, so we show the streaming source -->
             <div id = "jwplayer_#{s.id}">
-              <% stream = s.venue_id.to_s + ".stream" %>
+              <% stream = "6.stream" %>
+              <% #stream = s.venue_id.to_s + ".stream" %>
               <%= jw_player("#{stream} ", id: "jwplayer_#{s.id}", jw_id:"jwplayer_#{s.id}", :width => 500, :height => 360, :skin => "/jwplayer/skins/snel.zip", :streamer => 'rtmp://54.243.187.20/live/', name:"final", provider: "rtmp", allowscriptaccess: "always", autostart: true) %>
             </div>
           <%- elsif Date.today_in_zone(s.us_timezone) > s.event_date.to_date || time_without_zone(Time.now, s.us_timezone) >= s.end_time %>

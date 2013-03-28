@@ -151,7 +151,8 @@ class Schedule < ActiveRecord::Base
     evdate   = schedule.event_date.strftime("%m%d%Y")
     evtime   = schedule.start_time.strftime("%H%M%S")
     recording_name = venue_id + "_" + evdate + "_" + evtime + ".mp4"
-    schedule.recording_name = recording_name
+    schedule.recording_name = "6_02262013_064600.mp4"
+    #schedule.recording_name = recording_name
     schedule.save
   end
 
