@@ -1,3 +1,4 @@
+
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 476dadb22fa16dd27547d20bb2142d2e68eee194
@@ -112,13 +113,6 @@ GEM
     excon (0.15.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.5.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (3.5.0)
-      factory_girl (~> 3.5.0)
-      railties (>= 3.0.0)
-    faker (1.0.1)
-      i18n (~> 0.4)
     ffi (1.1.0)
     friendly_id (4.0.8)
     garb (0.9.1)
@@ -216,6 +210,8 @@ GEM
       mime-types
     pg (0.14.0)
     polyglot (0.3.3)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -287,7 +283,6 @@ GEM
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
-    spork (0.9.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -332,8 +327,6 @@ DEPENDENCIES
   country_select
   devise (>= 2.0.0)
   event-calendar
-  factory_girl_rails
-  faker
   friendly_id (~> 4.0.1)
   garb
   google_visualr (>= 2.1)
@@ -352,6 +345,7 @@ DEPENDENCIES
   nested_form
   paperclip (~> 3.0)
   pg
+  quiet_assets
   rack-google_analytics (= 1.0.2)
   rails (>= 3.2.13)
   rails-erd
@@ -361,6 +355,14 @@ DEPENDENCIES
   rvm-capistrano
   sass-rails (~> 3.2.3)
   sextant
+  simple_form
+  therubyracer
+  twitter-bootstrap-rails!
+  uglifier (>= 1.0.3)
+  validates_timeliness (~> 3.0)
+  watu_table_builder
+  will_paginate
+ sextant
   simple_form
   spork
   therubyracer

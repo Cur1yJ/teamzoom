@@ -76,8 +76,7 @@
                 </span>
               <% else %>
                 <span class="bluetext">
-                  <%= link_to_if((s.event_date.to_date<=Date.today and s.start_time <= Time.now),"Watch", "##{s.id}", :id => "#{s.id}", :class => "watch_this_video") { link_to("Coming soon","#") } %>
-                    <!-- and (Time.now <= 6.hours.since(s.time)) is another condition for future implementation -->
+                  <%= link_to("Coming soon","#")%>
                 </span>
               <% end %>
             <% else %>
