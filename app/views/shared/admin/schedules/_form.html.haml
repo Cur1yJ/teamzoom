@@ -61,6 +61,4 @@
           = f.input :opponent_id, :collection => f.object.new_record? ? [] : get_subteam_away(@schedule), :as => :select, :label => "Team", :prompt => "Select one"
           #opponent_error.font-error
           = f.input :score_opponent, :label => "Score"
-    .modal-footer
-      = button_tag 'Save', :class => "btn btn-primary", :id => "save_schedule"
-
+          = button_tag 'Save', :class => "btn btn-primary", :id => "save_schedule"

@@ -26,18 +26,6 @@ class Admin::SchedulesController < ApplicationController
     render :json => venues.to_json
   end
 
-  def new
-    @schedule = Schedule.new
-    @subteam_home = @schedule.build_subteam_home
-    @team_home = @subteam_home.build_team
-    @subteam_opponent = @schedule.build_subteam_opponent
-    @team_opponent = @subteam_opponent.build_team_opponent
-  end
-
-  def edit
-    @schedule = Schedule.find(params[:id].to_s)
-  end
-
   # Load team for sport
   def load_teams_for_sport
     sport = Sport.find(params[:sport_id].to_s)
@@ -46,10 +34,19 @@ class Admin::SchedulesController < ApplicationController
     render :json => [subteams, teams]
   end
 
+  def new
+    @schedule = Schedule.new
+    @subteam_home = @schedule.build_subteam_home
+    @team_home = @subteam_home.build_team
+    @subteam_opponent = @schedule.build_subteam_opponent
+    @team_opponent = @subteam_opponent.build_team_opponent
+  end
+
   def create
     team_id = params[:schedule][:subteam_home][:team_id].to_i
     params[:schedule].delete :subteam_opponent
     params[:schedule].delete :subteam_home
+
     begin
       event_date_error = ""
       if params[:schedule][:event_date].present?
@@ -61,6 +58,7 @@ class Admin::SchedulesController < ApplicationController
     rescue
       event_date_error = "wrong date format"
     end
+
     @schedule = Schedule.new(params[:schedule])
     respond_to do |format|
       if @schedule.save
@@ -70,12 +68,17 @@ class Admin::SchedulesController < ApplicationController
         end
         sport_id = session[:sport]
         @schedules = Schedule.filter_schedule(@team.id, date, sport_id) || []
+        Schedule.recording_name(@schedule.id)
         format.js
       else
         @schedule.errors[:event_date] = event_date_error if event_date_error.present?
         format.js
       end
     end
+  end
+
+  def edit
+    @schedule = Schedule.find(params[:id].to_s)
   end
 
   def update

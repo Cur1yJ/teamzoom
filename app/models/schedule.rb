@@ -144,5 +144,16 @@ class Schedule < ActiveRecord::Base
     end
   end
 
+  def self.recording_name(schedule_id)
+    # Add the recording name of this event to use after it's finished
+    schedule = Schedule.find(schedule_id)
+    venue_id = schedule.venue_id.to_s
+    evdate   = schedule.event_date.strftime("%m%d%Y")
+    evtime   = schedule.start_time.strftime("%H%M%S")
+    recording_name = venue_id + "_" + evdate + "_" + evtime + ".mp4"
+    schedule.recording_name = recording_name
+    schedule.save
+  end
+
 end
 

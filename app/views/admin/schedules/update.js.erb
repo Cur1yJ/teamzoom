@@ -23,6 +23,6 @@
     $("#location_error").html("");
     $("#sport_error").html("");
     $("#schedule-data-table").html("<%= escape_javascript render :partial => "shared/teams/schedule", :locals => {:schedule => @schedules, :order => @order} %>");
+    $("#popup_team").modal('hide');
     $('.modal-backdrop.fade.in').remove();
 <%end%>
-

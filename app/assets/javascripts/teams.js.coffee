@@ -256,18 +256,14 @@ window.teamObject =
   #   return
 
 # Script to create dynamic select menus
-# Shows and hides menus depending on the data on DB
-
 jQuery ->
   $('#school_conference_id').parent().hide()
   $('#school_id').parent().hide()
   
   conferences = $('#school_conference_id').html()
   schools = $('#school_id').html()
-  neverusedvar_deleteme = 1
 
   $('#state_id').change ->
-    console.log("It works on state id change!")
     state = $('#state_id :selected').text()
     escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
     conf_options = $(conferences).filter("optgroup[label=#{escaped_state}]").html()
@@ -278,7 +274,6 @@ jQuery ->
       $('#school_id').empty().parent().hide()
 
   $('#school_conference_id').change ->
-    console.log("It works on school conference id change!")
     conference = $('#school_conference_id :selected').text()
     escaped_conference = conference.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
     school_options = $(schools).filter("optgroup[label=#{escaped_conference}]").html()
@@ -286,3 +281,6 @@ jQuery ->
       $('#school_id').html(school_options).parent().show()
     else
       $('#school_id').empty().parent().hide()
+
+
+

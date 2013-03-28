@@ -1,8 +1,7 @@
-
 class TeamsController < ApplicationController
   #load_and_authorize_resource
-   # before_filter :authenticate_user!, :except => [ :show, :index]
-  # before_filter :authenticate_user!
+  #before_filter :authenticate_user!, :except => [ :show, :index]
+  #before_filter :authenticate_user!
   
   before_filter :apply_cancel , :only => [:show, :find_team]
   
@@ -36,7 +35,7 @@ class TeamsController < ApplicationController
   end
 
   def update_venue
-    @team = Team.find(params[:id].to_s)
+    @team = Team.find_by_slug(params[:id].to_s)
     if params[:teamsport][:id].present?
       @teamsport = Teamsport.find(params[:teamsport][:id])
       respond_to do |format|
@@ -72,7 +71,7 @@ class TeamsController < ApplicationController
 
   #/teams/1/conference_directory
   def conference_directory
-    @team = Team.find(params[:id].to_s)
+    @team = Team.find_by_slug(params[:id].to_s)
     @conference = @team.school.conference
     @teams = @conference.teams.paginate(:page => params[:page] , :per_page => 15 ,:order => "name ASC")
     render :layout => "team_layout"
@@ -101,10 +100,8 @@ class TeamsController < ApplicationController
     end
   end
 
-  # PUT /teams/1
-  # PUT /teams/1.json
   def update
-    @team = Team.find(params[:id].to_s)
+    @team = Team.find_by_slug(params[:id].to_s)
 
     respond_to do |format|
       if @team.update_attributes(params[:team])
@@ -115,24 +112,20 @@ class TeamsController < ApplicationController
         format.js
         format.html { render action: "edit" }
         format.json { render json: @team.errors, status: :unprocessable_entity }
-
       end
     end
   end
 
-  # DELETE /teams/1
-  # DELETE /teams/1.json
   def destroy
-    @team = Team.find(params[:id].to_s)
+    @team = Team.find_by_slug(params[:id].to_s)
     @team.destroy
-
     respond_to do |format|
       format.html { redirect_to teams_url }
       format.json { head :no_content }
     end
   end
 
- def find_team
+  def find_team
     @school = School.new
     @state = State.new
 
@@ -142,7 +135,6 @@ class TeamsController < ApplicationController
 
     @school_request = SchoolRequest.new
     @request = Request.new
- 
   end
 
   def createrequest
@@ -204,5 +196,5 @@ private
       Order.update_cancel_on_end_month(current_user)
     end
   end 
-end
 
+end

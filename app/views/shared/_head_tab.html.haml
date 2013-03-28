@@ -1,3 +1,4 @@
+- admin_button_visible = false
 .row.header
   .row
     #logo.span3
@@ -15,12 +16,14 @@
               %li= link_to "Administration",((params[:controller] == "teams" and params[:action] == "show") ? "?edit_mode=active" : admin_states_path(:edit_mode => "active")),:class => "btn btn-primary"
             - else
               %li= link_to "Exit Administration", "?edit_mode=inactive",:class => "btn btn-primary"
+              - admin_button_visible = true
           - if user_manager?
             - if (params[:controller] == "teams" and params[:action] == "show")
               - if !user_manager_with_edit_mode?
                 %li= link_to "Administration", "?edit_mode=active",:class => "btn btn-primary"
               - else
-                %li= link_to "Exit Administration", "?edit_mode=inactive",:class => "btn btn-primary"
+                - unless admin_button_visible
+                  %li= link_to "Exit Administration", "?edit_mode=inactive",:class => "btn btn-primary"
         - else
           %li= link_to "Sign In" , new_user_session_path
         %li
