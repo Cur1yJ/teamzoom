@@ -268,7 +268,9 @@ jQuery ->
     escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
     conf_options = $(conferences).filter("optgroup[label=#{escaped_state}]").html()
     if conf_options
-      $('#school_conference_id').html(conf_options).parent().show()
+      final_conf_options = "<option value=''>Select Conference</option>" 
+      final = final_conf_options + conf_options
+      return $('#school_conference_id').html(final).parent().show();    
     else
       $('#school_conference_id').empty().parent().hide()
       $('#school_id').empty().parent().hide()
@@ -278,7 +280,9 @@ jQuery ->
     escaped_conference = conference.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
     school_options = $(schools).filter("optgroup[label=#{escaped_conference}]").html()
     if school_options
-      $('#school_id').html(school_options).parent().show()
+      final_school = "<option value=''>Select Team</option>"
+      final_school_options = final_school + school_options
+      return $('#school_id').html(final_school_options).parent().show();
     else
       $('#school_id').empty().parent().hide()
 
