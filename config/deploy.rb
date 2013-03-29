@@ -1,4 +1,3 @@
-# On-working new/alternative deploy.rb file:
 
 require 'rvm/capistrano'
 require 'bundler/capistrano'
