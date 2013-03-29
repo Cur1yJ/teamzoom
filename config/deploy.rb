@@ -25,15 +25,16 @@ set :deploy_to, "/home/ubuntu/teamzoom_pro_set3"
 default_run_options[:pty] = true
 set :ssh_options, {:forward_agent => true}
 set :ssh_options, {:auth_methods => "publickey"}
-set :ssh_options, {:keys => ["~/Downloads/teamzoom-1.pem"]}
+set :ssh_options, {:keys => ["~/sites/teamzoom/config/teamzoom-1.pem"]}
 
 #repo details
 set :scm, :git
-set :repository,  "git@github.com:TKVR/teamzoom_dev.git"
+set :repository,  "git@github.com:TKVR/teamzoom.git"
 set :scm_username, 'TKVR'
 set :keep_releases, 2
 set :branch, "master"
 
+after 'deploy:update_code', 'deploy:symlink_db'
 
 namespace :deploy do
   # task :start, :roles => :app, :except => { :no_release => true } do
@@ -61,6 +62,11 @@ namespace :deploy do
 
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "cd #{release_path} && touch tmp/restart.txt"
+  end
+
+  desc "Symlinks the database.yml"
+  task :symlink_db, :roles => :app do
+    run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
   end
 
   # If you enable assets/deploy in Capfile, you do not need this
