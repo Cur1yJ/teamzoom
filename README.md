@@ -122,7 +122,7 @@ Setup local development
     
 Tasks Overview:
 
-#local database
+###### local database
 We recommend using PG for your local database because that is what Heroku uses, but due to the flexibility of Rails database configurations, a SQLite, MySQL or other database would work as well. If you are using a Postgres database, your config/database.yml file might look something like this:
 
 	development:
