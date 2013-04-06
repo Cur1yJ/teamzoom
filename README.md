@@ -1,8 +1,8 @@
 [TeamZoom](http://www.teamzoom.com)
-by [Ryan Kruizenga] & [Michael Lungo]
+by Ryan Kruizenga & Michael Lungo
 
 ----
-Co-Founder, Architect & Chief Technology Officer: Michael Lungo (TKVR) <mike@michaellungo.com>
+Co-Founder, Chief Technology Officer, & Architect: Michael Lungo (TKVR) <mike@michaellungo.com>
 
 Requirements:
 
@@ -123,7 +123,7 @@ Setup local development
 Tasks Overview:
 
 ###### local database
-We recommend using PG for your local database because that is what Heroku uses, but due to the flexibility of Rails database configurations, a SQLite, MySQL or other database would work as well. If you are using a Postgres database, your config/database.yml file might look something like this:
+We recommend using PG for your local database because that is what [Heroku](http://heroku.com) uses, but due to the flexibility of [Rails](http://rubyonrails.org) database configurations, a [SQLite](http://sqlite.org), [MySQL](http://mysql.com) or other database would work as well. If you are using a [Postgres](http://postgresql.com) database, your config/database.yml file might look something like this:
 
 		development:
 		  adapter: postgresql
@@ -145,14 +145,16 @@ For initial installation, a suggested method of loading the database schema is t
 
 	rake db:create db:schema:load
 	
+Alternatively, you could directly import the most recent SQL file located in db/dumps directly to the database using a GUI such as [Navicat](http://navicat.com)
+	
 ###### authentication/roles
 The gem [CanCan](github.com/ryanb/cancan) built by Ryan Bates controls our permissions and user authorization. User roles are defined in the models/user.rb file. In the backend these roles are stored as integers, higher numbers representing higher roles (with Admin role being the highest). It is very important to maintain the data abstraction here so that adding more roles in the future is easy and there are no conflicts in storage and representation of roles.
 	
 ###### staging & production server
-We are using Heroku to deploy to our [staging environment](http://teamzoom-stg.herokuapp.com/), and amazon ec2 to deploy to our production environment. The Heroku platform uses a Postgres database. EC2 has an instance for Posgres, Wowza, & Rails. We deploy to production with capistrano. This required heavy customization in our deploy.rb script and compiling assets on the server. We are in the process of writing custom deploy scripts to each environment.
+We are using Heroku to deploy to our [staging environment](http://teamzoom-stg.herokuapp.com/), and [Amazon EC2](aws.amazon.com/ec2) to deploy to our production environment. The Heroku platform uses a Postgres database. EC2 has an instance for Posgres, Wowza, & Rails. We deploy to production with [Capistrano](https://github.com/capistrano/capistrano/wiki). This required heavy customization in our config/deploy.rb script file. We are in the process of writing custom deploy scripts to each environment.
 	
 ###### testing
-Tests are written with RSpec and model objects are easily built using [FactoryGirl](http://github.com/thoughtbot/factory_girl).
+Tests are written with [RSpec](http://rspec.info/) and model objects are easily built using [FactoryGirl](http://github.com/thoughtbot/factory_girl).
 
 ###### seed
 
