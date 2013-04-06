@@ -1,8 +1,8 @@
 [TeamZoom](http://www.teamzoom.com)
-by [Ryan Kruizenga](http://linkedin.com/in/kruizenga) & [Michael Lungo](http://linkedin.com/in/michaellungo.com)
+by [Ryan Kruizenga] & [Michael Lungo]
 
 ----
-Co-Founder, Architect & Chief Technology Officer: Michael Lungo (TKVR) <michaellungo@gmail.com>
+Co-Founder, Architect & Chief Technology Officer: Michael Lungo (TKVR) <mike@michaellungo.com>
 
 Requirements:
 
@@ -125,39 +125,34 @@ Tasks Overview:
 ###### local database
 We recommend using PG for your local database because that is what Heroku uses, but due to the flexibility of Rails database configurations, a SQLite, MySQL or other database would work as well. If you are using a Postgres database, your config/database.yml file might look something like this:
 
-	development:
-	    adapter: postgresql
-	    encoding: utf8
-	    database: calendar_development
-	    username: <YOURNAME/ROOT>
-	    password: <YOURPASSWORD>
+		development:
+		  adapter: postgresql
+		  host: localhost
+		  database: teamzoom_dev
+		  port: 5432
+		  pool: 5
+		  timeout: 5000
 
-	production:
-	    adapter: postgresql
-	    encoding: utf8
-	    database: calendar_production
-	    username: <YOURNAME/ROOT>
-	    password: <YOURPASSWORD>
-
-	test:
-	    adapter: postgresql
-	    encoding: utf8
-	    database: calendar_test
-	    username: <YOURNAME/ROOT> 
-	    password: <YOURPASSWORD>
+		production:
+		  <<: *login
+		  database: teamzoom_pro
+		
+		test:
+		  <<: *login
+		  database: teamzoom_test
 
 For initial installation, a suggested method of loading the database schema is to do it directly instead of running through all the migrations which have different revisions over time. To create the database and load the schema in a single step, use this command:
 
 	rake db:create db:schema:load
 	
 ###### authentication/roles
-The gem CanCan built by Ryan Bates (read more about CanCan at github.com/ryanb/cancan) controls our permissions and user authorization. User roles are defined in the models/user.rb file. In the backend these roles are stored as integers, higher numbers representing higher roles (with Admin role being the highest). It is very important to maintain the data abstraction here so that adding more roles in the future is easy and there are no conflicts in storage and representation of roles.
+The gem [CanCan](github.com/ryanb/cancan) built by Ryan Bates controls our permissions and user authorization. User roles are defined in the models/user.rb file. In the backend these roles are stored as integers, higher numbers representing higher roles (with Admin role being the highest). It is very important to maintain the data abstraction here so that adding more roles in the future is easy and there are no conflicts in storage and representation of roles.
 	
 ###### staging & production server
-We are using Heroku to deploy to our staging environment, and amazon ec2 to deploy to our production environment. The Heroku domain for this project is teamzoom-stg.herokuapp.com/. The Heroku platform uses a Postgres database. EC2 has an instance for Posgres, Wowza, & Rails. We deploy to production with capistrano. This required heavy customization with our deploy.rb script and compiling assets on the server. We are in the process of writing custom deploy scripts to each environment.
+We are using Heroku to deploy to our [staging environment](http://teamzoom-stg.herokuapp.com/), and amazon ec2 to deploy to our production environment. The Heroku platform uses a Postgres database. EC2 has an instance for Posgres, Wowza, & Rails. We deploy to production with capistrano. This required heavy customization in our deploy.rb script and compiling assets on the server. We are in the process of writing custom deploy scripts to each environment.
 	
 ###### testing
-Tests are written with RSpec and model objects are easily built using FactoryGirl. Read more about factories at github.com/thoughtbot/factory_girl.
+Tests are written with RSpec and model objects are easily built using [FactoryGirl](http://github.com/thoughtbot/factory_girl).
 
 ###### seed
 
