@@ -24,7 +24,7 @@ Requirements:
 	will_paginate
 	event_calendar
 	watu_table_builder
-	paperclick
+	paperclip
 	aws-sdk
 	remotipart
 	validates_timeliness
@@ -120,11 +120,10 @@ Setup local development
     $ rake db:seed:trunklines    
 
     
-Tasks Overview 
+Tasks Overview:
 
-###### local database
-
- 	We recommend using PG for your local database because that is what Heroku uses, but due to the flexibility of Rails database configurations, a SQLite, MySQL or other database would work as well. If you are using a Postgres database, your config/database.yml file might look something like this:
+#local database
+We recommend using PG for your local database because that is what Heroku uses, but due to the flexibility of Rails database configurations, a SQLite, MySQL or other database would work as well. If you are using a Postgres database, your config/database.yml file might look something like this:
 
 	development:
 	    adapter: postgresql
@@ -147,21 +146,18 @@ Tasks Overview
 	    username: <YOURNAME/ROOT> 
 	    password: <YOURPASSWORD>
 
- 	For initial installation, a suggested method of loading the database schema is to do it directly instead of running through all the migrations which have different revisions over time. To create the database and load the schema in a single step, use this command:
+For initial installation, a suggested method of loading the database schema is to do it directly instead of running through all the migrations which have different revisions over time. To create the database and load the schema in a single step, use this command:
 
 	rake db:create db:schema:load
 	
 ###### authentication/roles
-
- 	The gem CanCan built by Ryan Bates (read more about CanCan at github.com/ryanb/cancan) controls our permissions and user authorization. User roles are defined in the models/user.rb file. In the backend these roles are stored as integers, higher numbers representing higher roles (with Admin role being the highest). It is very important to maintain the data abstraction here so that adding more roles in the future is easy and there are no conflicts in storage and representation of roles.
+The gem CanCan built by Ryan Bates (read more about CanCan at github.com/ryanb/cancan) controls our permissions and user authorization. User roles are defined in the models/user.rb file. In the backend these roles are stored as integers, higher numbers representing higher roles (with Admin role being the highest). It is very important to maintain the data abstraction here so that adding more roles in the future is easy and there are no conflicts in storage and representation of roles.
 	
 ###### staging & production server
-
- 	We are using Heroku to deploy to our staging environment, and amazon ec2 to deploy to our production environment. The Heroku domain for this project is teamzoom-stg.herokuapp.com/. The Heroku platform uses a Postgres database. EC2 has an instance for Posgres, Wowza, & Rails. We deploy to production with capistrano. This required heavy customization with our deploy.rb script and compiling assets on the server. We are in the process of writing custom deploy scripts to each environment.
+We are using Heroku to deploy to our staging environment, and amazon ec2 to deploy to our production environment. The Heroku domain for this project is teamzoom-stg.herokuapp.com/. The Heroku platform uses a Postgres database. EC2 has an instance for Posgres, Wowza, & Rails. We deploy to production with capistrano. This required heavy customization with our deploy.rb script and compiling assets on the server. We are in the process of writing custom deploy scripts to each environment.
 	
 ###### testing
-
- 	Tests are written with RSpec and model objects are easily built using FactoryGirl. Read more about factories at github.com/thoughtbot/factory_girl.
+Tests are written with RSpec and model objects are easily built using FactoryGirl. Read more about factories at github.com/thoughtbot/factory_girl.
 
 ###### seed
 
