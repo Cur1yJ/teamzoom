@@ -1,8 +1,8 @@
 
 development:
   bucket: teamzoom 
-  access_key_id: "AKIAIOYCWZFROQJEEBYQ"
-  secret_access_key: "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"
+  access_key_id: "[ID]"
+  secret_access_key: "[KEY]"
   max_file_size: 104857600
   acl: public-read
     
@@ -15,7 +15,7 @@ test:
   
 production:
   bucket: teamzoom 
-  access_key_id: "AKIAIOYCWZFROQJEEBYQ"
-  secret_access_key: "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"
+  access_key_id: "[ID]"
+  secret_access_key: "[KEY]"
   max_file_size: 104857600
   acl: public-read
