@@ -188,7 +188,7 @@ GEM
       i18n (~> 0.4)
       json
     multi_json (1.13.1)
-    multi_xml (0.5.1)
+    multi_xml (0.6.0)
     nested_form (0.2.2)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
