@@ -154,9 +154,8 @@ GEM
     highline (1.6.15)
     hike (1.2.3)
     hpricot (0.8.6)
-    httparty (0.8.3)
-      multi_json (~> 1.0)
-      multi_xml
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (3.1.5)
@@ -188,7 +187,7 @@ GEM
       i18n (~> 0.4)
       json
     multi_json (1.13.1)
-    multi_xml (0.5.1)
+    multi_xml (0.6.0)
     nested_form (0.2.2)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
