@@ -53,7 +53,7 @@ gem 'bootstrap-will_paginate'
 # gem 'kaminaris'
 gem 'event-calendar', :require => 'event_calendar'
 gem "watu_table_builder", :require => "table_builder"
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 4.3"
 gem "aws-sdk"
 #gem "rmagick"
 gem "remotipart", "~> 1.0"
