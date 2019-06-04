@@ -112,7 +112,7 @@ GEM
     excon (0.15.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    ffi (1.1.0)
+    ffi (1.10.0)
     friendly_id (4.0.8)
     garb (0.9.1)
       activesupport (>= 2.2.0)
