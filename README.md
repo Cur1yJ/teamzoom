@@ -2,7 +2,8 @@
 by Ryan Kruizenga & Michael Lungo
 
 ----
-Co-Founder, Chief Technology Officer, & Architect: Michael Lungo (TKVR) <mike@michaellungo.com>
+Co-Founder, Chief Technology Officer, & Architect: Michael Lungo [Cur1yJ](https://Cur1yJ.com/)
+ <mike@michaellungo.com>
 
 Requirements:
 
