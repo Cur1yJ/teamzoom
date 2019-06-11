@@ -1,4 +1,4 @@
-[TeamZoom](http://www.teamzoom.com)
+[TeamZoom](https://teamzoom-stg.herokuapp.com/)
 by Ryan Kruizenga & Michael Lungo
 
 ----
